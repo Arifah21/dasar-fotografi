@@ -1,0 +1,2801 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran: Dasar Fotografi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Library untuk PDF Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-html2canvas@latest/dist/jspdf-html2canvas.min.js"></script>
+</head>
+
+<body>
+    <!-- Navigasi Tab -->
+    <nav class="navbar">
+        <div class="nav-brand">Dasar Fotografi</div>
+        <ul class="nav-tabs">
+            <li><button class="tab-btn active" data-tab="beranda">Beranda</button></li>
+
+            <!-- DROPDOWN TEORI -->
+            <li class="nav-dropdown">
+                <button class="tab-btn dropdown-toggle" data-tab="teori">
+                    Teori Dasar <span class="dropdown-arrow">▾</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#teori-sejarah" class="dropdown-item" data-teori="sejarah">📜 Sejarah Fotografi</a>
+                    </li>
+                    <li><a href="#teori-jenis" class="dropdown-item" data-teori="jenis">🖼️ Jenis-Jenis Foto</a></li>
+                    <li><a href="#teori-typeofshot" class="dropdown-item" data-teori="typeofshot">🎬 Type of Shot</a>
+                    </li>
+                    <li><a href="#teori-cameraangle" class="dropdown-item" data-teori="cameraangle">📐 Camera Angle</a>
+                    </li>
+                    <li><a href="#teori-kamera" class="dropdown-item" data-teori="kamera">📷 Kamera & Alat Pendukung</a>
+                    </li>
+                    <li><a href="#teori-segitiga" class="dropdown-item" data-teori="segitiga">🔺 Segitiga Exposure</a>
+                    </li>
+                    <li><a href="#teori-komposisi" class="dropdown-item" data-teori="komposisi">🎨 Komposisi Foto</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li><button class="tab-btn" data-tab="lkpd">LKPD</button></li>
+            <li><button class="tab-btn" data-tab="quiz">Quiz</button></li>
+            <li><button class="tab-btn" data-tab="evaluasi">Evaluasi</button></li>
+        </ul>
+    </nav>
+
+    <!-- Konten Setiap Tab -->
+    <main class="container">
+        <section id="beranda" class="tab-content active">
+            <h1>Dasar Fotografi</h1>
+            <p>Media pembelajaran interaktif untuk siswa SMK Kelas 10 - Dasar Keahlian Desain Komunikasi Visual.</p>
+            <p><strong>Penyusun:</strong> Arifatul Ma'rifah, SMKN 1 Purwodadi</p>
+            <img src="assets/ilustrasi-fotografi.jpg" alt="Ilustrasi Fotografi"
+                style="width:100%; max-width:600px; border-radius:8px;">
+        </section>
+
+        <section id="teori" class="tab-content">
+            <div class="teori-header">
+                <h1>📸 Teori Dasar Fotografi</h1>
+                <p class="subtitle">Pelajari konsep mendalam tentang Fotografi </p>
+            </div>
+
+            <!-- ==================== MATERI 1: SEJARAH FOTOGRAFI ==================== -->
+            <div class="teori-materi active" id="teori-sejarah">
+                <h2>Sejarah Fotografi: Dari Kamera Obscura hingga Era Digital</h2>
+                <p class="intro-text">
+                    Fotografi berasal dari kata Yunani <em>"photos"</em> (cahaya) dan <em>"graphos"</em> (melukis).
+                    Secara harfiah, fotografi berarti <strong>"melukis dengan cahaya"</strong>. Perjalanan fotografi
+                    telah melalui evolusi panjang selama lebih dari 1000 tahun.
+                </p>
+
+                <!-- Timeline Interaktif -->
+                <div class="timeline">
+                    <div class="timeline-item" onclick="toggleTimeline(this)">
+                        <div class="timeline-year">1000 M</div>
+                        <div class="timeline-content">
+                            <h4>🔍 Kamera Obscura</h4>
+                            <p><strong>Al-Haitham (Alhazen)</strong> dari Irak menjelaskan prinsip kamera obscura:
+                                cahaya yang melewati lubang kecil akan membentuk bayangan terbalik di dinding ruangan
+                                gelap.</p>
+                            <div class="timeline-detail">
+                                <p><strong>Fakta Menarik:</strong> Kamera obscura awalnya digunakan untuk membantu
+                                    pelukis
+                                    membuat sketsa pemandangan secara akurat. Belum ada teknologi untuk "merekam" gambar
+                                    secara permanen.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" onclick="toggleTimeline(this)">
+                        <div class="timeline-year">1826</div>
+                        <div class="timeline-content">
+                            <h4>📷 Foto Permanen Pertama</h4>
+                            <p><strong>Joseph Nicéphore Niépce</strong> berhasil membuat foto permanen pertama di dunia
+                                dengan teknik <em>heliography</em>. Foto tersebut berjudul "View from the Window at Le
+                                Gras".</p>
+                            <div class="timeline-detail">
+                                <p>Prosesnya membutuhkan waktu eksposur sekitar <strong>8 jam</strong>! Bayangkan betapa
+                                    sabarnya Niépce saat itu.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" onclick="toggleTimeline(this)">
+                        <div class="timeline-year">1839</div>
+                        <div class="timeline-content">
+                            <h4>🎩 Daguerreotype</h4>
+                            <p><strong>Louis-Jacques-Mandé Daguerre</strong> mempublikasikan proses daguerreotype,
+                                metode fotografi praktis pertama yang menggunakan pelat tembaga berlapis perak.</p>
+                            <div class="timeline-detail">
+                                <p>Waktu eksposur jauh lebih cepat, hanya sekitar 10-20 menit. Tahun 1839 kemudian
+                                    dianggap sebagai <strong>tahun kelahiran fotografi modern</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" onclick="toggleTimeline(this)">
+                        <div class="timeline-year">1888</div>
+                        <div class="timeline-content">
+                            <h4>🎞️ Kodak dan Film Gulung</h4>
+                            <p><strong>George Eastman</strong> mendirikan Kodak dan memperkenalkan film gulung,
+                                membuat fotografi lebih praktis dan terjangkau.</p>
+                            <div class="timeline-detail">
+                                <p>Slogan Kodak saat itu: <em>"You press the button, we do the rest"</em>.
+                                    Fotografi mulai merambah ke masyarakat umum, bukan hanya kalangan elit.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" onclick="toggleTimeline(this)">
+                        <div class="timeline-year">1900</div>
+                        <div class="timeline-content">
+                            <h4>📦 Kamera Brownie</h4>
+                            <p>Kodak memperkenalkan <strong>Brownie</strong>, kamera kotak sederhana yang dijual
+                                seharga $1. Kamera ini memperkenalkan fotografi kepada masyarakat luas.</p>
+                            <div class="timeline-detail">
+                                <p>Brownie menjadi simbol demokratisasi fotografi. Anak-anak dan keluarga
+                                    biasa mulai mendokumentasikan kehidupan sehari-hari mereka.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" onclick="toggleTimeline(this)">
+                        <div class="timeline-year">1935</div>
+                        <div class="timeline-content">
+                            <h4>🌈 Kodachrome & Foto Berwarna</h4>
+                            <p>Kodak memperkenalkan <strong>Kodachrome</strong>, film berwarna pertama yang
+                                sukses secara komersial.</p>
+                            <div class="timeline-detail">
+                                <p>Fotografi berwarna mengubah cara manusia melihat dan mengingat dunia.
+                                    Dunia tidak lagi direkam dalam hitam-putih.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" onclick="toggleTimeline(this)">
+                        <div class="timeline-year">1975</div>
+                        <div class="timeline-content">
+                            <h4>💻 Kamera Digital Pertama</h4>
+                            <p><strong>Steven Sasson</strong>, insinyur Kodak, menciptakan kamera digital pertama.
+                                Beratnya sekitar 3,6 kg dan resolusi hanya 0,01 megapiksel!</p>
+                            <div class="timeline-detail">
+                                <p>Menariknya, Kodak justru menyembunyikan inovasi ini karena takut mengganggu
+                                    bisnis film mereka. Keputusan ini kemudian menjadi salah satu kesalahan bisnis
+                                    terbesar dalam sejarah.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" onclick="toggleTimeline(this)">
+                        <div class="timeline-year">2000-an</div>
+                        <div class="timeline-content">
+                            <h4>📱 Era Digital & Smartphone</h4>
+                            <p>Kamera digital menggantikan film sepenuhnya. Smartphone dengan kamera berkualitas
+                                tinggi menjadikan fotografi aktivitas sehari-hari bagi miliaran orang.</p>
+                            <div class="timeline-detail">
+                                <p>Saat ini, lebih dari <strong>1,4 triliun foto</strong> diambil setiap tahunnya di
+                                    seluruh dunia!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fakta Singkat -->
+                <div class="fact-box">
+                    <h4>💡 Fakta Singkat</h4>
+                    <ul>
+                        <li>Kata "photography" pertama kali digunakan oleh <strong>Sir John Herschel</strong> pada tahun
+                            1839.</li>
+                        <li>Foto <em>selfie</em> pertama dibuat oleh <strong>Robert Cornelius</strong> pada tahun 1839.
+                        </li>
+                        <li>Kamera tertua yang masih berfungsi berusia lebih dari 200 tahun.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ==================== MATERI 2: JENIS-JENIS FOTO ==================== -->
+            <div class="teori-materi" id="teori-jenis">
+                <h2>Jenis-Jenis Fotografi</h2>
+                <p class="intro-text">
+                    Fotografi memiliki banyak genre yang masing-masing memiliki ciri khas, teknik, dan tujuan berbeda.
+                    Berikut adalah jenis-jenis fotografi yang paling umum dipelajari:
+                </p>
+
+                <div class="jenis-grid">
+                    <div class="jenis-card" onclick="openJenisDetail('portrait')">
+                        <div class="jenis-icon">👤</div>
+                        <h3>Fotografi Portrait</h3>
+                        <p>Memotret manusia dengan fokus pada ekspresi, kepribadian, dan karakter subjek.</p>
+                        <span class="jenis-tag">Fotografi Manusia</span>
+                    </div>
+
+                    <div class="jenis-card" onclick="openJenisDetail('landscape')">
+                        <div class="jenis-icon">🏔️</div>
+                        <h3>Fotografi Landscape</h3>
+                        <p>Menangkap keindahan alam, pemandangan, dan lingkungan sekitar dengan cakupan luas.</p>
+                        <span class="jenis-tag">Fotografi Alam</span>
+                    </div>
+
+                    <div class="jenis-card" onclick="openJenisDetail('macro')">
+                        <div class="jenis-icon">🔬</div>
+                        <h3>Fotografi Macro</h3>
+                        <p>Memotret objek kecil dari jarak sangat dekat dengan detail luar biasa.</p>
+                        <span class="jenis-tag">Fotografi Alam</span>
+                    </div>
+
+                    <div class="jenis-card" onclick="openJenisDetail('street')">
+                        <div class="jenis-icon">🚶</div>
+                        <h3>Fotografi Street</h3>
+                        <p>Mendokumentasikan momen spontan di ruang publik dan kehidupan sehari-hari.</p>
+                        <span class="jenis-tag">Fotografi Jurnalistik</span>
+                    </div>
+
+                    <div class="jenis-card" onclick="openJenisDetail('product')">
+                        <div class="jenis-icon">📦</div>
+                        <h3>Fotografi Produk</h3>
+                        <p>Memotret produk untuk keperluan komersial, e-commerce, dan periklanan.</p>
+                        <span class="jenis-tag">Fotografi Komersial</span>
+                    </div>
+
+                    <div class="jenis-card" onclick="openJenisDetail('architecture')">
+                        <div class="jenis-icon">🏛️</div>
+                        <h3>Fotografi Arsitektur</h3>
+                        <p>Menangkap keindahan bangunan, interior, dan struktur dengan komposisi presisi.</p>
+                        <span class="jenis-tag">Fotografi Teknis</span>
+                    </div>
+
+                    <div class="jenis-card" onclick="openJenisDetail('wildlife')">
+                        <div class="jenis-icon">🦁</div>
+                        <h3>Fotografi Wildlife</h3>
+                        <p>Memotret satwa liar di habitat alaminya dengan teknik dan kesabaran tinggi.</p>
+                        <span class="jenis-tag">Fotografi Alam</span>
+                    </div>
+
+                    <div class="jenis-card" onclick="openJenisDetail('sport')">
+                        <div class="jenis-icon">⚽</div>
+                        <h3>Fotografi Olahraga</h3>
+                        <p>Menangkap momen aksi cepat dalam dunia olahraga dengan teknik freeze atau motion blur.</p>
+                        <span class="jenis-tag">Fotografi Aksi</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ==================== MATERI 3: TYPE OF SHOT ==================== -->
+            <div class="teori-materi" id="teori-typeofshot">
+                <h2>Type of Shot: Bahasa Visual dalam Fotografi</h2>
+                <p class="intro-text">
+                    <strong>Type of Shot</strong> (tipe pengambilan gambar) adalah cara fotografer menentukan
+                    <em>seberapa luas atau dekat</em> subjek yang akan ditampilkan dalam frame. Setiap tipe shot
+                    memiliki fungsi dan makna berbeda untuk menyampaikan pesan visual kepada pemirsa. Menguasai
+                    type of shot adalah kunci untuk bercerita melalui foto, terutama di dunia Desain Komunikasi Visual.
+                </p>
+
+                <!-- Simulator Interaktif Type of Shot -->
+                <div class="shot-simulator">
+                    <h3>🎮 Simulator Type of Shot</h3>
+                    <p>Klik tombol di bawah untuk melihat perbedaan setiap tipe shot dengan objek yang sama:</p>
+
+                    <div class="shot-buttons">
+                        <button class="shot-btn active" data-shot="els">ELS</button>
+                        <button class="shot-btn" data-shot="ls">LS</button>
+                        <button class="shot-btn" data-shot="mls">MLS</button>
+                        <button class="shot-btn" data-shot="ms">MS</button>
+                        <button class="shot-btn" data-shot="mcu">MCU</button>
+                        <button class="shot-btn" data-shot="cu">CU</button>
+                        <button class="shot-btn" data-shot="ecu">ECU</button>
+                    </div>
+
+                    <div class="shot-preview-container">
+                        <div class="shot-frame">
+                            <div class="shot-scene" id="shot-scene">
+                                <div class="shot-sky"></div>
+                                <div class="shot-mountain"></div>
+                                <div class="shot-ground"></div>
+                                <div class="shot-person">
+                                    <div class="shot-person-head"></div>
+                                    <div class="shot-person-body"></div>
+                                </div>
+                            </div>
+                            <div class="shot-label-overlay" id="shot-label-overlay">ELS</div>
+                        </div>
+
+                        <div class="shot-info-panel">
+                            <div class="shot-info-header">
+                                <span class="shot-info-abbr" id="shot-info-abbr">ELS</span>
+                                <h4 id="shot-info-title">Extreme Long Shot</h4>
+                            </div>
+                            <p class="shot-info-desc" id="shot-info-desc">
+                                Menampilkan subjek dari sangat jauh dalam lanskap yang luas...
+                            </p>
+                            <div class="shot-info-meta">
+                                <div class="shot-meta-item">
+                                    <span class="meta-label">🎯 Fungsi Utama:</span>
+                                    <span class="meta-value" id="shot-info-fungsi">Menetapkan lokasi & suasana</span>
+                                </div>
+                                <div class="shot-meta-item">
+                                    <span class="meta-label">📸 Penggunaan:</span>
+                                    <span class="meta-value" id="shot-info-usage">Establishing shot, dokumenter</span>
+                                </div>
+                                <div class="shot-meta-item">
+                                    <span class="meta-label">💡 Tips:</span>
+                                    <span class="meta-value" id="shot-info-tips">Gunakan lensa wide, aperture
+                                        kecil</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daftar Type of Shot -->
+                <h3 class="shot-section-title">📚 7 Tipe Shot Utama</h3>
+                <div class="shot-cards-grid">
+                    <div class="shot-card" onclick="showShotDetail('els')">
+                        <div class="shot-card-badge">ELS</div>
+                        <h4>Extreme Long Shot</h4>
+                        <p>Subjek sangat kecil dalam lanskap luas. Fokus pada lingkungan.</p>
+                        <span class="shot-card-tag">Establishing</span>
+                    </div>
+                    <div class="shot-card" onclick="showShotDetail('ls')">
+                        <div class="shot-card-badge">LS</div>
+                        <h4>Long Shot</h4>
+                        <p>Seluruh tubuh subjek terlihat dengan latar belakang yang jelas.</p>
+                        <span class="shot-card-tag">Wide</span>
+                    </div>
+                    <div class="shot-card" onclick="showShotDetail('mls')">
+                        <div class="shot-card-badge">MLS</div>
+                        <h4>Medium Long Shot</h4>
+                        <p>Dari ujung kepala hingga lutut. Keseimbangan subjek & lingkungan.</p>
+                        <span class="shot-card-tag">Knee Shot</span>
+                    </div>
+                    <div class="shot-card" onclick="showShotDetail('ms')">
+                        <div class="shot-card-badge">MS</div>
+                        <h4>Medium Shot</h4>
+                        <p>Dari kepala hingga pinggang. Cocok untuk dialog & interaksi.</p>
+                        <span class="shot-card-tag">Waist Shot</span>
+                    </div>
+                    <div class="shot-card" onclick="showShotDetail('mcu')">
+                        <div class="shot-card-badge">MCU</div>
+                        <h4>Medium Close Up</h4>
+                        <p>Dari kepala hingga dada. Menonjolkan ekspresi wajah.</p>
+                        <span class="shot-card-tag">Bust Shot</span>
+                    </div>
+                    <div class="shot-card" onclick="showShotDetail('cu')">
+                        <div class="shot-card-badge">CU</div>
+                        <h4>Close Up</h4>
+                        <p>Fokus pada wajah atau bagian tubuh tertentu. Emosi kuat.</p>
+                        <span class="shot-card-tag">Intimate</span>
+                    </div>
+                    <div class="shot-card" onclick="showShotDetail('ecu')">
+                        <div class="shot-card-badge">ECU</div>
+                        <h4>Extreme Close Up</h4>
+                        <p>Detail sangat dekat (mata, bibir, hidung). Sangat intim & intens.</p>
+                        <span class="shot-card-tag">Detail</span>
+                    </div>
+                </div>
+
+                <!-- Diagram Tingkat Kedekatan -->
+                <div class="shot-diagram">
+                    <h3>📏 Diagram Tingkat Kedekatan Subjek</h3>
+                    <p>Semakin ke kanan, semakin dekat & intim hubungan antara foto dengan subjek:</p>
+                    <div class="shot-scale">
+                        <div class="shot-scale-item">
+                            <div class="shot-scale-bar" style="width: 15%; background: #3498db;"><span>ELS</span></div>
+                            <div class="shot-scale-desc">Sangat Jauh</div>
+                        </div>
+                        <div class="shot-scale-item">
+                            <div class="shot-scale-bar" style="width: 30%; background: #2ecc71;"><span>LS</span></div>
+                            <div class="shot-scale-desc">Jauh</div>
+                        </div>
+                        <div class="shot-scale-item">
+                            <div class="shot-scale-bar" style="width: 45%; background: #f1c40f;"><span>MLS</span></div>
+                            <div class="shot-scale-desc">Sedang Jauh</div>
+                        </div>
+                        <div class="shot-scale-item">
+                            <div class="shot-scale-bar" style="width: 60%; background: #e67e22;"><span>MS</span></div>
+                            <div class="shot-scale-desc">Sedang</div>
+                        </div>
+                        <div class="shot-scale-item">
+                            <div class="shot-scale-bar" style="width: 75%; background: #e74c3c;"><span>MCU</span></div>
+                            <div class="shot-scale-desc">Sedang Dekat</div>
+                        </div>
+                        <div class="shot-scale-item">
+                            <div class="shot-scale-bar" style="width: 90%; background: #9b59b6;"><span>CU</span></div>
+                            <div class="shot-scale-desc">Dekat</div>
+                        </div>
+                        <div class="shot-scale-item">
+                            <div class="shot-scale-bar" style="width: 100%; background: #c0392b;"><span>ECU</span></div>
+                            <div class="shot-scale-desc">Sangat Dekat</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Catatan Penting -->
+                <div class="fact-box">
+                    <h4>🎯 Catatan Penting untuk Desainer Komunikasi Visual</h4>
+                    <ul>
+                        <li><strong>Type of shot</strong> bukan hanya soal teknis — ini tentang <em>menyampaikan
+                                pesan</em>. Pilih shot yang tepat sesuai cerita yang ingin disampaikan.</li>
+                        <li>Kombinasikan berbagai type of shot dalam satu rangkaian foto untuk menciptakan
+                            <strong>storytelling visual</strong> yang kuat.
+                        </li>
+                        <li>Perhatikan <em>headroom</em> (ruang di atas kepala) dan <em>lead room</em> (ruang di depan
+                            subjek) saat memilih shot.</li>
+                        <li>Untuk foto produk, <strong>CU/ECU</strong> menonjolkan detail, sementara
+                            <strong>MS/LS</strong> menunjukkan produk dalam konteks penggunaan.
+                        </li>
+                        <li>Foto <strong>ECU</strong> biasanya memerlukan <em>macro lens</em> atau extension tube.</li>
+                    </ul>
+                </div>
+
+                <!-- Galeri Foto -->
+                <div class="shot-gallery-section">
+                    <div class="shot-gallery-header">
+                        <h3>📸 Galeri Foto Contoh</h3>
+                        <p>Lihat langsung perbedaan setiap type of shot melalui foto nyata. Klik foto untuk memperbesar.
+                        </p>
+                    </div>
+
+                    <div class="gallery-filter">
+                        <button class="gallery-filter-btn active" data-filter="all">Semua</button>
+                        <button class="gallery-filter-btn" data-filter="wide">Wide Shot</button>
+                        <button class="gallery-filter-btn" data-filter="medium">Medium Shot</button>
+                        <button class="gallery-filter-btn" data-filter="close">Close Up</button>
+                    </div>
+
+                    <div class="shot-gallery-grid" id="shot-gallery-grid">
+                        <div class="gallery-item" data-category="wide" data-shot="els" data-index="0">
+                            <div class="gallery-img-wrapper">
+                                <img src="assets/type-of-shot/els.jpg" alt="Extreme Long Shot" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="gallery-overlay">
+                                    <span class="gallery-badge">ELS</span>
+                                    <span class="gallery-zoom-icon">🔍</span>
+                                </div>
+                            </div>
+                            <div class="gallery-info">
+                                <h4>Extreme Long Shot</h4>
+                                <p>Subjek sangat kecil dalam lanskap luas. Fokus pada lingkungan.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="wide" data-shot="ls" data-index="1">
+                            <div class="gallery-img-wrapper">
+                                <img src="assets/type-of-shot/ls.jpg" alt="Long Shot" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="gallery-overlay">
+                                    <span class="gallery-badge">LS</span>
+                                    <span class="gallery-zoom-icon">🔍</span>
+                                </div>
+                            </div>
+                            <div class="gallery-info">
+                                <h4>Long Shot</h4>
+                                <p>Seluruh tubuh subjek terlihat dengan latar belakang jelas.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="medium" data-shot="mls" data-index="2">
+                            <div class="gallery-img-wrapper">
+                                <img src="assets/type-of-shot/mls.jpg" alt="Medium Long Shot" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="gallery-overlay">
+                                    <span class="gallery-badge">MLS</span>
+                                    <span class="gallery-zoom-icon">🔍</span>
+                                </div>
+                            </div>
+                            <div class="gallery-info">
+                                <h4>Medium Long Shot</h4>
+                                <p>Dari kepala hingga lutut. Keseimbangan subjek & lingkungan.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="medium" data-shot="ms" data-index="3">
+                            <div class="gallery-img-wrapper">
+                                <img src="assets/type-of-shot/ms.jpg" alt="Medium Shot" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="gallery-overlay">
+                                    <span class="gallery-badge">MS</span>
+                                    <span class="gallery-zoom-icon">🔍</span>
+                                </div>
+                            </div>
+                            <div class="gallery-info">
+                                <h4>Medium Shot</h4>
+                                <p>Dari kepala hingga pinggang. Fokus pada subjek & gestur.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="close" data-shot="mcu" data-index="4">
+                            <div class="gallery-img-wrapper">
+                                <img src="assets/type-of-shot/mcu.jpg" alt="Medium Close Up" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="gallery-overlay">
+                                    <span class="gallery-badge">MCU</span>
+                                    <span class="gallery-zoom-icon">🔍</span>
+                                </div>
+                            </div>
+                            <div class="gallery-info">
+                                <h4>Medium Close Up</h4>
+                                <p>Dari kepala hingga dada. Menonjolkan ekspresi wajah.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="close" data-shot="cu" data-index="5">
+                            <div class="gallery-img-wrapper">
+                                <img src="assets/type-of-shot/cu.jpg" alt="Close Up" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="gallery-overlay">
+                                    <span class="gallery-badge">CU</span>
+                                    <span class="gallery-zoom-icon">🔍</span>
+                                </div>
+                            </div>
+                            <div class="gallery-info">
+                                <h4>Close Up</h4>
+                                <p>Fokus pada wajah atau bagian tubuh tertentu. Emosi kuat.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="close" data-shot="ecu" data-index="6">
+                            <div class="gallery-img-wrapper">
+                                <img src="assets/type-of-shot/ecu.jpg" alt="Extreme Close Up" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="gallery-overlay">
+                                    <span class="gallery-badge">ECU</span>
+                                    <span class="gallery-zoom-icon">🔍</span>
+                                </div>
+                            </div>
+                            <div class="gallery-info">
+                                <h4>Extreme Close Up</h4>
+                                <p>Detail sangat dekat. Sangat intim & intens.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ✅ PENUTUP teori-typeofshot DI ATAS — WAJIB ADA -->
+
+            <!-- ==================== MATERI 4: CAMERA ANGLE ==================== -->
+            <div class="teori-materi" id="teori-cameraangle">
+                <h2>Camera Angle: Sudut yang Bercerita</h2>
+                <p class="intro-text">
+                    <strong>Camera Angle</strong> (sudut pengambilan gambar) adalah posisi kamera terhadap subjek yang
+                    difoto. Sudut ini bukan sekadar soal teknis — ia menentukan <em>bagaimana pemirsa melihat</em> dan
+                    <em>merasakan</em> subjek. Sudut rendah membuat subjek tampak kuat, sudut tinggi membuatnya tampak
+                    lemah, dan seterusnya. Menguasai camera angle adalah senjata rahasia desainer komunikasi visual
+                    untuk
+                    menyampaikan pesan tanpa perlu kata-kata.
+                </p>
+
+                <!-- Simulator Interaktif Camera Angle -->
+                <div class="angle-simulator">
+                    <h3>🎮 Simulator Camera Angle</h3>
+                    <p>Klik tombol di bawah untuk melihat bagaimana sudut kamera mengubah kesan visual subjek:</p>
+
+                    <div class="angle-buttons">
+                        <button class="angle-btn active" data-angle="bird">🐦 Bird's Eye</button>
+                        <button class="angle-btn" data-angle="high">⬆️ High Angle</button>
+                        <button class="angle-btn" data-angle="eye">👁️ Eye Level</button>
+                        <button class="angle-btn" data-angle="low">⬇️ Low Angle</button>
+                        <button class="angle-btn" data-angle="worm">🐛 Worm's Eye</button>
+                        <button class="angle-btn" data-angle="dutch">📐 Dutch Angle</button>
+                        <button class="angle-btn" data-angle="pov">👤 POV</button>
+                        <button class="angle-btn" data-angle="ots">🎥 Over-the-Shoulder</button>
+                    </div>
+
+                    <div class="angle-preview-container">
+                        <!-- Frame Preview -->
+                        <div class="angle-frame">
+                            <div class="angle-scene" id="angle-scene">
+                                <div class="angle-sky"></div>
+                                <div class="angle-horizon"></div>
+                                <div class="angle-ground"></div>
+                                <div class="angle-subject" id="angle-subject">
+                                    <div class="angle-subject-head"></div>
+                                    <div class="angle-subject-body"></div>
+                                </div>
+                                <div class="angle-shoulder" id="angle-shoulder">
+                                    <div class="angle-shoulder-head"></div>
+                                    <div class="angle-shoulder-body"></div>
+                                </div>
+                            </div>
+                            <div class="angle-camera-icon" id="angle-camera-icon">📷</div>
+                            <div class="angle-label-overlay" id="angle-label-overlay">BIRD'S EYE</div>
+                        </div>
+
+                        <!-- Info Panel -->
+                        <div class="angle-info-panel">
+                            <div class="angle-info-header">
+                                <span class="angle-info-icon" id="angle-info-icon">🐦</span>
+                                <div>
+                                    <h4 id="angle-info-title">Bird's Eye View</h4>
+                                    <span class="angle-info-subtitle" id="angle-info-subtitle">Sudut Pandang Mata
+                                        Burung</span>
+                                </div>
+                            </div>
+                            <p class="angle-info-desc" id="angle-info-desc">
+                                Kamera berada jauh di atas subjek, menunduk ke bawah...
+                            </p>
+                            <div class="angle-info-meta">
+                                <div class="angle-meta-item">
+                                    <span class="meta-label">💭 Kesan:</span>
+                                    <span class="meta-value" id="angle-info-impression">Subjek tampak kecil & tak
+                                        berdaya</span>
+                                </div>
+                                <div class="angle-meta-item">
+                                    <span class="meta-label">🎯 Penggunaan:</span>
+                                    <span class="meta-value" id="angle-info-usage">Pemandangan luas, peta,
+                                        kerumunan</span>
+                                </div>
+                                <div class="angle-meta-item">
+                                    <span class="meta-label">💡 Tips:</span>
+                                    <span class="meta-value" id="angle-info-tips">Gunakan drone atau naik ke tempat
+                                        tinggi</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kartu 7 Camera Angle -->
+                <h3 class="angle-section-title">📚 7 Sudut Kamera Utama</h3>
+                <div class="angle-cards-grid">
+                    <div class="angle-card" onclick="showAngleDetail('bird')">
+                        <div class="angle-card-icon">🐦</div>
+                        <div class="angle-card-badge">Bird's Eye</div>
+                        <h4>Bird's Eye View</h4>
+                        <p>Dari atas, seperti dilihat burung terbang. Subjek tampak kecil dalam konteks luas.</p>
+                        <span class="angle-card-tag">Extreme High</span>
+                    </div>
+                    <div class="angle-card" onclick="showAngleDetail('high')">
+                        <div class="angle-card-icon">⬆️</div>
+                        <div class="angle-card-badge">High Angle</div>
+                        <h4>High Angle</h4>
+                        <p>Kamera lebih tinggi dari subjek. Memberi kesan subjek lemah atau inferior.</p>
+                        <span class="angle-card-tag">Superior View</span>
+                    </div>
+                    <div class="angle-card" onclick="showAngleDetail('eye')">
+                        <div class="angle-card-icon">👁️</div>
+                        <div class="angle-card-badge">Eye Level</div>
+                        <h4>Eye Level</h4>
+                        <p>Sejajar mata subjek. Paling natural dan netral, sering dipakai untuk portrait.</p>
+                        <span class="angle-card-tag">Natural</span>
+                    </div>
+                    <div class="angle-card" onclick="showAngleDetail('low')">
+                        <div class="angle-card-icon">⬇️</div>
+                        <div class="angle-card-badge">Low Angle</div>
+                        <h4>Low Angle</h4>
+                        <p>Kamera lebih rendah dari subjek. Memberi kesan subjek kuat, berwibawa, heroik.</p>
+                        <span class="angle-card-tag">Heroic</span>
+                    </div>
+                    <div class="angle-card" onclick="showAngleDetail('worm')">
+                        <div class="angle-card-icon">🐛</div>
+                        <div class="angle-card-badge">Worm's Eye</div>
+                        <h4>Worm's Eye View</h4>
+                        <p>Dari sangat bawah, seperti dilihat cacing. Subjek tampak sangat dominan.</p>
+                        <span class="angle-card-tag">Extreme Low</span>
+                    </div>
+                    <div class="angle-card" onclick="showAngleDetail('dutch')">
+                        <div class="angle-card-icon">📐</div>
+                        <div class="angle-card-badge">Dutch Angle</div>
+                        <h4>Dutch / Canted Angle</h4>
+                        <p>Kamera dimiringkan. Menciptakan ketegangan, kekacauan, atau ketidaknyamanan.</p>
+                        <span class="angle-card-tag">Tension</span>
+                    </div>
+                    <div class="angle-card" onclick="showAngleDetail('pov')">
+                        <div class="angle-card-icon">👤</div>
+                        <div class="angle-card-badge">POV</div>
+                        <h4>Point of View</h4>
+                        <p>Kamera menjadi mata subjek. Pemirsa ikut merasakan pengalaman subjek.</p>
+                        <span class="angle-card-tag">Immersive</span>
+                    </div>
+                    <div class="angle-card" onclick="showAngleDetail('ots')">
+                        <div class="angle-card-icon">🎥</div>
+                        <div class="angle-card-badge">OTS</div>
+                        <h4>Over-the-Shoulder</h4>
+                        <p>Kamera di belakang bahu subjek, melihat apa yang sedang ia hadapi. Menciptakan kesan dialog.
+                        </p>
+                        <span class="angle-card-tag">Dialog</span>
+                    </div>
+                </div>
+
+                <!-- Diagram Pengaruh Sudut -->
+                <div class="angle-diagram">
+                    <h3>📏 Spektrum Kekuatan Subjek</h3>
+                    <p>Semakin ke atas, subjek tampak semakin kuat & berwibawa. Semakin ke bawah, subjek tampak semakin
+                        lemah:</p>
+                    <div class="angle-spectrum">
+                        <div class="angle-spectrum-row">
+                            <span class="angle-spectrum-label">🐛 Worm's Eye</span>
+                            <div class="angle-spectrum-bar">
+                                <div class="angle-spectrum-fill"
+                                    style="width: 100%; background: linear-gradient(90deg, #c0392b, #e74c3c);">
+                                    <span>PALING KUAT</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="angle-spectrum-row">
+                            <span class="angle-spectrum-label">⬇️ Low Angle</span>
+                            <div class="angle-spectrum-bar">
+                                <div class="angle-spectrum-fill"
+                                    style="width: 80%; background: linear-gradient(90deg, #e67e22, #f39c12);">
+                                    <span>KUAT</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="angle-spectrum-row">
+                            <span class="angle-spectrum-label">🎥 OTS</span>
+                            <div class="angle-spectrum-bar">
+                                <div class="angle-spectrum-fill"
+                                    style="width: 50%; background: linear-gradient(90deg, #8e44ad, #9b59b6);">
+                                    <span>DIALOGIS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="angle-spectrum-row">
+                            <span class="angle-spectrum-label">👁️ Eye Level</span>
+                            <div class="angle-spectrum-bar">
+                                <div class="angle-spectrum-fill"
+                                    style="width: 50%; background: linear-gradient(90deg, #3498db, #2980b9);">
+                                    <span>NETRAL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="angle-spectrum-row">
+                            <span class="angle-spectrum-label">⬆️ High Angle</span>
+                            <div class="angle-spectrum-bar">
+                                <div class="angle-spectrum-fill"
+                                    style="width: 30%; background: linear-gradient(90deg, #16a085, #1abc9c);">
+                                    <span>LEMAH</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="angle-spectrum-row">
+                            <span class="angle-spectrum-label">🐦 Bird's Eye</span>
+                            <div class="angle-spectrum-bar">
+                                <div class="angle-spectrum-fill"
+                                    style="width: 15%; background: linear-gradient(90deg, #7f8c8d, #95a5a6);">
+                                    <span>PALING LEMAH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Catatan Penting -->
+                <div class="fact-box">
+                    <h4>🎯 Catatan Penting untuk Desainer Komunikasi Visual</h4>
+                    <ul>
+                        <li><strong>Camera angle = pesan tersembunyi</strong>. Satu subjek yang sama bisa terlihat
+                            "pahlawan" atau "korban" hanya dari perubahan sudut.</li>
+                        <li>Kombinasikan <strong>type of shot</strong> + <strong>camera angle</strong> untuk efek
+                            maksimal:
+                            misalnya <em>Close Up + Low Angle</em> = wajah yang sangat berwibawa.</li>
+                        <li><strong>Eye level</strong> adalah default yang aman — pakai untuk foto interview, reportase,
+                            dan
+                            portrait formal.</li>
+                        <li><strong>Dutch angle</strong> sebaiknya dipakai <em>secukupnya</em>. Terlalu sering justru
+                            membuat pemirsa pusing.</li>
+                        <li><strong>POV</strong> sangat efektif untuk iklan, storytelling, dan foto dokumenter yang
+                            ingin
+                            membawa pemirsa "masuk" ke dalam adegan.</li>
+                    </ul>
+                </div>
+
+                <!-- Galeri Foto Contoh -->
+                <div class="angle-gallery-section">
+                    <div class="angle-gallery-header">
+                        <h3>📸 Galeri Foto Contoh</h3>
+                        <p>Klik foto untuk memperbesar dan melihat detailnya.</p>
+                    </div>
+
+                    <div class="angle-gallery-filter">
+                        <button class="angle-filter-btn active" data-filter="all">Semua</button>
+                        <button class="angle-filter-btn" data-filter="atas">Sudut Atas</button>
+                        <button class="angle-filter-btn" data-filter="netral">Netral</button>
+                        <button class="angle-filter-btn" data-filter="bawah">Sudut Bawah</button>
+                        <button class="angle-filter-btn" data-filter="kreatif">Kreatif</button>
+                    </div>
+
+                    <div class="angle-gallery-grid" id="angle-gallery-grid">
+                        <div class="angle-gallery-item" data-category="atas" data-angle="bird">
+                            <div class="angle-gallery-img">
+                                <img src="assets/camera-angle/bird.jpg" alt="Bird's Eye View" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="angle-gallery-overlay">
+                                    <span class="angle-gallery-badge">🐦 Bird's Eye</span>
+                                    <span class="angle-gallery-zoom">🔍</span>
+                                </div>
+                            </div>
+                            <div class="angle-gallery-info">
+                                <h4>Bird's Eye View</h4>
+                                <p>Dari ketinggian ekstrem, subjek terlihat kecil.</p>
+                            </div>
+                        </div>
+
+                        <div class="angle-gallery-item" data-category="atas" data-angle="high">
+                            <div class="angle-gallery-img">
+                                <img src="assets/camera-angle/high.jpg" alt="High Angle" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="angle-gallery-overlay">
+                                    <span class="angle-gallery-badge">⬆️ High Angle</span>
+                                    <span class="angle-gallery-zoom">🔍</span>
+                                </div>
+                            </div>
+                            <div class="angle-gallery-info">
+                                <h4>High Angle</h4>
+                                <p>Kamera di atas subjek, memberi kesan inferior.</p>
+                            </div>
+                        </div>
+
+                        <div class="angle-gallery-item" data-category="netral" data-angle="eye">
+                            <div class="angle-gallery-img">
+                                <img src="assets/camera-angle/eye.jpg" alt="Eye Level" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="angle-gallery-overlay">
+                                    <span class="angle-gallery-badge">👁️ Eye Level</span>
+                                    <span class="angle-gallery-zoom">🔍</span>
+                                </div>
+                            </div>
+                            <div class="angle-gallery-info">
+                                <h4>Eye Level</h4>
+                                <p>Sejajar mata, netral dan natural.</p>
+                            </div>
+                        </div>
+
+                        <div class="angle-gallery-item" data-category="bawah" data-angle="low">
+                            <div class="angle-gallery-img">
+                                <img src="assets/camera-angle/low.jpg" alt="Low Angle" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="angle-gallery-overlay">
+                                    <span class="angle-gallery-badge">⬇️ Low Angle</span>
+                                    <span class="angle-gallery-zoom">🔍</span>
+                                </div>
+                            </div>
+                            <div class="angle-gallery-info">
+                                <h4>Low Angle</h4>
+                                <p>Kamera di bawah subjek, memberi kesan kuat & heroik.</p>
+                            </div>
+                        </div>
+
+                        <div class="angle-gallery-item" data-category="bawah" data-angle="worm">
+                            <div class="angle-gallery-img">
+                                <img src="assets/camera-angle/worm.jpg" alt="Worm's Eye View" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="angle-gallery-overlay">
+                                    <span class="angle-gallery-badge">🐛 Worm's Eye</span>
+                                    <span class="angle-gallery-zoom">🔍</span>
+                                </div>
+                            </div>
+                            <div class="angle-gallery-info">
+                                <h4>Worm's Eye View</h4>
+                                <p>Dari bawah sekali, subjek tampak sangat dominan.</p>
+                            </div>
+                        </div>
+
+                        <div class="angle-gallery-item" data-category="kreatif" data-angle="dutch">
+                            <div class="angle-gallery-img">
+                                <img src="assets/camera-angle/dutch.jpg" alt="Dutch Angle" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="angle-gallery-overlay">
+                                    <span class="angle-gallery-badge">📐 Dutch Angle</span>
+                                    <span class="angle-gallery-zoom">🔍</span>
+                                </div>
+                            </div>
+                            <div class="angle-gallery-info">
+                                <h4>Dutch Angle</h4>
+                                <p>Kamera miring, menciptakan ketegangan.</p>
+                            </div>
+                        </div>
+
+                        <div class="angle-gallery-item" data-category="kreatif" data-angle="pov">
+                            <div class="angle-gallery-img">
+                                <img src="assets/camera-angle/pov.jpg" alt="Point of View" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="angle-gallery-overlay">
+                                    <span class="angle-gallery-badge">👤 POV</span>
+                                    <span class="angle-gallery-zoom">🔍</span>
+                                </div>
+                            </div>
+                            <div class="angle-gallery-info">
+                                <h4>Point of View</h4>
+                                <p>Kamera menjadi mata subjek, immersive.</p>
+                            </div>
+                        </div>
+                        <div class="angle-gallery-item" data-category="kreatif" data-angle="ots">
+                            <div class="angle-gallery-img">
+                                <img src="assets/camera-angle/ots.jpg" alt="Over-the-Shoulder" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="angle-gallery-overlay">
+                                    <span class="angle-gallery-badge">🎥 OTS</span>
+                                    <span class="angle-gallery-zoom">🔍</span>
+                                </div>
+                            </div>
+                            <div class="angle-gallery-info">
+                                <h4>Over-the-Shoulder</h4>
+                                <p>Kamera di belakang bahu, menciptakan dialog visual.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Detail Camera Angle -->
+                <div id="angle-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="modal-close" onclick="closeAngleDetail()">&times;</span>
+                        <div id="angle-modal-body"></div>
+                    </div>
+                </div>
+
+                <!-- Lightbox Camera Angle -->
+                <div id="angle-lightbox" class="lightbox">
+                    <button class="lightbox-close" onclick="closeAngleLightbox()">&times;</button>
+                    <button class="lightbox-nav lightbox-prev" onclick="navigateAngleLightbox(-1)">‹</button>
+                    <button class="lightbox-nav lightbox-next" onclick="navigateAngleLightbox(1)">›</button>
+                    <div class="lightbox-content">
+                        <img id="angle-lightbox-img" src="" alt="">
+                        <div class="lightbox-caption">
+                            <span class="lightbox-badge" id="angle-lightbox-badge">🐦 Bird's Eye</span>
+                            <h3 id="angle-lightbox-title">Bird's Eye View</h3>
+                            <p id="angle-lightbox-desc">Deskripsi...</p>
+                        </div>
+                    </div>
+                    <div class="lightbox-counter" id="angle-lightbox-counter">1 / 7</div>
+                </div>
+            </div>
+            <!-- ==================== MATERI 5: KAMERA & ALAT PENDUKUNG ==================== -->
+            <div class="teori-materi" id="teori-kamera">
+                <h2>Kamera Mirrorless & Alat Pendukung Fotografi</h2>
+                <p class="intro-text">
+                    Di era digital, <strong>kamera mirrorless</strong> telah menjadi pilihan utama para fotografer
+                    profesional
+                    maupun pemula. Tanpa cermin mekanik, kamera ini lebih ringan, senyap, dan canggih. Selain
+                    kamera,
+                    <strong>alat pendukung fotografi</strong> seperti softbox, tripod, dan flash juga menentukan
+                    kualitas
+                    hasil foto. Mari kita pelajari semuanya!
+                </p>
+                <!-- ==================== GALERI JENIS KAMERA ==================== -->
+                <div class="kamera-galeri-section">
+                    <div class="kamera-galeri-header">
+                        <h3>📷 4 Jenis Kamera yang Wajib Dikenal</h3>
+                        <p>Klik foto untuk memperbesar dan melihat detailnya</p>
+                    </div>
+
+                    <div class="kamera-galeri-grid">
+                        <!-- DSLR -->
+                        <div class="kamera-galeri-item" data-kamera="dslr">
+                            <div class="kamera-galeri-img">
+                                <img src="assets/kamera/dslr.jpg" alt="Kamera DSLR" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="kamera-galeri-overlay">
+                                    <span class="kamera-galeri-badge">DSLR</span>
+                                    <span class="kamera-galeri-zoom">🔍</span>
+                                </div>
+                            </div>
+                            <div class="kamera-galeri-info">
+                                <h4>📸 DSLR</h4>
+                                <p>Digital Single-Lens Reflex — cermin mekanik, baterai tahan lama, bobot lebih berat.
+                                </p>
+                                <span class="kamera-galeri-tag">Klasik</span>
+                            </div>
+                        </div>
+
+                        <!-- Mirrorless -->
+                        <div class="kamera-galeri-item" data-kamera="mirrorless">
+                            <div class="kamera-galeri-img">
+                                <img src="assets/kamera/mirrorless.jpg" alt="Kamera Mirrorless" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="kamera-galeri-overlay">
+                                    <span class="kamera-galeri-badge">Mirrorless</span>
+                                    <span class="kamera-galeri-zoom">🔍</span>
+                                </div>
+                            </div>
+                            <div class="kamera-galeri-info">
+                                <h4>🪞 Mirrorless</h4>
+                                <p>Tanpa cermin, lebih ringan & senyap. Autofokus super cepat. Standar industri saat
+                                    ini.</p>
+                                <span class="kamera-galeri-tag">Modern</span>
+                            </div>
+                        </div>
+
+                        <!-- 360 -->
+                        <div class="kamera-galeri-item" data-kamera="kamera360">
+                            <div class="kamera-galeri-img">
+                                <img src="assets/kamera/360.jpg" alt="Kamera 360" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="kamera-galeri-overlay">
+                                    <span class="kamera-galeri-badge">360°</span>
+                                    <span class="kamera-galeri-zoom">🔍</span>
+                                </div>
+                            </div>
+                            <div class="kamera-galeri-info">
+                                <h4>🌐 Kamera 360</h4>
+                                <p>Menangkap seluruh lingkungan dalam 1 jepretan. Untuk VR, virtual tour & konten
+                                    immersive.</p>
+                                <span class="kamera-galeri-tag">Immersive</span>
+                            </div>
+                        </div>
+
+                        <!-- Polaroid -->
+                        <div class="kamera-galeri-item" data-kamera="polaroid">
+                            <div class="kamera-galeri-img">
+                                <img src="assets/kamera/polaroid.jpg" alt="Kamera Polaroid" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                                <div class="kamera-galeri-overlay">
+                                    <span class="kamera-galeri-badge">Polaroid</span>
+                                    <span class="kamera-galeri-zoom">🔍</span>
+                                </div>
+                            </div>
+                            <div class="kamera-galeri-info">
+                                <h4>📸 Polaroid</h4>
+                                <p>Kamera instan yang mencetak foto langsung. Estetika vintage, hasil fisik yang unik.
+                                </p>
+                                <span class="kamera-galeri-tag">Vintage</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Navigasi Sub-Materi -->
+                <div class="kamera-nav">
+                    <button class="kamera-nav-btn active" data-kamera="mirrorless">📷 Kamera Mirrorless</button>
+                    <button class="kamera-nav-btn" data-kamera="bagian">🔍 Bagian-Bagian Kamera</button>
+                    <button class="kamera-nav-btn" data-kamera="polaroid360">📸 Polaroid & 360</button>
+                    <button class="kamera-nav-btn" data-kamera="alat">🧰 Alat Pendukung</button>
+                </div>
+
+                <!-- ==================== SUB 1: MIRRORLESS ==================== -->
+                <div class="kamera-sub active" id="kamera-mirrorless">
+                    <h3>Apa itu Kamera Mirrorless?</h3>
+                    <p>
+                        <strong>Kamera mirrorless</strong> adalah kamera digital yang <em>tidak memiliki cermin
+                            mekanik</em>
+                        (mirror) di dalamnya. Pada kamera DSLR, cermin berfungsi memantulkan cahaya dari lensa ke
+                        viewfinder
+                        optik. Pada mirrorless, cahaya langsung menuju sensor, dan kamu melihat hasilnya melalui
+                        <strong>electronic viewfinder (EVF)</strong> atau layar LCD.
+                    </p>
+
+                    <!-- Perbandingan DSLR vs Mirrorless -->
+                    <div class="perbandingan-wrapper">
+                        <h4>⚖️ Perbandingan: DSLR vs Mirrorless</h4>
+                        <div class="perbandingan-grid">
+                            <div class="perbandingan-card dslr">
+                                <div class="perbandingan-icon">📸</div>
+                                <h5>DSLR</h5>
+                                <ul>
+                                    <li>✅ Ada cermin mekanik</li>
+                                    <li>✅ Baterai lebih tahan lama</li>
+                                    <li>✅ Lensa bekas lebih murah</li>
+                                    <li>❌ Lebih berat & besar</li>
+                                    <li>❌ Suara shutter lebih keras</li>
+                                    <li>❌ Autofokus lebih lambat</li>
+                                </ul>
+                            </div>
+                            <div class="perbandingan-card mirrorless">
+                                <div class="perbandingan-icon">🪞</div>
+                                <h5>Mirrorless</h5>
+                                <ul>
+                                    <li>✅ Lebih ringan & kompak</li>
+                                    <li>✅ Autofokus lebih cepat</li>
+                                    <li>✅ Suara shutter lebih senyap</li>
+                                    <li>✅ Video 4K/8K lebih baik</li>
+                                    <li>❌ Baterai lebih cepat habis</li>
+                                    <li>❌ Lensa lebih mahal</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kelebihan Mirrorless -->
+                    <div class="kelebihan-box">
+                        <h4>🌟 Mengapa Mirrorless Digemari?</h4>
+                        <div class="kelebihan-grid">
+                            <div class="kelebihan-item">
+                                <div class="kelebihan-icon">⚖️</div>
+                                <h5>Ringan & Portabel</h5>
+                                <p>Cocok untuk traveling, street photography, dan content creator.</p>
+                            </div>
+                            <div class="kelebihan-item">
+                                <div class="kelebihan-icon">🔇</div>
+                                <h5>Senyap</h5>
+                                <p>Tidak ada suara cermin — ideal untuk wawancara, wedding, atau wildlife.</p>
+                            </div>
+                            <div class="kelebihan-item">
+                                <div class="kelebihan-icon">⚡</div>
+                                <h5>Autofokus Cepat</h5>
+                                <p>Deteksi mata & wajah dengan AI — fokus selalu tepat di subjek.</p>
+                            </div>
+                            <div class="kelebihan-item">
+                                <div class="kelebihan-icon">🎥</div>
+                                <h5>Video Unggul</h5>
+                                <p>Mendukung video 4K/8K, cocok untuk konten YouTube & film pendek.</p>
+                            </div>
+                            <div class="kelebihan-item">
+                                <div class="kelebihan-icon">🔭</div>
+                                <h5>WYSIWYG</h5>
+                                <p>What You See Is What You Get — hasil di EVF sesuai foto yang diambil.</p>
+                            </div>
+                            <div class="kelebihan-item">
+                                <div class="kelebihan-icon">🎯</div>
+                                <h5>Fokus Peaking</h5>
+                                <p>Membantu fokus manual dengan menandai area tajam berwarna.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Merek Populer -->
+                    <div class="merek-box">
+                        <h4>🏆 Merek Kamera Mirrorless Populer</h4>
+                        <div class="merek-grid">
+                            <div class="merek-item">
+                                <div class="merek-emoji">🎌</div>
+                                <h5>Sony</h5>
+                                <p>Alpha A7, A6400, A7C — pelopor mirrorless full-frame.</p>
+                            </div>
+                            <div class="merek-item">
+                                <div class="merek-emoji">🌺</div>
+                                <h5>Canon</h5>
+                                <p>EOS R, R5, R6, R50 — sistem dual pixel autofocus.</p>
+                            </div>
+                            <div class="merek-item">
+                                <div class="merek-emoji">🟨</div>
+                                <h5>Nikon</h5>
+                                <p>Z50, Z6, Z9 — kualitas warna natural khas Nikon.</p>
+                            </div>
+                            <div class="merek-item">
+                                <div class="merek-emoji">🔷</div>
+                                <h5>Fujifilm</h5>
+                                <p>X-T5, X-S20 — simulasi film klasik yang khas.</p>
+                            </div>
+                            <div class="merek-item">
+                                <div class="merek-emoji">🎯</div>
+                                <h5>Panasonic</h5>
+                                <p>Lumix GH6, S5 — unggul di video & vlogging.</p>
+                            </div>
+                            <div class="merek-item">
+                                <div class="merek-emoji">🌊</div>
+                                <h5>Olympus / OM System</h5>
+                                <p>OM-1, OM-5 — Micro Four Thirds yang ringkas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== SUB 2: BAGIAN-BAGIAN KAMERA ==================== -->
+                <div class="kamera-sub" id="kamera-bagian">
+                    <h3>Bagian-Bagian Kamera Mirrorless</h3>
+                    <p>Klik setiap <strong>titik merah</strong> pada diagram di bawah untuk melihat penjelasan
+                        bagian tersebut.</p>
+
+                    <!-- Diagram Interaktif Kamera -->
+                    <div class="kamera-diagram-wrapper">
+                        <div class="kamera-diagram">
+                            <!-- Body kamera (CSS shape) -->
+                            <div class="kamera-body">
+                                <div class="kamera-lens-mount" id="hotspot-lens"></div>
+                                <div class="kamera-grip"></div>
+                                <div class="kamera-shutter-btn"></div>
+                                <div class="kamera-mode-dial"></div>
+                                <div class="kamera-evf"></div>
+                                <div class="kamera-screen"></div>
+                                <div class="kamera-hot-shoe"></div>
+                            </div>
+
+                            <!-- Hotspot buttons -->
+                            <button class="hotspot hotspot-lens" data-part="lens" title="Lensa">1</button>
+                            <button class="hotspot hotspot-evf" data-part="evf" title="EVF">2</button>
+                            <button class="hotspot hotspot-shutter" data-part="shutter"
+                                title="Tombol Shutter">3</button>
+                            <button class="hotspot hotspot-dial" data-part="dial" title="Mode Dial">4</button>
+                            <button class="hotspot hotspot-screen" data-part="screen" title="Layar LCD">5</button>
+                            <button class="hotspot hotspot-mount" data-part="mount" title="Mount Lensa">6</button>
+                            <button class="hotspot hotspot-hotshoe" data-part="hotshoe" title="Hot Shoe">7</button>
+                            <button class="hotspot hotspot-grip" data-part="grip" title="Grip">8</button>
+                            <button class="hotspot hotspot-battery" data-part="battery"
+                                title="Baterai & Kartu Memori">9</button>
+                        </div>
+                    </div>
+
+                    <!-- Info Panel -->
+                    <div class="kamera-info-panel" id="kamera-info-panel">
+                        <div class="kamera-info-placeholder">
+                            <span>👆 Klik salah satu nomor pada diagram kamera untuk melihat penjelasan</span>
+                        </div>
+                    </div>
+
+                    <!-- Daftar Bagian (List) -->
+                    <h4 class="bagian-list-title">📋 Daftar Bagian Kamera</h4>
+                    <div class="bagian-list" id="bagian-list">
+                        <!-- Di-generate oleh JavaScript -->
+                    </div>
+                </div>
+                <!-- ==================== SUB 4: POLAROID & 360 ==================== -->
+                <div class="kamera-sub" id="kamera-polaroid360">
+                    <h3>Polaroid & Kamera 360: Dua Dunia yang Berbeda</h3>
+                    <p>
+                        Selain kamera mirrorless dan DSLR, ada dua jenis kamera unik yang wajib dikenal oleh
+                        desainer komunikasi visual: <strong>Polaroid</strong> yang klasik & instan, dan
+                        <strong>Kamera 360</strong> yang modern & immersive. Keduanya menawarkan pengalaman
+                        memotret yang sangat berbeda.
+                    </p>
+
+                    <!-- Pengantar Perbandingan -->
+                    <div class="polaroid360-intro">
+                        <div class="intro-card intro-polaroid">
+                            <div class="intro-icon">📸</div>
+                            <h4>Polaroid</h4>
+                            <p class="intro-tagline">Instan • Vintage • Fisik</p>
+                        </div>
+                        <div class="intro-card intro-360">
+                            <div class="intro-icon">🌐</div>
+                            <h4>Kamera 360</h4>
+                            <p class="intro-tagline">Immersive • Digital • VR-Ready</p>
+                        </div>
+                    </div>
+
+                    <!-- ==================== POLAROID ==================== -->
+                    <div class="section-card">
+                        <div class="section-card-header polaroid-header">
+                            <span class="section-icon">📸</span>
+                            <div>
+                                <h4>Polaroid — Keajaiban Cetak Instan</h4>
+                                <p class="section-subtitle">Kamera yang mencetak foto dalam hitungan detik</p>
+                            </div>
+                        </div>
+
+                        <div class="section-card-body">
+                            <h5>Apa itu Polaroid?</h5>
+                            <p>
+                                <strong>Polaroid</strong> adalah kamera instan yang bisa <em>mencetak foto langsung</em>
+                                dalam
+                                beberapa detik setelah difoto. Foto yang dihasilkan keluar dari kamera dalam bentuk
+                                <strong>kertas persegi dengan bingkai putih tebal</strong> di sekelilingnya. Nama
+                                "Polaroid"
+                                diambil dari perusahaan yang pertama kali mengembangkan teknologi ini —
+                                <strong>Polaroid Corporation</strong>, didirikan oleh Edwin Land pada 1937.
+                            </p>
+
+                            <h5>📜 Sejarah Singkat</h5>
+                            <ul class="polaroid-timeline">
+                                <li><strong>1948</strong> — Polaroid Model 95, kamera instan pertama dijual ke publik
+                                </li>
+                                <li><strong>1972</strong> — Polaroid SX-70, kamera instan lipat ikonik</li>
+                                <li><strong>2008</strong> — Polaroid berhenti produksi film instan (krisis digital)</li>
+                                <li><strong>2017</strong> — Polaroid Originals (sekarang <strong>Polaroid</strong> lagi)
+                                    bangkit kembali</li>
+                                <li><strong>Sekarang</strong> — Fujifilm Instax dan Polaroid modern mendominasi pasar
+                                </li>
+                            </ul>
+
+                            <h5>⚙️ Cara Kerja</h5>
+                            <ol class="polaroid-steps">
+                                <li>Foto diambil → sensor menangkap gambar</li>
+                                <li>Prosesor di dalam kamera memproses gambar secara <em>instan</em></li>
+                                <li>Kertas foto (yang berisi bahan kimia) keluar dari celah kamera</li>
+                                <li>Kimia bereaksi dengan cahaya → gambar muncul perlahan (<strong>30 detik - 5
+                                        menit</strong>)</li>
+                                <li>Foto siap digunakan sebagai kenang-kenangan fisik</li>
+                            </ol>
+
+                            <h5>🎯 Kelebihan & Kekurangan</h5>
+                            <div class="pros-cons-grid">
+                                <div class="pros-box">
+                                    <h6>✅ Kelebihan</h6>
+                                    <ul>
+                                        <li>Hasil langsung — tidak perlu cetak di lab</li>
+                                        <li>Estetika unik & vintage</li>
+                                        <li>Kenang-kenangan fisik yang bisa dibagikan</li>
+                                        <li>Momen lebih berharga (karena terbatas)</li>
+                                        <li>Ideal untuk event & wedding</li>
+                                    </ul>
+                                </div>
+                                <div class="cons-box">
+                                    <h6>❌ Kekurangan</h6>
+                                    <ul>
+                                        <li>Biaya per foto mahal (Rp 15.000 - 25.000)</li>
+                                        <li>Kualitas gambar terbatas (soft & grain)</li>
+                                        <li>Tidak bisa diedit setelah dicetak</li>
+                                        <li>Jumlah foto per pack terbatas (8-10 lembar)</li>
+                                        <li>Kontrol manual sangat minim</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h5>🏆 Merek Polaroid Populer</h5>
+                            <div class="merek-mini-grid">
+                                <div class="merek-mini">
+                                    <span class="merek-mini-icon">🎞️</span>
+                                    <strong>Polaroid Now+</strong>
+                                    <small>Ikonik, konektivitas app</small>
+                                </div>
+                                <div class="merek-mini">
+                                    <span class="merek-mini-icon">📷</span>
+                                    <strong>Fujifilm Instax Mini 12</strong>
+                                    <small>Paling populer di Indonesia</small>
+                                </div>
+                                <div class="merek-mini">
+                                    <span class="merek-mini-icon">📸</span>
+                                    <strong>Fujifilm Instax Square</strong>
+                                    <small>Format kotak ala Polaroid klasik</small>
+                                </div>
+                                <div class="merek-mini">
+                                    <span class="merek-mini-icon">🎨</span>
+                                    <strong>Instax Wide</strong>
+                                    <small>Format lebar untuk landscape</small>
+                                </div>
+                            </div>
+
+                            <div class="tips-inline">
+                                <h6>💡 Tips Memotret dengan Polaroid</h6>
+                                <ul>
+                                    <li>Gunakan flash built-in di dalam ruangan — Polaroid butuh banyak cahaya</li>
+                                    <li>Jarak ideal subjek: 60 cm - 3 meter</li>
+                                    <li>Jangan goyang kamera setelah menekan shutter (proses kimia butuh ketenangan)
+                                    </li>
+                                    <li>Jangan langsung masukkan ke tas — biarkan 5 menit agar gambar matang sempurna
+                                    </li>
+                                    <li>Simpan foto di tempat kering, hindari suhu ekstrem</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ==================== KAMERA 360 ==================== -->
+                    <div class="section-card">
+                        <div class="section-card-header kamera360-header">
+                            <span class="section-icon">🌐</span>
+                            <div>
+                                <h4>Kamera 360 — Menangkap Seluruh Dunia</h4>
+                                <p class="section-subtitle">Teknologi modern untuk konten VR & immersive</p>
+                            </div>
+                        </div>
+
+                        <div class="section-card-body">
+                            <h5>Apa itu Kamera 360?</h5>
+                            <p>
+                                <strong>Kamera 360</strong> adalah kamera yang bisa menangkap gambar <em>seluruh
+                                    lingkungan</em>
+                                dalam satu jepretan — 360° horizontal dan 180° vertikal. Hasilnya bisa diputar-putar
+                                untuk melihat ke segala arah, seperti kita berada di lokasi tersebut. Sangat cocok untuk
+                                <strong>VR (Virtual Reality)</strong>, konten media sosial, dan dokumentasi ruang.
+                            </p>
+
+                            <h5>🔧 Cara Kerja</h5>
+                            <p>
+                                Kamera 360 memiliki <strong>2 atau lebih lensa</strong> yang menghadap ke arah berbeda.
+                                Setiap lensa menangkap sudut tertentu (misal: depan-belakang, atau 4 sisi).
+                                Gambar-gambar
+                                ini kemudian di-<em>stitch</em> (gabung) secara otomatis oleh software menjadi satu
+                                gambar
+                                <strong>equirectangular</strong> — bentuk bola yang diproyeksikan jadi gambar 2D.
+                            </p>
+
+                            <div class="kamera360-diagram">
+                                <div class="diagram-360">
+                                    <div class="lens-icon lens-front">📷</div>
+                                    <div class="lens-icon lens-back">📷</div>
+                                    <div class="diagram-center">360°</div>
+                                </div>
+                                <p class="diagram-caption">Dua lensa menghadap arah berlawanan → digabung jadi 1 gambar
+                                    360°</p>
+                            </div>
+
+                            <h5>🎬 Jenis Kamera 360</h5>
+                            <div class="jenis360-grid">
+                                <div class="jenis360-item">
+                                    <span class="jenis360-icon">📱</span>
+                                    <h6>Consumer 360</h6>
+                                    <p>Kamera 360 untuk pengguna umum. Contoh: <strong>Insta360 X3</strong>,
+                                        <strong>Ricoh Theta</strong>, <strong>GoPro Max</strong>. Harga: Rp 4-8 juta.
+                                    </p>
+                                </div>
+                                <div class="jenis360-item">
+                                    <span class="jenis360-icon">🎥</span>
+                                    <h6>Professional 360</h6>
+                                    <p>Untuk produksi VR komersial. Bisa memiliki 6-24 lensa. Contoh: <strong>Insta360
+                                            Pro 2</strong>, <strong>Kandao Obsidian</strong>. Harga: Rp 50 juta+.</p>
+                                </div>
+                                <div class="jenis360-item">
+                                    <span class="jenis360-icon">🛰️</span>
+                                    <h6>360 Rig (DIY)</h6>
+                                    <p>Kombinasi beberapa kamera action (GoPro) yang disusun melingkar. Hasil tinggi,
+                                        setup kompleks. Cocok untuk proyek khusus.</p>
+                                </div>
+                            </div>
+
+                            <h5>🎯 Kelebihan & Kekurangan</h5>
+                            <div class="pros-cons-grid">
+                                <div class="pros-box">
+                                    <h6>✅ Kelebihan</h6>
+                                    <ul>
+                                        <li>Menangkap seluruh lingkungan dalam 1 jepretan</li>
+                                        <li>Hasil immersive & engaging untuk media sosial</li>
+                                        <li>Tidak perlu "membidik" — semua arah tercakup</li>
+                                        <li>Support VR & metaverse</li>
+                                        <li>Bisa jadi konten virtual tour</li>
+                                    </ul>
+                                </div>
+                                <div class="cons-box">
+                                    <h6>❌ Kekurangan</h6>
+                                    <ul>
+                                        <li>Resolusi per bagian lebih rendah</li>
+                                        <li>Distorsi di bagian kutub (atas & bawah)</li>
+                                        <li>Perlu software khusus untuk editing</li>
+                                        <li>Tidak bisa digunakan untuk portrait biasa</li>
+                                        <li>Boros penyimpanan & baterai</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h5>🏆 Merek Kamera 360 Populer</h5>
+                            <div class="merek-mini-grid">
+                                <div class="merek-mini">
+                                    <span class="merek-mini-icon">🌐</span>
+                                    <strong>Insta360 X3 / X4</strong>
+                                    <small>Favorit content creator</small>
+                                </div>
+                                <div class="merek-mini">
+                                    <span class="merek-mini-icon">🎯</span>
+                                    <strong>Ricoh Theta Z1</strong>
+                                    <small>Kualitas foto terbaik</small>
+                                </div>
+                                <div class="merek-mini">
+                                    <span class="merek-mini-icon">🏔️</span>
+                                    <strong>GoPro Max</strong>
+                                    <small>Tahan banting, cocok aksi</small>
+                                </div>
+                                <div class="merek-mini">
+                                    <span class="merek-mini-icon">📡</span>
+                                    <strong>Kandao QooCam</strong>
+                                    <small>Value for money</small>
+                                </div>
+                            </div>
+
+                            <div class="tips-inline">
+                                <h6>💡 Tips Memotret dengan Kamera 360</h6>
+                                <ul>
+                                    <li>Jauhkan diri dari kamera — Anda akan muncul di semua sisi!</li>
+                                    <li>Gunakan tripod monopod agar kamera berada di atas kepala</li>
+                                    <li>Perhatikan pencahayaan merata — 360° berarti tidak ada "belakang kamera"</li>
+                                    <li>Untuk virtual tour, gunakan <em>HDR mode</em> agar semua area terekspos baik
+                                    </li>
+                                    <li>Export ke format yang didukung platform tujuan (YouTube VR, Facebook 360, dst)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ==================== PERBANDINGAN ==================== -->
+                    <div class="perbandingan-360-wrapper">
+                        <h4>⚖️ Perbandingan Singkat Polaroid vs Kamera 360</h4>
+                        <div class="table-wrapper">
+                            <table class="lkpd-table">
+                                <thead>
+                                    <tr>
+                                        <th>Aspek</th>
+                                        <th>📸 Polaroid</th>
+                                        <th>🌐 Kamera 360</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Teknologi</td>
+                                        <td>Analog instan + kimia</td>
+                                        <td>Digital + software stitching</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Output</td>
+                                        <td>Foto fisik cetak</td>
+                                        <td>File digital 360°</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Waktu Hasil</td>
+                                        <td>30 detik - 5 menit</td>
+                                        <td>Instan (digital)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Resolusi</td>
+                                        <td>Rendah (~1 MP)</td>
+                                        <td>Tinggi (5.7K - 11K)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Penggunaan</td>
+                                        <td>Kenang-kenangan, event</td>
+                                        <td>VR, virtual tour, medsos</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Harga Kamera</td>
+                                        <td>Rp 1 - 3 juta</td>
+                                        <td>Rp 4 - 50 juta+</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Biaya per Foto</td>
+                                        <td>Rp 15.000 - 25.000</td>
+                                        <td>Gratis (digital)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nostalgia Factor</td>
+                                        <td>⭐⭐⭐⭐⭐</td>
+                                        <td>⭐⭐</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Konten VR</td>
+                                        <td>Tidak support</td>
+                                        <td>Support penuh</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Catatan untuk DKV -->
+                    <div class="fact-box">
+                        <h4>🎯 Relevansi untuk Desainer Komunikasi Visual</h4>
+                        <ul>
+                            <li><strong>Polaroid</strong> sangat efektif untuk <em>event marketing</em> — foto instan
+                                bisa jadi souvenir, konten Instagram, atau guestbook fisik.</li>
+                            <li><strong>Polaroid wall</strong> adalah tren dekorasi populer di kafe, kantor startup, dan
+                                booth pameran — cocok untuk portofolio DKV.</li>
+                            <li><strong>Kamera 360</strong> membuka peluang konten VR — virtual tour sekolah, produk,
+                                atau properti. Keterampilan ini sangat dicari di industri.</li>
+                            <li><strong>Efek "wow"</strong>: foto 360 bisa di-embed di website dengan viewer seperti
+                                <em>Pannellum</em> atau <em>Marzipano</em> — skill teknis yang beda dari fotografer
+                                biasa.
+                            </li>
+                            <li><strong>Kombinasi keduanya</strong>: konten 360 untuk campaign online + Polaroid untuk
+                                merchandise fisik = paket marketing lengkap.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- ==================== SUB 3: ALAT PENDUKUNG ==================== -->
+                <div class="kamera-sub" id="kamera-alat">
+                    <h3>Alat Pendukung Fotografi</h3>
+                    <p>
+                        Selain kamera, <strong>alat pendukung</strong> sangat menentukan kualitas hasil foto.
+                        Berikut adalah alat-alat pendukung yang wajib dikenal oleh seorang fotografer:
+                    </p>
+
+                    <!-- Filter -->
+                    <div class="alat-filter">
+                        <button class="alat-filter-btn active" data-alat="all">Semua</button>
+                        <button class="alat-filter-btn" data-alat="lighting">💡 Lighting</button>
+                        <button class="alat-filter-btn" data-alat="support">🦵 Support</button>
+                        <button class="alat-filter-btn" data-alat="optic">🔍 Optik</button>
+                        <button class="alat-filter-btn" data-alat="other">🎒 Lainnya</button>
+                    </div>
+
+                    <!-- Grid Alat -->
+                    <div class="alat-grid" id="alat-grid">
+                        <!-- Softbox -->
+                        <div class="alat-card" data-category="lighting" data-alat="softbox">
+                            <div class="alat-img-wrapper">
+                                <img src="assets/alat/softbox.jpg" alt="Softbox" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                            </div>
+                            <div class="alat-info">
+                                <h5>💡 Softbox</h5>
+                                <p>Menghasilkan cahaya lembut & merata. Favorit untuk portrait dan produk.</p>
+                                <span class="alat-tag">Lighting</span>
+                            </div>
+                        </div>
+
+                        <!-- Umbrella -->
+                        <div class="alat-card" data-category="lighting" data-alat="umbrella">
+                            <div class="alat-img-wrapper">
+                                <img src="assets/alat/umbrella.jpg" alt="Umbrella" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                            </div>
+                            <div class="alat-info">
+                                <h5>☂️ Payung Studio</h5>
+                                <p>Alternatif softbox. Ada tipe shoot-through & reflective.</p>
+                                <span class="alat-tag">Lighting</span>
+                            </div>
+                        </div>
+
+                        <!-- Flash / Speedlight -->
+                        <div class="alat-card" data-category="lighting" data-alat="flash">
+                            <div class="alat-img-wrapper">
+                                <img src="assets/alat/flash.jpg" alt="Speedlight Flash" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                            </div>
+                            <div class="alat-info">
+                                <h5>⚡ Speedlight Flash</h5>
+                                <p>Flash eksternal yang dipasang di hot shoe. Portable & powerful.</p>
+                                <span class="alat-tag">Lighting</span>
+                            </div>
+                        </div>
+
+                        <!-- Ring Light -->
+                        <div class="alat-card" data-category="lighting" data-alat="ringlight">
+                            <div class="alat-img-wrapper">
+                                <img src="assets/alat/ringlight.jpg" alt="Ring Light" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                            </div>
+                            <div class="alat-info">
+                                <h5>⭕ Ring Light</h5>
+                                <p>Cahaya melingkar — populer untuk makeup, beauty, dan vlog.</p>
+                                <span class="alat-tag">Lighting</span>
+                            </div>
+                        </div>
+
+                        <!-- Tripod -->
+                        <div class="alat-card" data-category="support" data-alat="tripod">
+                            <div class="alat-img-wrapper">
+                                <img src="assets/alat/tripod.jpg" alt="Tripod" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                            </div>
+                            <div class="alat-info">
+                                <h5>🦵 Tripod</h5>
+                                <p>Penyangga kamera berkaki 3. Wajib untuk long exposure & video.</p>
+                                <span class="alat-tag">Support</span>
+                            </div>
+                        </div>
+
+                        <!-- Monopod -->
+                        <div class="alat-card" data-category="support" data-alat="monopod">
+                            <div class="alat-img-wrapper">
+                                <img src="assets/alat/monopod.jpg" alt="Monopod" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                            </div>
+                            <div class="alat-info">
+                                <h5>🥢 Monopod</h5>
+                                <p>Tripod berkaki 1. Lebih portabel, cocok untuk olahraga & wildlife.</p>
+                                <span class="alat-tag">Support</span>
+                            </div>
+                        </div>
+
+                        <!-- Gimbal -->
+                        <div class="alat-card" data-category="support" data-alat="gimbal">
+                            <div class="alat-img-wrapper">
+                                <img src="assets/alat/gimbal.jpg" alt="Gimbal" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                            </div>
+                            <div class="alat-info">
+                                <h5>🎬 Gimbal</h5>
+                                <p>Stabilizer elektronik untuk video smooth tanpa goyangan.</p>
+                                <span class="alat-tag">Support</span>
+                            </div>
+                        </div>
+
+                        <!-- Filter ND/CPL -->
+                        <div class="alat-card" data-category="optic" data-alat="filter">
+                            <div class="alat-img-wrapper">
+                                <img src="assets/alat/filter.jpg" alt="Filter Lensa" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                            </div>
+                            <div class="alat-info">
+                                <h5>🔍 Filter Lensa</h5>
+                                <p>ND, CPL, UV — mengontrol cahaya & efek kreatif.</p>
+                                <span class="alat-tag">Optic</span>
+                            </div>
+                        </div>
+
+                        <!-- Lens Hood -->
+                        <div class="alat-card" data-category="optic" data-alat="lenshood">
+                            <div class="alat-img-wrapper">
+                                <img src="assets/alat/lenshood.jpg" alt="Lens Hood" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                            </div>
+                            <div class="alat-info">
+                                <h5>🌂 Lens Hood</h5>
+                                <p>Pelindung lensa dari cahaya berlebih & benturan.</p>
+                                <span class="alat-tag">Optic</span>
+                            </div>
+                        </div>
+
+                        <!-- Cleaning Kit -->
+                        <div class="alat-card" data-category="other" data-alat="cleaning">
+                            <div class="alat-img-wrapper">
+                                <img src="assets/alat/cleaning.jpg" alt="Cleaning Kit" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                            </div>
+                            <div class="alat-info">
+                                <h5>🧼 Cleaning Kit</h5>
+                                <p>Blower, microfiber, lens pen — untuk merawat lensa & sensor.</p>
+                                <span class="alat-tag">Lainnya</span>
+                            </div>
+                        </div>
+
+                        <!-- Tas Kamera -->
+                        <div class="alat-card" data-category="other" data-alat="tas">
+                            <div class="alat-img-wrapper">
+                                <img src="assets/alat/tas.jpg" alt="Tas Kamera" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                            </div>
+                            <div class="alat-info">
+                                <h5>🎒 Tas Kamera</h5>
+                                <p>Melindungi kamera & lensa dari benturan, debu, dan air.</p>
+                                <span class="alat-tag">Lainnya</span>
+                            </div>
+                        </div>
+
+                        <!-- Background Paper -->
+                        <div class="alat-card" data-category="lighting" data-alat="background">
+                            <div class="alat-img-wrapper">
+                                <img src="assets/alat/background.jpg" alt="Background Paper" loading="lazy"
+                                    onerror="this.parentElement.classList.add('img-error')">
+                            </div>
+                            <div class="alat-info">
+                                <h5>📄 Background Paper</h5>
+                                <p>Kertas / kain backdrop untuk studio foto produk & portrait.</p>
+                                <span class="alat-tag">Lighting</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Detail Alat -->
+                    <div id="alat-modal" class="modal">
+                        <div class="modal-content">
+                            <span class="modal-close" onclick="closeAlatDetail()">&times;</span>
+                            <div id="alat-modal-body"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Catatan Penting -->
+                <div class="fact-box">
+                    <h4>🎯 Tips untuk Fotografer Pemula</h4>
+                    <ul>
+                        <li><strong>Mulai dari yang esensial</strong>: kamera + lensa kit + tas + cleaning kit. Alat
+                            lain menyusul sesuai kebutuhan.</li>
+                        <li><strong>Softbox vs Payung</strong>: softbox hasilnya lebih terarah & lembut, payung
+                            lebih murah & portabel.</li>
+                        <li><strong>Tripod itu investasi</strong>: tripod bagus bisa dipakai 10+ tahun, jangan beli
+                            yang murahan.</li>
+                        <li><strong>Alat bukan segalanya</strong>: kamera HP dengan pencahayaan bagus bisa
+                            mengalahkan DSLR dengan pencahayaan buruk.</li>
+                        <li><strong>Rawat alatmu</strong>: bersihkan lensa secara rutin, simpan di tempat kering,
+                            isi silica gel di tas.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- ==================== MATERI 6: SEGITIGA EXPOSURE ==================== -->
+            <div class="teori-materi" id="teori-segitiga">
+                <h2>Segitiga Exposure: Pondasi Fotografi</h2>
+                <p class="intro-text">
+                    <strong>Segitiga Exposure</strong> adalah konsep fundamental dalam fotografi yang menggambarkan
+                    hubungan antara tiga elemen utama yang menentukan seberapa terang atau gelap sebuah foto.
+                    Memahami ketiga elemen ini adalah kunci untuk menghasilkan foto yang tepat secara teknis dan
+                    artistik.
+                </p>
+
+                <!-- Diagram Interaktif Segitiga Exposure -->
+                <div class="exposure-diagram">
+                    <div class="exposure-center">
+                        <span>EXPOSURE</span>
+                    </div>
+                    <div class="exposure-side exposure-aperture" onclick="showExposureDetail('aperture')">
+                        <div class="exposure-icon">⭕</div>
+                        <h4>Aperture</h4>
+                        <p>Bukaan Lensa</p>
+                    </div>
+                    <div class="exposure-side exposure-shutter" onclick="showExposureDetail('shutter')">
+                        <div class="exposure-icon">⏱️</div>
+                        <h4>Shutter Speed</h4>
+                        <p>Kecepatan Rana</p>
+                    </div>
+                    <div class="exposure-side exposure-iso" onclick="showExposureDetail('iso')">
+                        <div class="exposure-icon">📊</div>
+                        <h4>ISO</h4>
+                        <p>Sensitivitas Sensor</p>
+                    </div>
+                </div>
+
+                <!-- Simulator Exposure Interaktif -->
+                <div class="exposure-simulator">
+                    <h3>🎮 Simulator Segitiga Exposure</h3>
+                    <p>Geser slider di bawah untuk melihat bagaimana perubahan Aperture, Shutter Speed, dan ISO
+                        mempengaruhi hasil foto:</p>
+
+                    <div class="simulator-container">
+                        <div class="simulator-controls">
+                            <div class="control-group">
+                                <label>Aperture: <span id="aperture-value">f/5.6</span></label>
+                                <input type="range" id="aperture-slider" min="1.4" max="22" step="0.1" value="5.6">
+                                <div class="control-info">🌞 Banyak cahaya | 🌑 Sedikit cahaya</div>
+                            </div>
+
+                            <div class="control-group">
+                                <label>Shutter Speed: <span id="shutter-value">1/125s</span></label>
+                                <input type="range" id="shutter-slider" min="1" max="1000" step="1" value="125">
+                                <div class="control-info">🌑 Sedikit cahaya | 🌞 Banyak cahaya</div>
+                            </div>
+
+                            <div class="control-group">
+                                <label>ISO: <span id="iso-value">400</span></label>
+                                <input type="range" id="iso-slider" min="100" max="6400" step="100" value="400">
+                                <div class="control-info">✨ Bersih | 📸 Noise</div>
+                            </div>
+                        </div>
+
+                        <div class="simulator-preview">
+                            <div id="preview-image" class="preview-image">
+                                <div class="preview-content">
+                                    <span id="preview-icon">📷</span>
+                                    <div id="preview-brightness" class="preview-brightness">Normal</div>
+                                    <div id="preview-dof" class="preview-info">DOF: Sedang</div>
+                                    <div id="preview-noise" class="preview-info">Noise: Rendah</div>
+                                </div>
+                            </div>
+                            <div id="exposure-status" class="exposure-status">Exposure: Ideal ✓</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Penjelasan Detail Setiap Elemen -->
+                <div class="exposure-details">
+                    <div class="detail-card" id="detail-aperture">
+                        <h3>⭕ Aperture (Bukaan Lensa)</h3>
+                        <p><strong>Aperture</strong> adalah ukuran bukaan pada lensa yang mengatur seberapa banyak
+                            cahaya yang masuk ke sensor kamera. Diukur dalam satuan <em>f-stop</em>.</p>
+
+                        <div class="info-grid">
+                            <div class="info-box">
+                                <h4>📌 Konsep Kunci</h4>
+                                <ul>
+                                    <li><strong>Angka f kecil</strong> (f/1.8, f/2.8) = Bukaan besar, lebih banyak
+                                        cahaya</li>
+                                    <li><strong>Angka f besar</strong> (f/16, f/22) = Bukaan kecil, lebih sedikit
+                                        cahaya
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="info-box">
+                                <h4>🎯 Pengaruh pada Foto</h4>
+                                <ul>
+                                    <li><strong>Depth of Field (DOF)</strong>: Area yang tajam dalam foto</li>
+                                    <li>f/1.8 → DOF dangkal (background blur) - cocok untuk portrait</li>
+                                    <li>f/16 → DOF dalam (semua tajam) - cocok untuk landscape</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>💡 Contoh Penerapan</h4>
+                            <p><strong>Portrait:</strong> Gunakan f/1.8 - f/2.8 untuk membuat background blur dan
+                                fokus
+                                pada wajah.</p>
+                            <p><strong>Landscape:</strong> Gunakan f/8 - f/16 agar seluruh pemandangan tajam dari
+                                depan
+                                ke belakang.</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-card" id="detail-shutter">
+                        <h3>⏱️ Shutter Speed (Kecepatan Rana)</h3>
+                        <p><strong>Shutter Speed</strong> adalah durasi berapa lama sensor kamera terpapar cahaya.
+                            Diukur dalam satuan detik atau fraksi detik.</p>
+
+                        <div class="info-grid">
+                            <div class="info-box">
+                                <h4>📌 Konsep Kunci</h4>
+                                <ul>
+                                    <li><strong>Angka besar</strong> (1/1000s) = Rana cepat, sedikit cahaya</li>
+                                    <li><strong>Angka kecil</strong> (1/30s, 1") = Rana lambat, banyak cahaya</li>
+                                </ul>
+                            </div>
+                            <div class="info-box">
+                                <h4>🎯 Pengaruh pada Foto</h4>
+                                <ul>
+                                    <li><strong>Freeze</strong>: 1/500s+ membekukan gerakan</li>
+                                    <li><strong>Motion Blur</strong>: 1/30s atau lebih lambat</li>
+                                    <li><strong>Long Exposure</strong>: >1s untuk efek kreatif</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>💡 Aturan Praktis</h4>
+                            <p><strong>Fotografi handheld:</strong> Gunakan minimal 1/focal length. Contoh: lensa
+                                50mm →
+                                minimal 1/50s.</p>
+                            <p><strong>Kreatif:</strong> Long exposure untuk efek air terjun sutra atau light
+                                trails.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="detail-card" id="detail-iso">
+                        <h3>📊 ISO (Sensitivitas Sensor)</h3>
+                        <p><strong>ISO</strong> mengatur seberapa sensitif sensor kamera terhadap cahaya.
+                            Semakin tinggi nilai ISO, semakin sensitif sensor terhadap cahaya.</p>
+
+                        <div class="info-grid">
+                            <div class="info-box">
+                                <h4>📌 Konsep Kunci</h4>
+                                <ul>
+                                    <li><strong>ISO rendah</strong> (100-200) = Foto bersih, butuh banyak cahaya
+                                    </li>
+                                    <li><strong>ISO tinggi</strong> (1600+) = Foto terang, tapi muncul noise</li>
+                                </ul>
+                            </div>
+                            <div class="info-box">
+                                <h4>🎯 Pengaruh pada Foto</h4>
+                                <ul>
+                                    <li>ISO 100-400: Kondisi terang (siang hari)</li>
+                                    <li>ISO 400-800: Kondisi sedang (berawan, indoor terang)</li>
+                                    <li>ISO 1600+: Kondisi gelap (malam, indoor redup)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>💡 Tips Menggunakan ISO</h4>
+                            <p>Gunakan ISO serendah mungkin untuk kualitas terbaik. Naikkan ISO hanya ketika
+                                aperture
+                                dan shutter speed tidak bisa lagi dikompensasi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rumus Exposure -->
+                <div class="rumus-box">
+                    <h3>📐 Prinsip Keseimbangan Exposure</h3>
+                    <p>Ketiga elemen ini saling berkaitan. Jika Anda mengubah salah satu, Anda harus menyesuaikan
+                        yang
+                        lain untuk mempertahankan exposure yang sama:</p>
+                    <div class="rumus">
+                        <div class="rumus-item">+1 Stop Aperture</div>
+                        <div class="rumus-equal">=</div>
+                        <div class="rumus-item">-1 Stop Shutter</div>
+                        <div class="rumus-or">ATAU</div>
+                        <div class="rumus-item">-1 Stop ISO</div>
+                    </div>
+                    <p class="rumus-desc"><em>Setiap "stop" mewakili penggandaan atau pembagian dua dari jumlah
+                            cahaya.</em></p>
+                </div>
+            </div>
+
+
+
+            <!-- ==================== MATERI 6: KOMPOSISI ==================== -->
+            <div class="teori-materi" id="teori-komposisi">
+                <h2>Komposisi Foto: Menyusun Elemen Visual</h2>
+                <p class="intro-text">
+                    <strong>Komposisi</strong> adalah cara kita mengatur elemen-elemen dalam frame foto
+                    untuk menciptakan gambar yang menarik, seimbang, dan bermakna. Komposisi yang baik
+                    membuat mata pemirsa tertuju pada objek utama dan memahami pesan foto.
+                </p>
+
+                <div class="komposisi-grid">
+                    <div class="komposisi-card">
+                        <div class="komposisi-visual rule-of-thirds"></div>
+                        <h4>Rule of Thirds</h4>
+                        <p>Bagi frame menjadi 9 bagian sama dengan 2 garis horizontal dan 2 garis vertikal.
+                            Tempatkan objek utama di salah satu titik perpotongan garis.</p>
+                    </div>
+
+                    <div class="komposisi-card">
+                        <div class="komposisi-visual leading-lines"></div>
+                        <h4>Leading Lines</h4>
+                        <p>Gunakan garis-garis alami (jalan, pagar, sungai) untuk menuntun mata menuju objek utama.
+                        </p>
+                    </div>
+
+                    <div class="komposisi-card">
+                        <div class="komposisi-visual framing"></div>
+                        <h4>Framing</h4>
+                        <p>Gunakan elemen di sekitar (pintu, jendela, dedaunan) sebagai "bingkai" untuk objek utama.
+                        </p>
+                    </div>
+
+                    <div class="komposisi-card">
+                        <div class="komposisi-visual symmetry"></div>
+                        <h4>Symmetry</h4>
+                        <p>Susun elemen secara simetris untuk menciptakan kesan formal, tenang, dan seimbang.</p>
+                    </div>
+
+                    <div class="komposisi-card">
+                        <div class="komposisi-visual negative-space"></div>
+                        <h4>Negative Space</h4>
+                        <p>Berikan ruang kosong di sekitar objek untuk menonjolkan objek utama dan menciptakan kesan
+                            minimalis.</p>
+                    </div>
+
+                    <div class="komposisi-card">
+                        <div class="komposisi-visual golden-ratio"></div>
+                        <h4>Golden Ratio</h4>
+                        <p>Rasio 1:1.618 yang dianggap paling estetis secara alami. Banyak ditemukan di alam dan
+                            seni
+                            klasik.</p>
+                    </div>
+                </div>
+
+                <div class="fact-box">
+                    <h4>🎯 Tips Komposisi untuk Pemula</h4>
+                    <ul>
+                        <li>Selalu pikirkan: "Apa yang ingin saya tonjolkan dalam foto ini?"</li>
+                        <li>Jangan takut untuk bereksperimen dengan sudut pengambilan gambar.</li>
+                        <li>Perhatikan garis horizon - pastikan lurus!</li>
+                        <li>Isi frame hanya dengan elemen yang mendukung cerita foto.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- ==================== MODAL JENIS FOTO ==================== -->
+            <div id="jenis-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeJenisDetail()">&times;</span>
+                    <div id="jenis-modal-body"></div>
+                </div>
+            </div>
+
+            <!-- ==================== MODAL TYPE OF SHOT ==================== -->
+            <div id="shot-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeShotDetail()">&times;</span>
+                    <div id="shot-modal-body"></div>
+                </div>
+            </div>
+
+            <!-- ==================== LIGHTBOX GALERI ==================== -->
+            <div id="shot-lightbox" class="lightbox">
+                <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+                <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">‹</button>
+                <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">›</button>
+                <div class="lightbox-content">
+                    <img id="lightbox-img" src="" alt="">
+                    <div class="lightbox-caption">
+                        <span class="lightbox-badge" id="lightbox-badge">ELS</span>
+                        <h3 id="lightbox-title">Extreme Long Shot</h3>
+                        <p id="lightbox-desc">Deskripsi...</p>
+                    </div>
+                </div>
+                <div class="lightbox-counter" id="lightbox-counter">1 / 7</div>
+            </div>
+            <!-- ✅ PENUTUP SECTION TEORI -->
+            <!-- ==================== LIGHTBOX GALERI KAMERA ==================== -->
+            <div id="kamera-lightbox" class="lightbox">
+                <button class="lightbox-close" onclick="closeKameraLightbox()">&times;</button>
+                <button class="lightbox-nav lightbox-prev" onclick="navigateKameraLightbox(-1)">‹</button>
+                <button class="lightbox-nav lightbox-next" onclick="navigateKameraLightbox(1)">›</button>
+                <div class="lightbox-content">
+                    <img id="kamera-lightbox-img" src="" alt="">
+                    <div class="lightbox-caption">
+                        <span class="lightbox-badge" id="kamera-lightbox-badge">DSLR</span>
+                        <h3 id="kamera-lightbox-title">Kamera DSLR</h3>
+                        <p id="kamera-lightbox-desc">Deskripsi...</p>
+                    </div>
+                </div>
+                <div class="lightbox-counter" id="kamera-lightbox-counter">1 / 4</div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION LKPD ==================== -->
+        <section id="lkpd" class="tab-content">
+            <div class="lkpd-header">
+                <h1>📝 Lembar Kerja Peserta Didik (LKPD)</h1>
+                <p class="subtitle">Dasar Fotografi - Praktik & Analisis</p>
+            </div>
+
+            <!-- Identitas Siswa -->
+            <div class="lkpd-identitas">
+                <h3>👤 Identitas Siswa</h3>
+                <div class="identitas-grid">
+                    <div class="form-group">
+                        <label for="lkpd-nama">Nama Lengkap <span class="required">*</span></label>
+                        <input type="text" id="lkpd-nama" placeholder="Masukkan nama lengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lkpd-kelas">Kelas <span class="required">*</span></label>
+                        <input type="text" id="lkpd-kelas" placeholder="Contoh: X DKV 1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lkpd-tanggal">Tanggal Pengerjaan</label>
+                        <input type="date" id="lkpd-tanggal">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="lkpd-tujuan">
+                <h3>🎯 Tujuan Pembelajaran</h3>
+                <ol>
+                    <li>Siswa mampu menjelaskan konsep segitiga exposure (aperture, shutter speed, ISO) dengan benar.
+                    </li>
+                    <li>Siswa mampu menganalisis pengaruh perubahan setiap elemen segitiga exposure terhadap hasil foto.
+                    </li>
+                    <li>Siswa mampu mengidentifikasi jenis-jenis fotografi dan ciri khasnya.</li>
+                    <li>Siswa mampu menerapkan teknik komposisi dasar dalam pengambilan gambar.</li>
+                    <li>Siswa mampu mengomunikasikan hasil pengamatan secara tertulis dan sistematis.</li>
+                </ol>
+            </div>
+
+            <!-- ==================== AKTIVITAS 1 ==================== -->
+            <div class="lkpd-aktivitas" id="aktivitas-1">
+                <div class="aktivitas-header">
+                    <div class="aktivitas-badge">Aktivitas 1</div>
+                    <h3>🔺 Eksplorasi Segitiga Exposure</h3>
+                    <p class="aktivitas-desc">Memahami pengaruh aperture, shutter speed, dan ISO terhadap hasil foto</p>
+                </div>
+
+                <div class="aktivitas-body">
+                    <!-- Alat dan Bahan -->
+                    <div class="lkpd-subsection">
+                        <h4>🧰 Alat dan Bahan</h4>
+                        <ul class="alat-list">
+                            <li>Kamera DSLR / Mirrorless / Smartphone dengan mode Manual (Pro Mode)</li>
+                            <li>Tripod atau penyangga kamera (opsional)</li>
+                            <li>Objek statis (botol, buku, atau benda di sekitar)</li>
+                            <li>Lembar pengamatan ini</li>
+                        </ul>
+                    </div>
+
+                    <!-- Langkah Kerja -->
+                    <div class="lkpd-subsection">
+                        <h4>📋 Langkah Kerja</h4>
+                        <ol class="langkah-list">
+                            <li>Atur kamera pada mode <strong>Manual (M)</strong> atau <strong>Pro Mode</strong> pada
+                                smartphone.</li>
+                            <li>Letakkan objek di atas meja dengan pencahayaan yang cukup.</li>
+                            <li>Ambil <strong>3 foto</strong> dengan variasi aperture: <em>f/1.8 (atau angka terkecil),
+                                    f/5.6, dan f/16 (atau angka terbesar)</em>. Sesuaikan shutter speed agar exposure
+                                tetap seimbang.</li>
+                            <li>Amati perbedaan <em>depth of field</em> (area tajam) pada ketiga foto.</li>
+                            <li>Catat hasil pengamatan pada tabel di bawah.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Tabel Pengamatan -->
+                    <div class="lkpd-subsection">
+                        <h4>📊 Tabel Hasil Pengamatan</h4>
+                        <div class="table-wrapper">
+                            <table class="lkpd-table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Aperture (f)</th>
+                                        <th>Shutter Speed</th>
+                                        <th>ISO</th>
+                                        <th>Deskripsi Depth of Field</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><input type="text" class="table-input" placeholder="f/..."
+                                                data-field="akt1-foto1-aperture"></td>
+                                        <td><input type="text" class="table-input" placeholder="1/..."
+                                                data-field="akt1-foto1-shutter"></td>
+                                        <td><input type="text" class="table-input" placeholder="ISO..."
+                                                data-field="akt1-foto1-iso"></td>
+                                        <td><input type="text" class="table-input"
+                                                placeholder="Contoh: background blur..." data-field="akt1-foto1-dof">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><input type="text" class="table-input" placeholder="f/..."
+                                                data-field="akt1-foto2-aperture"></td>
+                                        <td><input type="text" class="table-input" placeholder="1/..."
+                                                data-field="akt1-foto2-shutter"></td>
+                                        <td><input type="text" class="table-input" placeholder="ISO..."
+                                                data-field="akt1-foto2-iso"></td>
+                                        <td><input type="text" class="table-input" placeholder="..."
+                                                data-field="akt1-foto2-dof"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td><input type="text" class="table-input" placeholder="f/..."
+                                                data-field="akt1-foto3-aperture"></td>
+                                        <td><input type="text" class="table-input" placeholder="1/..."
+                                                data-field="akt1-foto3-shutter"></td>
+                                        <td><input type="text" class="table-input" placeholder="ISO..."
+                                                data-field="akt1-foto3-iso"></td>
+                                        <td><input type="text" class="table-input" placeholder="..."
+                                                data-field="akt1-foto3-dof"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Pertanyaan -->
+                    <div class="lkpd-subsection">
+                        <h4>❓ Pertanyaan Diskusi</h4>
+                        <div class="pertanyaan-list">
+                            <div class="pertanyaan-item">
+                                <label>1. Apa hubungan antara aperture dengan <em>depth of field</em>? Jelaskan
+                                    berdasarkan hasil pengamatanmu!</label>
+                                <textarea class="lkpd-textarea" rows="3" placeholder="Tulis jawabanmu di sini..."
+                                    data-field="akt1-q1"></textarea>
+                            </div>
+                            <div class="pertanyaan-item">
+                                <label>2. Ketika aperture diperkecil (angka f diperbesar), apa yang harus dilakukan pada
+                                    shutter speed agar exposure tetap seimbang? Mengapa?</label>
+                                <textarea class="lkpd-textarea" rows="3" placeholder="Tulis jawabanmu di sini..."
+                                    data-field="akt1-q2"></textarea>
+                            </div>
+                            <div class="pertanyaan-item">
+                                <label>3. Dalam kondisi apa kamu akan memilih aperture besar (f/1.8)? Berikan contoh
+                                    kasusnya!</label>
+                                <textarea class="lkpd-textarea" rows="3" placeholder="Tulis jawabanmu di sini..."
+                                    data-field="akt1-q3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== AKTIVITAS 2 ==================== -->
+            <div class="lkpd-aktivitas" id="aktivitas-2">
+                <div class="aktivitas-header">
+                    <div class="aktivitas-badge">Aktivitas 2</div>
+                    <h3>🖼️ Analisis Jenis-Jenis Fotografi</h3>
+                    <p class="aktivitas-desc">Mengidentifikasi jenis fotografi dan ciri khasnya</p>
+                </div>
+
+                <div class="aktivitas-body">
+                    <div class="lkpd-subsection">
+                        <h4>🧰 Alat dan Bahan</h4>
+                        <ul class="alat-list">
+                            <li>Gambar/foto dari majalah, internet, atau koleksi pribadi (cetak atau digital)</li>
+                            <li>Alat tulis</li>
+                            <li>Lembar pengamatan ini</li>
+                        </ul>
+                    </div>
+
+                    <div class="lkpd-subsection">
+                        <h4>📋 Langkah Kerja</h4>
+                        <ol class="langkah-list">
+                            <li>Cari dan pilih <strong>3 foto</strong> dengan jenis/genre yang berbeda (misal: portrait,
+                                landscape, produk, dll).</li>
+                            <li>Amati setiap foto dengan teliti.</li>
+                            <li>Identifikasi jenis fotografi dan ciri khasnya.</li>
+                            <li>Isi tabel analisis di bawah ini.</li>
+                        </ol>
+                    </div>
+
+                    <div class="lkpd-subsection">
+                        <h4>📊 Tabel Analisis Foto</h4>
+                        <div class="table-wrapper">
+                            <table class="lkpd-table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Jenis Fotografi</th>
+                                        <th>Ciri Khas yang Terlihat</th>
+                                        <th>Perkiraan Setting Kamera</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><input type="text" class="table-input" placeholder="Contoh: Portrait"
+                                                data-field="akt2-foto1-jenis"></td>
+                                        <td><input type="text" class="table-input"
+                                                placeholder="Contoh: fokus pada wajah..." data-field="akt2-foto1-ciri">
+                                        </td>
+                                        <td><input type="text" class="table-input" placeholder="Contoh: f/1.8, 1/200s"
+                                                data-field="akt2-foto1-setting"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><input type="text" class="table-input" placeholder="..."
+                                                data-field="akt2-foto2-jenis"></td>
+                                        <td><input type="text" class="table-input" placeholder="..."
+                                                data-field="akt2-foto2-ciri"></td>
+                                        <td><input type="text" class="table-input" placeholder="..."
+                                                data-field="akt2-foto2-setting"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td><input type="text" class="table-input" placeholder="..."
+                                                data-field="akt2-foto3-jenis"></td>
+                                        <td><input type="text" class="table-input" placeholder="..."
+                                                data-field="akt2-foto3-ciri"></td>
+                                        <td><input type="text" class="table-input" placeholder="..."
+                                                data-field="akt2-foto3-setting"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="lkpd-subsection">
+                        <h4>❓ Pertanyaan Diskusi</h4>
+                        <div class="pertanyaan-list">
+                            <div class="pertanyaan-item">
+                                <label>1. Jenis fotografi apa yang paling menarik bagimu? Mengapa?</label>
+                                <textarea class="lkpd-textarea" rows="3" placeholder="Tulis jawabanmu..."
+                                    data-field="akt2-q1"></textarea>
+                            </div>
+                            <div class="pertanyaan-item">
+                                <label>2. Menurutmu, apa perbedaan utama antara fotografi portrait dan fotografi
+                                    street?</label>
+                                <textarea class="lkpd-textarea" rows="3" placeholder="Tulis jawabanmu..."
+                                    data-field="akt2-q2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== AKTIVITAS 3 ==================== -->
+            <div class="lkpd-aktivitas" id="aktivitas-3">
+                <div class="aktivitas-header">
+                    <div class="aktivitas-badge">Aktivitas 3</div>
+                    <h3>🎨 Penerapan Komposisi Foto</h3>
+                    <p class="aktivitas-desc">Menerapkan teknik komposisi dasar dalam pengambilan gambar</p>
+                </div>
+
+                <div class="aktivitas-body">
+                    <div class="lkpd-subsection">
+                        <h4>🧰 Alat dan Bahan</h4>
+                        <ul class="alat-list">
+                            <li>Kamera atau smartphone</li>
+                            <li>Objek di sekitar (benda, pemandangan, atau orang)</li>
+                            <li>Lembar pengamatan ini</li>
+                        </ul>
+                    </div>
+
+                    <div class="lkpd-subsection">
+                        <h4>📋 Langkah Kerja</h4>
+                        <ol class="langkah-list">
+                            <li>Pilih <strong>3 teknik komposisi</strong> dari materi (Rule of Thirds, Leading Lines,
+                                Framing, Symmetry, Negative Space, Golden Ratio).</li>
+                            <li>Ambil <strong>1 foto</strong> untuk setiap teknik komposisi yang dipilih.</li>
+                            <li>Amati hasil foto dan catat bagaimana teknik komposisi mempengaruhi kesan visual.</li>
+                            <li>Isi tabel refleksi di bawah.</li>
+                        </ol>
+                    </div>
+
+                    <div class="lkpd-subsection">
+                        <h4>📊 Tabel Refleksi Komposisi</h4>
+                        <div class="table-wrapper">
+                            <table class="lkpd-table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Teknik Komposisi</th>
+                                        <th>Deskripsi Foto</th>
+                                        <th>Kesan Visual yang Dirasakan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><input type="text" class="table-input" placeholder="Contoh: Rule of Thirds"
+                                                data-field="akt3-foto1-teknik"></td>
+                                        <td><input type="text" class="table-input" placeholder="Deskripsi singkat..."
+                                                data-field="akt3-foto1-desc"></td>
+                                        <td><input type="text" class="table-input"
+                                                placeholder="Contoh: lebih menarik..." data-field="akt3-foto1-kesan">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><input type="text" class="table-input" placeholder="..."
+                                                data-field="akt3-foto2-teknik"></td>
+                                        <td><input type="text" class="table-input" placeholder="..."
+                                                data-field="akt3-foto2-desc"></td>
+                                        <td><input type="text" class="table-input" placeholder="..."
+                                                data-field="akt3-foto2-kesan"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td><input type="text" class="table-input" placeholder="..."
+                                                data-field="akt3-foto3-teknik"></td>
+                                        <td><input type="text" class="table-input" placeholder="..."
+                                                data-field="akt3-foto3-desc"></td>
+                                        <td><input type="text" class="table-input" placeholder="..."
+                                                data-field="akt3-foto3-kesan"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="lkpd-subsection">
+                        <h4>❓ Pertanyaan Diskusi</h4>
+                        <div class="pertanyaan-list">
+                            <div class="pertanyaan-item">
+                                <label>1. Teknik komposisi mana yang paling menantang untuk diterapkan? Mengapa?</label>
+                                <textarea class="lkpd-textarea" rows="3" placeholder="Tulis jawabanmu..."
+                                    data-field="akt3-q1"></textarea>
+                            </div>
+                            <div class="pertanyaan-item">
+                                <label>2. Bagaimana komposisi dapat mempengaruhi pesan atau cerita yang ingin
+                                    disampaikan dalam sebuah foto?</label>
+                                <textarea class="lkpd-textarea" rows="3" placeholder="Tulis jawabanmu..."
+                                    data-field="akt3-q2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== KESIMPULAN ==================== -->
+            <div class="lkpd-kesimpulan">
+                <h3>📌 Kesimpulan</h3>
+                <p>Tuliskan kesimpulan yang kamu peroleh setelah mengerjakan ketiga aktivitas di atas:</p>
+                <textarea class="lkpd-textarea" rows="5" placeholder="Tulis kesimpulanmu di sini..."
+                    data-field="kesimpulan"></textarea>
+            </div>
+
+            <!-- ==================== TOMBOL AKSI ==================== -->
+            <div class="lkpd-actions">
+                <button type="button" class="btn btn-secondary" id="btn-save-pdf">
+                    📄 Simpan sebagai PDF
+                </button>
+                <button type="button" class="btn btn-primary" id="btn-kirim">
+                    📤 Kirim ke Guru
+                </button>
+                <button type="button" class="btn btn-outline" id="btn-reset-lkpd">
+                    🔄 Reset Form
+                </button>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="lkpd-loading" class="loading-overlay" style="display:none;">
+                <div class="loading-spinner"></div>
+                <p id="loading-text">Mengirim data...</p>
+            </div>
+        </section>
+        <section id="quiz" class="tab-content">
+            <div class="quiz-header">
+                <h1>🎮 Quiz Interaktif</h1>
+                <p class="subtitle">Uji pemahamanmu dengan 2 permainan seru!</p>
+            </div>
+
+            <!-- Tab Navigasi Quiz -->
+            <div class="quiz-tabs">
+                <button class="quiz-tab-btn active" data-quiz="dragdrop">
+                    🎯 Drag & Drop
+                </button>
+                <button class="quiz-tab-btn" data-quiz="crossword">
+                    🔤 Cross The Words
+                </button>
+                <button class="quiz-tab-btn" data-quiz="ranarupa">
+                    🎮 Rana & Rupa
+                </button>
+            </div>
+
+            <!-- ==================== QUIZ 1: DRAG & DROP ==================== -->
+            <div class="quiz-game active" id="quiz-dragdrop">
+                <div class="quiz-game-header">
+                    <h3>🎯 Kategorikan Istilah Fotografi</h3>
+                    <p>Seret setiap istilah ke kategori yang tepat: <strong>Aperture</strong>, <strong>Shutter
+                            Speed</strong>, atau <strong>ISO</strong>.</p>
+                </div>
+
+                <div class="drag-info">
+                    <div class="score-display">
+                        <span class="score-label">Skor:</span>
+                        <span class="score-value" id="drag-score">0</span>
+                        <span class="score-total">/ 9</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="drag-progress" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Pool Item untuk di-drag -->
+                <div class="drag-pool-wrapper">
+                    <h4>📦 Istilah (seret ke kategori di bawah)</h4>
+                    <div class="drag-pool" id="drag-pool">
+                        <!-- Item akan di-generate oleh JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Drop Zones -->
+                <div class="drop-zones-wrapper">
+                    <div class="drop-zone-card" data-category="aperture">
+                        <div class="drop-zone-header">
+                            <span class="category-icon">⭕</span>
+                            <h4>Aperture</h4>
+                            <span class="category-sub">Bukaan Lensa</span>
+                        </div>
+                        <div class="drop-zone" data-category="aperture"></div>
+                    </div>
+
+                    <div class="drop-zone-card" data-category="shutter">
+                        <div class="drop-zone-header">
+                            <span class="category-icon">⏱️</span>
+                            <h4>Shutter Speed</h4>
+                            <span class="category-sub">Kecepatan Rana</span>
+                        </div>
+                        <div class="drop-zone" data-category="shutter"></div>
+                    </div>
+
+                    <div class="drop-zone-card" data-category="iso">
+                        <div class="drop-zone-header">
+                            <span class="category-icon">📊</span>
+                            <h4>ISO</h4>
+                            <span class="category-sub">Sensitivitas Sensor</span>
+                        </div>
+                        <div class="drop-zone" data-category="iso"></div>
+                    </div>
+                </div>
+
+                <!-- Aksi Drag & Drop -->
+                <div class="quiz-actions">
+                    <button class="btn btn-outline" id="reset-drag">
+                        🔄 Reset Game
+                    </button>
+                    <button class="btn btn-primary" id="check-drag">
+                        ✅ Periksa Jawaban
+                    </button>
+                </div>
+
+                <div id="drag-message" class="quiz-message"></div>
+            </div>
+
+            <!-- ==================== QUIZ 2: CROSS THE WORDS ==================== -->
+            <div class="quiz-game" id="quiz-crossword">
+                <div class="quiz-game-header">
+                    <h3>🔤 Teka-Teki Silang Fotografi</h3>
+                    <p>Klik kotak, lalu ketik huruf untuk mengisi jawaban. Ikuti petunjuk Mendatar (M) dan Menurun (T).
+                    </p>
+                </div>
+
+                <div class="crossword-layout">
+                    <!-- Grid Crossword -->
+                    <div class="crossword-board-wrapper">
+                        <div class="crossword-board" id="crossword-board">
+                            <!-- Grid akan di-generate oleh JavaScript -->
+                        </div>
+                        <div class="crossword-active-clue" id="crossword-active-clue">
+                            <span class="clue-label">Petunjuk Aktif:</span>
+                            <span id="active-clue-text">Klik kotak untuk mulai</span>
+                        </div>
+                    </div>
+
+                    <!-- Clue List -->
+                    <div class="crossword-clues">
+                        <div class="clue-section">
+                            <h4>➡️ Mendatar (Across)</h4>
+                            <ul id="clues-across"></ul>
+                        </div>
+                        <div class="clue-section">
+                            <h4>⬇️ Menurun (Down)</h4>
+                            <ul id="clues-down"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-actions">
+                    <button class="btn btn-outline" id="reset-crossword">
+                        🔄 Reset Game
+                    </button>
+                    <button class="btn btn-secondary" id="hint-crossword">
+                        💡 Bantu 1 Huruf
+                    </button>
+                    <button class="btn btn-primary" id="check-crossword">
+                        ✅ Periksa Jawaban
+                    </button>
+                </div>
+
+                <div id="crossword-message" class="quiz-message"></div>
+            </div>
+            <!-- ==================== QUIZ 3: RANA & RUPA (GAME) ==================== -->
+            <div class="quiz-game" id="quiz-ranarupa">
+                <div class="quiz-game-header">
+                    <h3>🎮 Rana & Rupa — Petualangan Fotografi</h3>
+                    <p>Uji pemahamanmu dengan 3 misi interaktif: kenali bagian kamera, atur eksposur, dan pilih
+                        komposisi yang tepat!</p>
+                </div>
+
+                <div class="rana-rupa-iframe-container">
+                    <iframe src="quiz/rana-rupa.html" class="rana-rupa-iframe"
+                        title="Game Rana & Rupa - Dasar Fotografi" allow="fullscreen" loading="lazy"></iframe>
+                </div>
+
+                <!-- Tombol Buka Fullscreen -->
+                <div class="rana-rupa-actions">
+                    <button class="btn btn-secondary" id="btn-open-fullscreen">
+                        🖥️ Buka Fullscreen
+                    </button>
+                    <button class="btn btn-outline" id="btn-reload-game">
+                        🔄 Muat Ulang Game
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section id="evaluasi" class="tab-content">
+
+            <!-- ==================== HALAMAN 1: PETUNJUK ==================== -->
+            <div id="evaluasi-intro" class="evaluasi-screen active">
+                <div class="evaluasi-intro-card">
+                    <div class="intro-icon">📋</div>
+                    <h1>Petunjuk Pengerjaan Evaluasi</h1>
+                    <p class="intro-subtitle">Mata Pelajaran: Dasar Fotografi — Kelas X DKV</p>
+
+                    <div class="intro-body">
+                        <div class="intro-section">
+                            <h3>📝 Ketentuan Umum</h3>
+                            <ol>
+                                <li>Evaluasi terdiri dari <strong>30 butir soal</strong>:
+                                    <ul>
+                                        <li><strong>20 soal Pilihan Ganda</strong> (5 opsi jawaban A–E, tipe HOTS)</li>
+                                        <li><strong>10 soal Esai</strong> (jawaban uraian)</li>
+                                    </ul>
+                                </li>
+                                <li>Semua soal ditampilkan dalam <strong>satu halaman</strong> — silakan gulir (scroll)
+                                    untuk melihat seluruh soal.</li>
+                                <li>Kerjakan <strong>semua soal</strong> sebelum menekan tombol <em>Selesai & Lihat
+                                        Skor</em>.</li>
+                                <li>Skor akan muncul otomatis setelah kamu mengklik tombol <em>Selesai & Lihat
+                                        Skor</em>.</li>
+                            </ol>
+                        </div>
+
+                        <div class="intro-section warning">
+                            <h3>⚠️ Perhatian Penting</h3>
+                            <ul>
+                                <li>Evaluasi hanya dapat dikerjakan <strong>SATU KALI</strong>.</li>
+                                <li>Setelah kamu menekan tombol <em>Selesai</em>, <strong>jawaban tidak dapat diubah
+                                        lagi</strong>.</li>
+                                <li>Pastikan koneksi internet stabil sebelum memulai.</li>
+                                <li>Waktu pengerjaan: <strong>45 menit</strong> (disarankan).</li>
+                            </ul>
+                        </div>
+
+                        <div class="intro-section">
+                            <h3>💯 Sistem Penilaian</h3>
+                            <table class="skor-table">
+                                <tr>
+                                    <td>Pilihan Ganda (20 soal × 3 poin)</td>
+                                    <td>= 60 poin</td>
+                                </tr>
+                                <tr>
+                                    <td>Esai (10 soal × 4 poin)</td>
+                                    <td>= 40 poin</td>
+                                </tr>
+                                <tr class="total-row">
+                                    <td><strong>Total Nilai Maksimal</strong></td>
+                                    <td><strong>100 poin</strong></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="identitas-eval">
+                        <h3>👤 Identitas Peserta</h3>
+                        <div class="identitas-eval-grid">
+                            <div class="form-group">
+                                <label>Nama Lengkap <span class="required">*</span></label>
+                                <input type="text" id="eval-nama" placeholder="Nama lengkap kamu">
+                            </div>
+                            <div class="form-group">
+                                <label>Kelas <span class="required">*</span></label>
+                                <input type="text" id="eval-kelas" placeholder="Contoh: X DKV 1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="btn-mulai-evaluasi" class="btn btn-primary btn-large">
+                        🚀 Mulai Evaluasi Sekarang
+                    </button>
+                    <p class="intro-footer">Pastikan identitas sudah benar sebelum memulai.</p>
+                </div>
+            </div>
+
+            <!-- ==================== HALAMAN 2: SOAL ==================== -->
+            <div id="evaluasi-soal" class="evaluasi-screen">
+                <div class="evaluasi-header-bar">
+                    <div class="header-info">
+                        <h2>📝 Evaluasi Dasar Fotografi</h2>
+                        <p id="peserta-info">—</p>
+                    </div>
+                    <div class="header-timer">
+                        <span class="timer-label">⏱️ Waktu</span>
+                        <span class="timer-value" id="eval-timer">45:00</span>
+                    </div>
+                </div>
+
+                <div class="progress-soal">
+                    <div class="progress-info">
+                        <span>Progres: <strong id="progres-teks">0 / 30 soal</strong></span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progres-eval" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <form id="form-evaluasi">
+                    <!-- ============ BAGIAN A: PILIHAN GANDA ============ -->
+                    <div class="eval-section">
+                        <div class="eval-section-title">
+                            <span class="section-badge">BAGIAN A</span>
+                            <h3>Pilihan Ganda</h3>
+                            <p>Pilih satu jawaban yang paling tepat (A, B, C, D, atau E).</p>
+                        </div>
+
+                        <div id="soal-pg-container">
+                            <!-- Soal PG akan di-generate oleh JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- ============ BAGIAN B: ESAI ============ -->
+                    <div class="eval-section">
+                        <div class="eval-section-title">
+                            <span class="section-badge">BAGIAN B</span>
+                            <h3>Soal Esai</h3>
+                            <p>Jawablah dengan uraian yang jelas dan lengkap.</p>
+                        </div>
+
+                        <div id="soal-essay-container">
+                            <!-- Soal esai akan di-generate oleh JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Tombol Selesai -->
+                    <div class="eval-submit-area">
+                        <div class="eval-warning">
+                            <p>⚠️ <strong>Perhatian!</strong> Setelah menekan tombol di bawah, jawaban tidak dapat
+                                diubah lagi dan evaluasi tidak dapat diulang.</p>
+                        </div>
+                        <button type="submit" id="btn-selesai-eval" class="btn btn-primary btn-large">
+                            ✅ Selesai & Lihat Skor
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- ==================== HALAMAN 3: HASIL ==================== -->
+            <div id="evaluasi-hasil" class="evaluasi-screen">
+                <div class="hasil-card">
+                    <div class="hasil-icon" id="hasil-icon">🎉</div>
+                    <h1 id="hasil-title">Evaluasi Selesai!</h1>
+                    <p id="hasil-subtitle" class="hasil-subtitle">Berikut hasil yang kamu peroleh:</p>
+
+                    <div class="skor-display">
+                        <div class="skor-lingkaran">
+                            <div class="skor-inner">
+                                <span class="skor-angka" id="skor-total">0</span>
+                                <span class="skor-max">/ 100</span>
+                            </div>
+                        </div>
+                        <div class="predikat" id="predikat">—</div>
+                    </div>
+
+                    <div class="skor-rincian">
+                        <div class="rincian-item">
+                            <div class="rincian-icon">📝</div>
+                            <div class="rincian-info">
+                                <span class="rincian-label">Pilihan Ganda</span>
+                                <span class="rincian-nilai"><span id="skor-pg">0</span> / 60</span>
+                            </div>
+                        </div>
+                        <div class="rincian-item">
+                            <div class="rincian-icon">✍️</div>
+                            <div class="rincian-info">
+                                <span class="rincian-label">Esai</span>
+                                <span class="rincian-nilai"><span id="skor-essay">0</span> / 40</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hasil-pesan" id="hasil-pesan">
+                        <!-- Pesan dinamis -->
+                    </div>
+
+                    <div class="status-terkirim" id="status-terkirim">
+                        <span class="status-dot"></span>
+                        <span id="status-text">Mengirim hasil ke server...</span>
+                    </div>
+
+                    <div class="hasil-actions">
+                        <button class="btn btn-secondary" id="btn-review-jawaban">
+                            👁️ Lihat Pembahasan
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== HALAMAN 4: PEMBAHASAN (opsional) ==================== -->
+            <div id="evaluasi-review" class="evaluasi-screen">
+                <div class="review-header">
+                    <button class="btn btn-outline" id="btn-kembali-hasil">← Kembali ke Hasil</button>
+                    <h2>👁️ Pembahasan Jawaban</h2>
+                </div>
+                <div id="review-container">
+                    <!-- Review akan di-generate JS -->
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

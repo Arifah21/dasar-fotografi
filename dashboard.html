@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Guru — Dasar Fotografi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- ==================== LOGIN SCREEN ==================== -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-card">
+            <div class="login-icon">🔐</div>
+            <h1>Dashboard Guru</h1>
+            <p class="login-subtitle">Media Pembelajaran Dasar Fotografi</p>
+            <p class="login-info">SMKN 1 Purwodadi — Arifatul Ma'rifah</p>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" placeholder="Masukkan password guru" autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-large" style="width:100%;">
+                    🚀 Masuk Dashboard
+                </button>
+                <p class="login-error" id="login-error"></p>
+            </form>
+            
+            <p class="login-hint">
+                💡 Default password: <code>guru2024</code><br>
+                <small>Ubah di <code>js/dashboard.js</code> pada konstanta <code>GURU_PASSWORD</code></small>
+            </p>
+            
+            <a href="index.html" class="login-back">← Kembali ke Media Pembelajaran</a>
+        </div>
+    </div>
+
+    <!-- ==================== DASHBOARD ==================== -->
+    <div id="dashboard" class="dashboard-container" style="display:none;">
+        
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <a href="index.html" class="header-logo" title="Kembali ke Media Pembelajaran">
+                    <span class="logo-icon">📸</span>
+                    <span class="logo-text">Dashboard Guru</span>
+                </a>
+                <span class="header-subtitle">Dasar Fotografi — SMKN 1 Purwodadi</span>
+            </div>
+            <div class="header-right">
+                <button id="btn-refresh" class="btn-header" title="Refresh data">
+                    🔄 Refresh
+                </button>
+                <button id="btn-export-csv" class="btn-header" title="Export semua data ke CSV">
+                    📥 Export CSV
+                </button>
+                <button id="btn-logout" class="btn-header btn-logout" title="Logout">
+                    🚪 Logout
+                </button>
+            </div>
+        </header>
+
+        <!-- Statistik Overview -->
+        <section class="stats-grid" id="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon" style="background: linear-gradient(135deg, #3498db, #2980b9);">📝</div>
+                <div class="stat-info">
+                    <span class="stat-label">Total LKPD Terkirim</span>
+                    <span class="stat-value" id="stat-lkpd">—</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);">✅</div>
+                <div class="stat-info">
+                    <span class="stat-label">Total Evaluasi Selesai</span>
+                    <span class="stat-value" id="stat-eval">—</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">📊</div>
+                <div class="stat-info">
+                    <span class="stat-label">Rata-rata Nilai</span>
+                    <span class="stat-value" id="stat-avg">—</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: linear-gradient(135deg, #e67e22, #d35400);">🏆</div>
+                <div class="stat-info">
+                    <span class="stat-label">Nilai Tertinggi</span>
+                    <span class="stat-value" id="stat-max">—</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabs Navigasi -->
+        <nav class="dash-tabs">
+            <button class="dash-tab-btn active" data-dash="lkpd">📝 Data LKPD</button>
+            <button class="dash-tab-btn" data-dash="evaluasi">✅ Data Evaluasi</button>
+            <button class="dash-tab-btn" data-dash="analitik">📈 Analitik</button>
+        </nav>
+
+        <!-- Filter & Search (ditampilkan di semua tab) -->
+        <div class="filter-bar">
+            <div class="filter-group">
+                <label>🔍 Cari:</label>
+                <input type="text" id="filter-search" placeholder="Nama siswa...">
+            </div>
+            <div class="filter-group">
+                <label>🏫 Kelas:</label>
+                <select id="filter-kelas">
+                    <option value="">Semua Kelas</option>
+                    <!-- Diisi otomatis oleh JS -->
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>📅 Tanggal:</label>
+                <input type="date" id="filter-tanggal">
+            </div>
+            <button id="btn-reset-filter" class="btn-clear">✕ Reset Filter</button>
+            <span class="filter-count" id="filter-count"></span>
+        </div>
+
+        <!-- ==================== TAB: LKPD ==================== -->
+        <div class="dash-content active" id="dash-lkpd">
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Siswa</th>
+                            <th>Kelas</th>
+                            <th>Tanggal Kirim</th>
+                            <th>Jumlah Jawaban</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lkpd-tbody">
+                        <tr><td colspan="6" class="table-loading">Memuat data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ==================== TAB: EVALUASI ==================== -->
+        <div class="dash-content" id="dash-evaluasi">
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Siswa</th>
+                            <th>Kelas</th>
+                            <th>Skor PG</th>
+                            <th>Skor Esai</th>
+                            <th>Total</th>
+                            <th>Predikat</th>
+                            <th>Tanggal</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="evaluasi-tbody">
+                        <tr><td colspan="9" class="table-loading">Memuat data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ==================== TAB: ANALITIK ==================== -->
+        <div class="dash-content" id="dash-analitik">
+            <div class="analitik-grid">
+                
+                <!-- Distribusi Predikat -->
+                <div class="analitik-card">
+                    <h3>📊 Distribusi Predikat Nilai</h3>
+                    <div id="chart-predikat" class="chart-container"></div>
+                </div>
+
+                <!-- Rata-rata per Kelas -->
+                <div class="analitik-card">
+                    <h3>🏫 Rata-rata Nilai per Kelas</h3>
+                    <div id="chart-kelas" class="chart-container"></div>
+                </div>
+
+                <!-- Top 5 Siswa -->
+                <div class="analitik-card">
+                    <h3>🏆 Top 5 Nilai Tertinggi</h3>
+                    <div id="chart-top" class="chart-container"></div>
+                </div>
+
+                <!-- Statistik Detail -->
+                <div class="analitik-card">
+                    <h3>📈 Statistik Detail</h3>
+                    <div id="stats-detail" class="stats-detail"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MODAL DETAIL ==================== -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="modal-close" onclick="closeDetailModal()">&times;</span>
+            <div id="detail-modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast-container"></div>
+
+    <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
