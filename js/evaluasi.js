@@ -6,178 +6,397 @@ import { supabase } from './supabase-client.js';
 // ==================== DATA SOAL EVALUASI ==========================
 // ====================================================================
 
+// 
 const soalPG = [
+    // ========== SEJARAH FOTOGRAFI (2 soal) ==========
     {
         nomor: 1,
-        pertanyaan: "Seorang fotografer ingin memotret potret temannya dengan latar belakang yang benar-benar blur (bokeh halus). Kamera disetel pada mode Manual dengan nilai f/1.8, 1/500s, ISO 200. Namun hasilnya terlalu gelap. Analisis kombinasi pengaturan yang PALING TEPAT agar foto menjadi lebih terang tanpa mengubah efek bokeh yang diinginkan?",
+        pertanyaan: "Perhatikan pernyataan berikut! (1) Kamera obscura awalnya digunakan pelukis untuk membuat sketsa. (2) Daguerreotype menggunakan pelat tembaga berlapis perak. (3) Kodak Brownie dijual seharga $100. (4) Kamera digital pertama ditemukan oleh Steven Sasson pada 1975. Pernyataan yang BENAR tentang sejarah fotografi adalah...",
         opsi: {
-            A: "Menurunkan aperture ke f/8 dan menaikkan ISO ke 1600",
-            B: "Memperlambat shutter speed menjadi 1/125s dan/atau menaikkan ISO",
-            C: "Menaikkan aperture ke f/22 dan mempertahankan ISO 200",
-            D: "Mengubah shutter speed menjadi 1/1000s dan ISO 800",
-            E: "Mengubah ISO menjadi 100 dan aperture ke f/1.4"
+            A: "(1), (2), dan (3)",
+            B: "(1), (2), dan (4)",
+            C: "(1), (3), dan (4)",
+            D: "(2), (3), dan (4)",
+            E: "Semua benar"
         },
         jawaban: "B",
-        pembahasan: "Untuk mempertahankan efek bokeh (DOF dangkal), aperture harus tetap besar (f/1.8). Cara mencerahkan tanpa mengubah aperture adalah memperlambat shutter speed (1/500s → 1/125s = +2 stop) atau menaikkan ISO. Opsi A dan C mengubah aperture; opsi D justru makin gelap; opsi E tidak masuk akal (ISO 100 lebih gelap)."
+        pembahasan: "(3) SALAH — Kodak Brownie dijual seharga $1 (bukan $100), itulah sebabnya kamera ini disebut sebagai 'demokratisasi fotografi'. Pernyataan lain benar."
     },
     {
         nomor: 2,
-        pertanyaan: "Seorang siswa memotret pertandingan futsal di dalam gedung dengan pencahayaan minim. Ia menggunakan ISO 6400 agar foto tidak blur. Namun hasil foto tampak 'berbintik' dan warnanya kusam. Evaluasi apa yang PALING TEPAT terhadap keputusan siswa tersebut?",
+        pertanyaan: "Seorang siswa berpendapat: 'Foto permanen pertama di dunia dibuat pada tahun 1839 oleh Daguerre.' Evaluasi kritis terhadap pendapat tersebut adalah...",
         opsi: {
-            A: "Keputusan sudah tepat karena ISO tinggi membuat foto terang",
-            B: "Ia seharusnya memakai ISO 100 agar gambar tajam dan bersih",
-            C: "Ia sebaiknya menurunkan ISO dan menambah pencahayaan eksternal serta memperlambat shutter speed",
-            D: "Ia seharusnya menaikkan shutter speed dan mempertahankan ISO 6400",
-            E: "Ia harus mengganti lensa dengan focal length lebih panjang"
-        },
-        jawaban: "C",
-        pembahasan: "ISO tinggi memang membuat terang tetapi menimbulkan noise. Solusi paling tepat: turunkan ISO, tambahkan cahaya (flash/lighting), dan sesuaikan shutter speed. Opsi B tidak realistis karena kondisi gelap tanpa cahaya tambahan tidak mungkin pakai ISO 100. Opsi lain tidak menyelesaikan masalah noise."
-    },
-    {
-        nomor: 3,
-        pertanyaan: "Perhatikan pernyataan berikut! (1) Semakin kecil angka f, semakin banyak cahaya masuk. (2) Shutter speed 1/1000s menghasilkan motion blur. (3) ISO tinggi menurunkan kualitas gambar karena noise. (4) Aperture f/16 menghasilkan DOF sangat dangkal. Pernyataan yang BENAR adalah...",
-        opsi: {
-            A: "(1) dan (2)",
-            B: "(1) dan (3)",
-            C: "(2) dan (3)",
-            D: "(2) dan (4)",
-            E: "(3) dan (4)"
+            A: "Benar, karena Daguerre adalah penemu fotografi",
+            B: "Salah, foto permanen pertama dibuat 1826 oleh Niépce dengan teknik heliography",
+            C: "Benar, 1839 adalah tahun kelahiran fotografi modern",
+            D: "Salah, foto permanen pertama dibuat 1888 oleh George Eastman",
+            E: "Benar, tapi seharusnya tahunnya 1835"
         },
         jawaban: "B",
-        pembahasan: "Pernyataan (1) benar: f/1.8 = bukaan besar = banyak cahaya. (3) benar: ISO tinggi = noise. Pernyataan (2) salah: 1/1000s justru freeze motion, bukan motion blur. (4) salah: f/16 adalah bukaan kecil = DOF dalam, bukan dangkal."
+        pembahasan: "Foto permanen PERTAMA dibuat oleh Joseph Nicéphore Niépce pada 1826 dengan teknik heliography ('View from the Window at Le Gras'). Tahun 1839 adalah tahun dipublikasikannya daguerreotype — kelahiran fotografi MODERN, bukan foto pertama."
+    },
+
+    // ========== JENIS-JENIS FOTO (2 soal) ==========
+    {
+        nomor: 3,
+        pertanyaan: "Seorang fotografer ingin memotret kupu-kupu dengan detail sayap yang sangat jelas. Ia menggunakan lensa macro, f/8, 1/200s, dan flash ring. Berdasarkan materi jenis fotografi, genre ini termasuk kategori...",
+        opsi: {
+            A: "Fotografi landscape",
+            B: "Fotografi wildlife sekaligus macro",
+            C: "Fotografi produk",
+            D: "Fotografi portrait",
+            E: "Fotografi street"
+        },
+        jawaban: "B",
+        pembahasan: "Kupu-kupu adalah satwa liar (wildlife), dan teknik memotretnya dari jarak sangat dekat dengan lensa macro masuk kategori macro. Gabungan keduanya = wildlife macro."
     },
     {
         nomor: 4,
-        pertanyaan: "Seorang fotografer landscape ingin memotret pegunungan agar seluruh area (dari bunga di depan hingga puncak gunung) tajam. Ia menggunakan aperture f/2.8, ISO 100, dan shutter speed 1/2000s. Apa yang SALAH dari pilihan pengaturan ini dan bagaimana perbaikannya?",
+        pertanyaan: "Perhatikan skenario berikut! Rina mendapat tugas memotret koleksi sepatu untuk katalog online. Ia harus memastikan warna sepatu akurat, detail terlihat jelas, dan konsisten di semua produk. Genre fotografi yang PALING TEPAT adalah...",
         opsi: {
-            A: "Salah pada ISO. Seharusnya ISO 3200 agar semua terang",
-            B: "Salah pada aperture. Seharusnya f/11–f/16 agar DOF dalam, lalu kompensasi shutter speed dan gunakan tripod",
-            C: "Salah pada shutter speed. Seharusnya 1/30s agar terang tanpa mengubah aperture",
-            D: "Tidak ada yang salah, pengaturan sudah tepat",
-            E: "Salah pada mode kamera. Seharusnya mode Aperture Priority dengan f/2.8"
+            A: "Fotografi portrait",
+            B: "Fotografi street",
+            C: "Fotografi produk",
+            D: "Fotografi landscape",
+            E: "Fotografi arsitektur"
         },
-        jawaban: "B",
-        pembahasan: "Untuk landscape dengan semua objek tajam, dibutuhkan DOF dalam → aperture kecil (f/11–f/16). Karena cahaya berkurang, kompensasi dengan shutter speed lebih lambat dan gunakan tripod. f/2.8 pada landscape hanya akan membuat foreground tajam & background blur."
+        jawaban: "C",
+        pembahasan: "Fotografi produk berfokus pada kontrol pencahayaan ketat (studio lighting), background netral, detail jelas, dan konsistensi — persis kebutuhan katalog e-commerce."
     },
+
+    // ========== TYPE OF SHOT (3 soal) ==========
     {
         nomor: 5,
-        pertanyaan: "Perhatikan skenario berikut! Rina memotret air terjun dan ingin mendapatkan efek sutra halus. Ia memakai shutter speed 1/500s. Hasilnya air justru beku dan tampak berhenti. Berdasarkan konsep segitiga exposure, apa yang PALING TEPAT dilakukan Rina?",
+        pertanyaan: "Seorang fotografer memotret atlet panahan. Ia ingin menonjolkan ekspresi mata sang atlet saat membidik. Type of shot yang PALING TEPAT adalah...",
         opsi: {
-            A: "Mempercepat shutter speed menjadi 1/2000s agar lebih halus",
-            B: "Memperlambat shutter speed (misal 1–4 detik), mengecilkan aperture, dan memakai tripod",
-            C: "Menaikkan ISO ke 6400 dan mempertahankan shutter speed 1/500s",
-            D: "Mengganti lensa dengan focal length lebih panjang",
-            E: "Mengubah mode kamera ke Auto agar hasil lebih baik"
+            A: "Extreme Long Shot (ELS)",
+            B: "Long Shot (LS)",
+            C: "Medium Shot (MS)",
+            D: "Close Up (CU) atau Extreme Close Up (ECU)",
+            E: "Medium Long Shot (MLS)"
         },
-        jawaban: "B",
-        pembahasan: "Efek sutra pada air terjun diperoleh dengan long exposure (shutter speed lambat, umumnya 1–4 detik). Untuk mengimbangi cahaya yang masuk, aperture dikecilkan (f/16–f/22). Tripod wajib agar tidak blur karena getaran tangan."
+        jawaban: "D",
+        pembahasan: "Untuk menonjolkan ekspresi mata, dibutuhkan CU (close up) atau ECU (extreme close up). ECU bahkan bisa hanya menampilkan mata saja — sangat intens dan emosional."
     },
     {
         nomor: 6,
-        pertanyaan: "Seorang siswa berpendapat: 'Semakin tinggi ISO, semakin bagus foto karena lebih terang.' Evaluasi kritis terhadap pendapat tersebut adalah...",
+        pertanyaan: "Seorang fotografer ingin membuka cerita perjalanan wisata dengan memperlihatkan lokasi dan suasana tempat terlebih dahulu sebelum masuk ke detail subjek. Type of shot yang TEPAT untuk pembuka adalah...",
         opsi: {
-            A: "Benar, karena terang selalu lebih baik dalam fotografi",
-            B: "Salah, karena ISO tinggi menimbulkan noise/grain yang menurunkan kualitas detail foto",
-            C: "Benar, jika kamera memiliki megapiksel besar",
-            D: "Salah, karena ISO tidak berpengaruh pada hasil foto",
-            E: "Benar, karena ISO menggantikan fungsi aperture"
+            A: "Extreme Close Up (ECU)",
+            B: "Close Up (CU)",
+            C: "Medium Close Up (MCU)",
+            D: "Extreme Long Shot (ELS) sebagai establishing shot",
+            E: "Medium Shot (MS)"
         },
-        jawaban: "B",
-        pembahasan: "ISO tinggi bukan berarti lebih bagus. Meskipun membuat foto lebih terang, ISO tinggi menimbulkan noise/grain yang menurunkan detail & kualitas. Prinsip: gunakan ISO serendah mungkin, naikkan hanya jika aperture & shutter sudah tidak bisa dikompensasi."
+        jawaban: "D",
+        pembahasan: "ELS (Extreme Long Shot) adalah establishing shot — memperlihatkan lingkungan & lokasi secara luas. Cocok sebagai pembuka cerita sebelum masuk ke shot yang lebih dekat."
     },
     {
         nomor: 7,
-        pertanyaan: "Seorang fotografer produk ingin memotret sebuah jam tangan dengan detail yang sangat tajam dan latar belakang bersih. Kombinasi pengaturan mana yang PALING TEPAT?",
+        pertanyaan: "Analisis pernyataan berikut! (1) MS menampilkan subjek dari kepala hingga pinggang. (2) MCU dari kepala hingga dada, menonjolkan ekspresi. (3) CU harus selalu menampilkan seluruh wajah. (4) ECU biasanya memerlukan lensa macro. Pernyataan yang BENAR tentang type of shot adalah...",
         opsi: {
-            A: "f/1.4, 1/60s, ISO 200, tanpa tripod",
-            B: "f/11, 1/125s, ISO 100, dengan tripod & lighting studio",
-            C: "f/2.8, 1/1000s, ISO 3200, tanpa tripod",
-            D: "f/16, 1/30s, ISO 6400, hand-held",
-            E: "f/1.8, 1/2000s, ISO 100, mode Auto"
+            A: "(1), (2), dan (3)",
+            B: "(1), (2), dan (4)",
+            C: "(2), (3), dan (4)",
+            D: "(1), (3), dan (4)",
+            E: "Semua benar"
         },
         jawaban: "B",
-        pembahasan: "Foto produk butuh ketajaman detail maksimal → aperture kecil (f/8–f/16), ISO rendah (100) agar bersih, tripod agar stabil, dan lighting terkontrol. Opsi B paling sesuai. Opsi lain memiliki kekurangan: blur (A, C, D) atau noise tinggi (C, D)."
+        pembahasan: "(3) SALAH — CU (Close Up) tidak harus seluruh wajah; bisa hanya mata, bibir, atau tangan. Justru ECU biasanya hanya menampilkan bagian kecil seperti mata saja dan sering butuh lensa macro."
     },
+
+    // ========== CAMERA ANGLE (3 soal) ==========
     {
         nomor: 8,
-        pertanyaan: "Perhatikan situasi ini! Dua fotografer mengambil pemandangan sama. Fotografer A memakai f/16, 1/125s, ISO 100. Fotografer B memakai f/2.8, 1/2000s, ISO 100. Keduanya menghasilkan kecerahan (exposure) yang sama. Kesimpulan yang PALING TEPAT mengenai hasil foto adalah...",
+        pertanyaan: "Seorang sutradara ingin membuat adegan yang menunjukkan karakter utama sebagai sosok yang kuat, berwibawa, dan heroik. Camera angle yang PALING TEPAT adalah...",
         opsi: {
-            A: "Kedua foto identik dalam semua hal",
-            B: "Foto A memiliki DOF lebih dalam daripada foto B",
-            C: "Foto B memiliki DOF lebih dalam daripada foto A",
-            D: "Keduanya memiliki DOF yang sama karena exposure sama",
-            E: "Foto A lebih blur dibanding foto B di semua area"
+            A: "Bird's Eye View",
+            B: "High Angle",
+            C: "Eye Level",
+            D: "Low Angle atau Worm's Eye",
+            E: "Dutch Angle"
         },
-        jawaban: "B",
-        pembahasan: "Exposure bisa sama meski aperture & shutter berbeda (hubungan berbanding terbalik). Namun DOF ditentukan aperture: f/16 (A) menghasilkan DOF dalam, sementara f/2.8 (B) menghasilkan DOF dangkal. Jadi foto A lebih tajam di seluruh area."
+        jawaban: "D",
+        pembahasan: "Low Angle (kamera lebih rendah dari subjek) dan Worm's Eye (dari sangat bawah) membuat subjek tampak kuat, dominan, dan heroik. Bird's Eye & High Angle justru memberi kesan lemah."
     },
     {
         nomor: 9,
-        pertanyaan: "Seorang siswa ingin mengambil foto jalanan yang ramai dengan efek light trail dari lampu kendaraan malam hari. Ia memakai shutter speed 1/60s. Hasilnya lampu hanya terlihat sebagai titik. Apa yang SALAH dan bagaimana solusinya?",
+        pertanyaan: "Seorang fotografer diminta memotret wawancara antara presenter dan narasumber. Ia ingin pemirsa merasa 'ikut duduk' dalam percakapan tersebut. Camera angle yang TEPAT adalah...",
         opsi: {
-            A: "Salah pada ISO — seharusnya diturunkan ke 50",
-            B: "Salah pada shutter speed — seharusnya 2–30 detik dengan aperture kecil & tripod",
-            C: "Salah pada lensa — seharusnya memakai lensa macro",
-            D: "Salah pada mode kamera — seharusnya mode portrait",
-            E: "Tidak ada yang salah, hasil sudah sesuai"
+            A: "Dutch Angle",
+            B: "Over-the-Shoulder (OTS)",
+            C: "Bird's Eye View",
+            D: "Worm's Eye View",
+            E: "Low Angle"
         },
         jawaban: "B",
-        pembahasan: "Light trail membutuhkan long exposure (shutter speed lambat: 2–30 detik). Untuk mengimbangi cahaya, aperture dikecilkan (f/11–f/22) dan ISO rendah. Tripod wajib agar tidak blur. 1/60s hanya akan menangkap lampu sebagai titik biasa."
+        pembahasan: "OTS (Over-the-Shoulder) menempatkan kamera di belakang bahu salah satu subjek — menciptakan kesan dialogis & melibatkan pemirsa seolah ikut dalam percakapan. Standar untuk wawancara film."
     },
     {
         nomor: 10,
-        pertanyaan: "Perhatikan pernyataan berikut! (1) Golden ratio identik dengan rule of thirds. (2) Leading lines menuntun mata menuju objek utama. (3) Framing menggunakan elemen sekitar sebagai bingkai alami. (4) Negative space membuat foto tampak penuh dan padat. Pernyataan yang BENAR tentang komposisi adalah...",
+        pertanyaan: "Perhatikan pernyataan berikut! (1) Dutch angle menciptakan ketegangan & ketidaknyamanan. (2) POV membuat pemirsa masuk ke pengalaman subjek. (3) Eye level memberi kesan superior. (4) Bird's eye view membuat subjek tampak kecil. Pernyataan yang BENAR adalah...",
         opsi: {
-            A: "(1) dan (2)",
-            B: "(2) dan (3)",
-            C: "(1) dan (4)",
-            D: "(3) dan (4)",
-            E: "(2) dan (4)"
+            A: "(1), (2), dan (3)",
+            B: "(1), (2), dan (4)",
+            C: "(2), (3), dan (4)",
+            D: "(1), (3), dan (4)",
+            E: "Semua benar"
         },
         jawaban: "B",
-        pembahasan: "(2) Benar: leading lines memandu mata menuju subjek. (3) Benar: framing memakai elemen sekitar sebagai bingkai. (1) Salah: golden ratio (1:1.618) berbeda dengan rule of thirds (1:1:1). (4) Salah: negative space justru memberi ruang kosong, bukan memenuhi frame."
-    }
-];
+        pembahasan: "(3) SALAH — Eye Level memberi kesan SETARA & NETRAL, bukan superior. Yang memberi kesan superior adalah HIGH ANGLE (kamera lebih tinggi dari subjek)."
+    },
 
-const soalEssay = [
+    // ========== KAMERA MIRRORLESS & BAGIAN (3 soal) ==========
     {
         nomor: 11,
-        pertanyaan: "Jelaskan konsep dasar Segitiga Exposure dan bagaimana ketiga elemennya (aperture, shutter speed, ISO) saling memengaruhi untuk menghasilkan foto yang tepat exposure!",
-        keywords: ["aperture", "shutter", "iso", "cahaya", "bukaan", "rana", "sensor", "kompensasi", "seimbang", "exposure"],
-        minKata: 30,
-        poinMax: 8
+        pertanyaan: "Seorang siswa berpendapat: 'Kamera DSLR selalu lebih baik dari mirrorless karena punya cermin.' Evaluasi kritis terhadap pendapat tersebut adalah...",
+        opsi: {
+            A: "Benar, cermin membuat gambar lebih tajam",
+            B: "Salah, mirrorless justru lebih ringan, senyap, autofokus lebih cepat, dan sudah jadi standar industri",
+            C: "Benar, DSLR lebih murah dari mirrorless",
+            D: "Salah, DSLR tidak bisa digunakan untuk video",
+            E: "Benar, semua fotografer pro masih pakai DSLR"
+        },
+        jawaban: "B",
+        pembahasan: "DSLR & mirrorless punya kelebihan masing-masing, tapi mirrorless unggul di: ringan, senyap, autofokus cepat (AI eye-tracking), video 4K/8K. Standar industri saat ini cenderung ke mirrorless."
     },
     {
         nomor: 12,
-        pertanyaan: "Sebutkan dan jelaskan minimal 3 (tiga) teknik komposisi fotografi yang kamu ketahui beserta contoh penerapannya!",
-        keywords: ["rule of thirds", "leading lines", "framing", "symmetry", "negative space", "golden ratio", "komposisi", "contoh"],
-        minKata: 25,
-        poinMax: 8
+        pertanyaan: "Seorang fotografer pemula melihat jendela bidik elektronik (EVF) yang menampilkan preview exposure, white balance, dan histogram secara real-time. Fitur ini disebut juga...",
+        opsi: {
+            A: "WYSIWYG (What You See Is What You Get)",
+            B: "TTL (Through The Lens) metering",
+            C: "HDR preview",
+            D: "Live composite",
+            E: "Auto exposure bracketing"
+        },
+        jawaban: "A",
+        pembahasan: "EVF menampilkan WYSIWYG — apa yang dilihat di viewfinder = hasil foto nanti. Ini keunggulan mirrorless dibanding DSLR yang pakai viewfinder optik (apa yang dilihat belum tentu jadi hasilnya)."
     },
     {
         nomor: 13,
-        pertanyaan: "Seorang fotografer memotret konser musik dalam kondisi pencahayaan gelap. Menurutmu, pengaturan kamera seperti apa yang paling tepat digunakan? Jelaskan alasan dari setiap pengaturan yang kamu pilih!",
-        keywords: ["iso", "tinggi", "aperture", "besar", "f kecil", "shutter", "1/", "flash", "noise", "tripod", "lensa"],
-        minKata: 30,
-        poinMax: 8
+        pertanyaan: "Perhatikan pernyataan berikut! (1) Mode dial memilih M/A/S/P/Auto. (2) Command dial mengubah aperture/shutter/ISO. (3) Hot shoe untuk memasang lensa tambahan. (4) Slot memori menyimpan hasil foto. Pernyataan yang BENAR tentang bagian kamera adalah...",
+        opsi: {
+            A: "(1), (2), dan (3)",
+            B: "(1), (2), dan (4)",
+            C: "(2), (3), dan (4)",
+            D: "(1), (3), dan (4)",
+            E: "Semua benar"
+        },
+        jawaban: "B",
+        pembahasan: "(3) SALAH — Hot shoe adalah konektor di atas kamera untuk memasang FLASH atau MIC, bukan lensa tambahan. Lensa dipasang di MOUNT LENSA. Pernyataan lain benar."
     },
+
+    // ========== POLAROID & KAMERA 360 (2 soal) ==========
     {
         nomor: 14,
-        pertanyaan: "Apa perbedaan utama antara fotografi portrait, fotografi landscape, dan fotografi still life/product? Jelaskan ciri khas masing-masing dan sebutkan contoh pengaturan kamera yang sesuai!",
-        keywords: ["portrait", "landscape", "produk", "still life", "dof", "aperture", "lensa", "ciri", "contoh"],
-        minKata: 30,
-        poinMax: 8
+        pertanyaan: "Seorang content creator diminta membuat konten virtual tour sekolah yang bisa diputar 360° di YouTube VR. Kamera yang PALING TEPAT digunakan adalah...",
+        opsi: {
+            A: "Kamera DSLR full-frame",
+            B: "Kamera Polaroid",
+            C: "Kamera 360 (misal Insta360 atau Ricoh Theta)",
+            D: "Smartphone dengan lensa tele",
+            E: "Kamera mirrorless dengan lensa macro"
+        },
+        jawaban: "C",
+        pembahasan: "Untuk virtual tour 360° yang immersive & VR-ready, dibutuhkan kamera 360 dengan 2+ lensa. Hasilnya berupa gambar equirectangular yang bisa diputar ke segala arah."
     },
     {
         nomor: 15,
-        pertanyaan: "Menurutmu, mengapa fotografer profesional sering menggunakan ISO rendah (100-200) meskipun kondisi pencahayaan kurang ideal? Jelaskan hubungannya dengan kualitas gambar dan strategi apa yang bisa digunakan untuk mengatasinya!",
-        keywords: ["iso", "rendah", "noise", "kualitas", "tajam", "bersih", "shutter", "aperture", "cahaya", "tripod", "lighting", "flash"],
-        minKata: 25,
-        poinMax: 8
+        pertanyaan: "Seorang fotografer event pernikahan ingin memberikan souvenir fisik berupa foto instan kepada setiap tamu. Ia memilih Polaroid. Kelemahan utama dari pilihan ini yang perlu diantisipasi adalah...",
+        opsi: {
+            A: "Tidak bisa menghasilkan foto",
+            B: "Biaya per foto cukup mahal (Rp 15-25 ribu) dan jumlah per pack terbatas",
+            C: "Foto Polaroid tidak bisa dibagikan",
+            D: "Polaroid tidak bisa digunakan malam hari",
+            E: "Polaroid hanya untuk foto landscape"
+        },
+        jawaban: "B",
+        pembahasan: "Kelemahan Polaroid: biaya per foto Rp 15-25 ribu (film), 1 pack hanya berisi 8-10 lembar. Untuk event besar, biaya bisa membengkak. Solusi: tentukan kuota atau gunakan sebagai 'bonus' untuk momen spesial."
+    },
+
+    // ========== ALAT PENDUKUNG (2 soal) ==========
+    {
+        nomor: 16,
+        pertanyaan: "Seorang fotografer portrait ingin cahaya yang lembut, merata, dan tidak menghasilkan bayangan keras di wajah model. Alat pendukung yang PALING TEPAT adalah...",
+        opsi: {
+            A: "Tripod",
+            B: "Lens hood",
+            C: "Softbox",
+            D: "Monopod",
+            E: "Filter UV"
+        },
+        jawaban: "C",
+        pembahasan: "Softbox adalah modifier cahaya yang menyebarkan cahaya jadi lembut & merata — ideal untuk portrait. Umbrella juga bisa, tapi softbox lebih terarah. Tripod/lenshood/monopod tidak mempengaruhi kualitas cahaya."
+    },
+    {
+        nomor: 17,
+        pertanyaan: "Seorang fotografer landscape ingin memotret air terjun dengan efek sutra halus di siang hari yang terang. Ia perlu menggunakan shutter speed lambat, tapi khawatir foto akan over-exposed. Alat yang PALING TEPAT digunakan adalah...",
+        opsi: {
+            A: "Softbox",
+            B: "Filter ND (Neutral Density)",
+            C: "Lens hood",
+            D: "Flash eksternal",
+            E: "Ring light"
+        },
+        jawaban: "B",
+        pembahasan: "Filter ND (Neutral Density) berfungsi mengurangi cahaya masuk ke lensa tanpa mengubah warna — memungkinkan shutter speed lambat di siang terang. Sangat berguna untuk long exposure air terjun, light trails, dll."
+    },
+
+    // ========== SEGITIGA EXPOSURE (2 soal) ==========
+    {
+        nomor: 18,
+        pertanyaan: "Seorang fotografer memotret konser musik di gedung gelap. Ia memakai ISO 6400 agar tidak blur, tapi hasil foto tampak berbintik (noise) & warna kusam. Evaluasi PALING TEPAT adalah...",
+        opsi: {
+            A: "Keputusan sudah tepat, ISO tinggi selalu bagus",
+            B: "Ia seharusnya memakai ISO 100 di kondisi gelap",
+            C: "Ia sebaiknya menurunkan ISO dan menambah cahaya (flash) atau memperlambat shutter speed",
+            D: "Ia seharusnya menaikkan shutter speed lebih cepat",
+            E: "Ia harus mengganti kamera"
+        },
+        jawaban: "C",
+        pembahasan: "ISO tinggi menimbulkan noise. Solusi paling tepat: turunkan ISO + tambahkan cahaya eksternal (flash) atau perlambat shutter speed (dengan konsekuensi subjek bisa blur). Opsi B tidak realistis di kondisi gelap."
+    },
+    {
+        nomor: 19,
+        pertanyaan: "Seorang fotografer portrait ingin latar belakang blur (bokeh halus) dengan subjek fokus tajam. Kombinasi pengaturan yang TEPAT adalah...",
+        opsi: {
+            A: "f/16, ISO 100, 1/125s",
+            B: "f/1.8, ISO 200, 1/500s",
+            C: "f/22, ISO 100, 1/60s",
+            D: "f/8, ISO 400, 1/250s",
+            E: "f/11, ISO 800, 1/1000s"
+        },
+        jawaban: "B",
+        pembahasan: "Untuk background blur (DOF dangkal), gunakan aperture BESAR = angka f KECIL = f/1.8 atau f/2.8. Opsi lain pakai f/8 ke atas → DOF dalam → background tidak blur."
+    },
+
+    // ========== KOMPOSISI (1 soal) ==========
+    {
+        nomor: 20,
+        pertanyaan: "Seorang fotografer memotret jalan raya dari sudut rendah. Garis jalan membentang dari bawah frame menuju ke titik hilang di kejauhan — mata pemirsa otomatis mengikuti garis tersebut menuju horizon. Teknik komposisi ini disebut...",
+        opsi: {
+            A: "Rule of Thirds",
+            B: "Framing",
+            C: "Leading Lines",
+            D: "Symmetry",
+            E: "Negative Space"
+        },
+        jawaban: "C",
+        pembahasan: "Leading Lines = garis-garis alami (jalan, pagar, sungai, rel) yang menuntun mata pemirsa menuju objek utama. Rule of Thirds = pembagian 9 grid; Framing = bingkai; Symmetry = simetri; Negative Space = ruang kosong."
     }
 ];
+const soalEssay = [
+    {
+        nomor: 21,
+        pertanyaan: "Jelaskan konsep Segitiga Exposure dan bagaimana ketiga elemennya (aperture, shutter speed, ISO) saling memengaruhi untuk menghasilkan foto yang tepat exposure! Berikan contoh konkret kombinasi pengaturan untuk memotret portrait dengan background blur!",
+        keywords: ["aperture", "shutter", "iso", "cahaya", "bukaan", "rana", "sensor", "kompensasi", "seimbang", "exposure", "bokeh", "background", "f/1.8", "f/2.8"],
+        minKata: 40,
+        poinMax: 4
+    },
+    {
+        nomor: 22,
+        pertanyaan: "Sebutkan dan jelaskan minimal 3 (tiga) Type of Shot yang kamu ketahui! Untuk setiap type of shot, jelaskan fungsinya dan berikan contoh situasi penggunaannya dalam fotografi!",
+        keywords: ["extreme long shot", "long shot", "medium", "close up", "establishing", "els", "cu", "ecu", "ms", "mcu", "detail", "emosi"],
+        minKata: 35,
+        poinMax: 4
+    },
+    {
+        nomor: 23,
+        pertanyaan: "Jelaskan pengaruh Camera Angle terhadap kesan visual subjek! Sebutkan minimal 4 sudut kamera dan jelaskan kesan yang ditimbulkan untuk masing-masing sudut!",
+        keywords: ["low angle", "high angle", "bird", "worm", "dutch", "eye level", "pov", "ots", "kuat", "lemah", "netral", "heroik", "dialogis"],
+        minKata: 35,
+        poinMax: 4
+    },
+    {
+        nomor: 24,
+        pertanyaan: "Seorang fotografer memotret konser musik di malam hari dengan pencahayaan minim. Menurutmu, pengaturan kamera seperti apa yang paling tepat? Jelaskan alasan dari setiap pengaturan (aperture, shutter speed, ISO) yang kamu pilih!",
+        keywords: ["iso", "tinggi", "aperture", "besar", "f kecil", "shutter", "flash", "noise", "1/", "lensa", "monopod", "tripod"],
+        minKata: 40,
+        poinMax: 4
+    },
+    {
+        nomor: 25,
+        pertanyaan: "Jelaskan perbedaan utama antara kamera DSLR dan kamera Mirrorless! Sebutkan minimal 2 kelebihan masing-masing dan berikan rekomendasi untuk pemula yang ingin belajar fotografi dengan budget terbatas!",
+        keywords: ["cermin", "evf", "optik", "ringan", "senyap", "autofokus", "baterai", "lensa", "video", "pemula", "budget"],
+        minKata: 35,
+        poinMax: 4
+    },
+    {
+        nomor: 26,
+        pertanyaan: "Sebutkan dan jelaskan minimal 5 (lima) bagian kamera mirrorless beserta fungsinya! Kelompokkan ke dalam kategori yang sesuai (Body & Kontrol, Optik & Sensor, Layar, Konektivitas, atau Daya)!",
+        keywords: ["lensa", "sensor", "evf", "lcd", "hot shoe", "shutter", "mode dial", "mount", "baterai", "memori", "grip", "fungsi"],
+        minKata: 40,
+        poinMax: 4
+    },
+    {
+        nomor: 27,
+        pertanyaan: "Bandingkan kamera Polaroid dan kamera 360! Sebutkan minimal 3 perbedaan utama, kelebihan, dan kekurangan masing-masing! Dalam situasi apa kamu akan merekomendasikan masing-masing kamera?",
+        keywords: ["polaroid", "360", "instan", "digital", "fisik", "vr", "mahal", "immersive", "equirectangular", "kenang-kenangan", "virtual tour"],
+        minKata: 35,
+        poinMax: 4
+    },
+    {
+        nomor: 28,
+        pertanyaan: "Jelaskan minimal 4 (empat) alat pendukung fotografi beserta fungsinya! Untuk setiap alat, jelaskan situasi penggunaan yang paling tepat dan tips praktis dalam menggunakannya!",
+        keywords: ["softbox", "tripod", "flash", "reflektor", "lens hood", "filter", "gimbal", "monopod", "ring light", "cahaya", "kestabilan"],
+        minKata: 40,
+        poinMax: 4
+    },
+    {
+        nomor: 29,
+        pertanyaan: "Seorang klien meminta Anda memotret foto produk tas sekolah untuk katalog e-commerce. Rancanglah rencana pemotretan yang mencakup: (1) jenis fotografi, (2) pengaturan kamera, (3) alat pendukung, (4) type of shot, dan (5) composition/angle yang akan digunakan! Jelaskan alasan setiap pilihan!",
+        keywords: ["produk", "f/8", "f/11", "softbox", "background", "tripod", "medium shot", "close up", "eye level", "komposisi", "cahaya", "studio"],
+        minKata: 50,
+        poinMax: 4
+    },
+    {
+        nomor: 30,
+        pertanyaan: "Sebagai calon desainer komunikasi visual, jelaskan bagaimana pemahaman tentang fotografi (jenis foto, type of shot, camera angle, dan komposisi) dapat membantu Anda dalam membuat karya visual yang efektif untuk iklan atau media sosial! Berikan contoh konkret!",
+        keywords: ["dkv", "desain", "iklan", "media sosial", "komposisi", "angle", "type of shot", "komunikasi", "pesan", "visual", "storytelling", "target audiens"],
+        minKata: 45,
+        poinMax: 4
+    }
+];
+// const soalEssay = [
+//     {
+//         nomor: 11,
+//         pertanyaan: "Jelaskan konsep dasar Segitiga Exposure dan bagaimana ketiga elemennya (aperture, shutter speed, ISO) saling memengaruhi untuk menghasilkan foto yang tepat exposure!",
+//         keywords: ["aperture", "shutter", "iso", "cahaya", "bukaan", "rana", "sensor", "kompensasi", "seimbang", "exposure"],
+//         minKata: 30,
+//         poinMax: 8
+//     },
+//     {
+//         nomor: 12,
+//         pertanyaan: "Sebutkan dan jelaskan minimal 3 (tiga) teknik komposisi fotografi yang kamu ketahui beserta contoh penerapannya!",
+//         keywords: ["rule of thirds", "leading lines", "framing", "symmetry", "negative space", "golden ratio", "komposisi", "contoh"],
+//         minKata: 25,
+//         poinMax: 8
+//     },
+//     {
+//         nomor: 13,
+//         pertanyaan: "Seorang fotografer memotret konser musik dalam kondisi pencahayaan gelap. Menurutmu, pengaturan kamera seperti apa yang paling tepat digunakan? Jelaskan alasan dari setiap pengaturan yang kamu pilih!",
+//         keywords: ["iso", "tinggi", "aperture", "besar", "f kecil", "shutter", "1/", "flash", "noise", "tripod", "lensa"],
+//         minKata: 30,
+//         poinMax: 8
+//     },
+//     {
+//         nomor: 14,
+//         pertanyaan: "Apa perbedaan utama antara fotografi portrait, fotografi landscape, dan fotografi still life/product? Jelaskan ciri khas masing-masing dan sebutkan contoh pengaturan kamera yang sesuai!",
+//         keywords: ["portrait", "landscape", "produk", "still life", "dof", "aperture", "lensa", "ciri", "contoh"],
+//         minKata: 30,
+//         poinMax: 8
+//     },
+//     {
+//         nomor: 15,
+//         pertanyaan: "Menurutmu, mengapa fotografer profesional sering menggunakan ISO rendah (100-200) meskipun kondisi pencahayaan kurang ideal? Jelaskan hubungannya dengan kualitas gambar dan strategi apa yang bisa digunakan untuk mengatasinya!",
+//         keywords: ["iso", "rendah", "noise", "kualitas", "tajam", "bersih", "shutter", "aperture", "cahaya", "tripod", "lighting", "flash"],
+//         minKata: 25,
+//         poinMax: 8
+//     }
+// ];
 
-const TOTAL_WAKTU_MENIT = 30;
+const TOTAL_WAKTU_MENIT = 45;
 
 // ====================================================================
 // ==================== STATE ========================================
@@ -321,7 +540,7 @@ function updateProgress() {
         if (evaluasiState.jawabanEssay[k] && evaluasiState.jawabanEssay[k].length > 0) terjawab++;
     });
 
-    const total = 15;
+    const total = 30;
     const persen = (terjawab / total) * 100;
 
     document.getElementById('progres-teks').textContent = `${terjawab} / ${total} soal`;
@@ -417,12 +636,19 @@ function mulaiEvaluasi() {
 // ==================== HITUNG SKOR ==================================
 // ====================================================================
 
+// function hitungSkorPG() {
+//     let benar = 0;
+//     soalPG.forEach(soal => {
+//         if (evaluasiState.jawabanPG[soal.nomor] === soal.jawaban) benar++;
+//     });
+//     return { benar, skor: benar * 6 }; // 10 soal × 6 = 60
+// }
 function hitungSkorPG() {
     let benar = 0;
     soalPG.forEach(soal => {
         if (evaluasiState.jawabanPG[soal.nomor] === soal.jawaban) benar++;
     });
-    return { benar, skor: benar * 6 }; // 10 soal × 6 = 60
+    return { benar, skor: benar * 3 }; // 20 soal × 3 = 60
 }
 
 function hitungSkorEssay() {

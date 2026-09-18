@@ -326,6 +326,7 @@ window.closeShotDetail = closeShotDetail;
         setupShotGallery();
         setupAngleSimulator();
         setupAngleGallery();
+        setupKameraGaleri();
         setupKameraMateri();
 
         // Jika tidak ada hash, set default ke beranda
@@ -1482,6 +1483,108 @@ function setupKameraMateri() {
 window.showKameraPart = showKameraPart;
 window.showAlatDetail = showAlatDetail;
 window.closeAlatDetail = closeAlatDetail;
+
+// ==================== GALERI JENIS KAMERA ====================
+
+const kameraGaleriData = {
+    dslr: {
+        badge: 'DSLR',
+        title: '📸 Kamera DSLR',
+        desc: 'Digital Single-Lens Reflex. Menggunakan cermin mekanik untuk memantulkan cahaya ke viewfinder optik. Kelebihan: baterai tahan lama, banyak lensa bekas murah. Kekurangan: berat, autofokus lebih lambat dari mirrorless.'
+    },
+    mirrorless: {
+        badge: 'Mirrorless',
+        title: '🪞 Kamera Mirrorless',
+        desc: 'Tanpa cermin mekanik. Cahaya langsung ke sensor, dilihat via EVF atau LCD. Kelebihan: ringan, senyap, autofokus super cepat, video 4K/8K. Standar industri saat ini.'
+    },
+    kamera360: {
+        badge: '360°',
+        title: '🌐 Kamera 360',
+        desc: 'Menangkap 360° horizontal & 180° vertikal dalam 1 jepretan. Cocok untuk VR, virtual tour, dan konten media sosial yang immersive. Hasil: gambar equirectangular.'
+    },
+    polaroid: {
+        badge: 'Polaroid',
+        title: '📸 Kamera Polaroid',
+        desc: 'Kamera instan yang mencetak foto langsung. Estetika vintage dengan bingkai putih khas. Kelebihan: hasil fisik & pengalaman unik. Kekurangan: biaya per foto mahal (Rp 15-25rb) & kualitas terbatas.'
+    }
+};
+
+let currentKameraGaleriIndex = 0;
+const kameraGaleriKeys = ['dslr', 'mirrorless', 'kamera360', 'polaroid'];
+
+/**
+ * Setup galeri jenis kamera
+ */
+function setupKameraGaleri() {
+    document.querySelectorAll('.kamera-galeri-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const key = item.dataset.kamera;
+            const idx = kameraGaleriKeys.indexOf(key);
+            currentKameraGaleriIndex = idx >= 0 ? idx : 0;
+            openKameraLightbox();
+        });
+    });
+
+    // Tutup via backdrop
+    document.getElementById('kamera-lightbox')?.addEventListener('click', (e) => {
+        if (e.target.id === 'kamera-lightbox') closeKameraLightbox();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        const lb = document.getElementById('kamera-lightbox');
+        if (!lb?.classList.contains('active')) return;
+
+        if (e.key === 'Escape') closeKameraLightbox();
+        if (e.key === 'ArrowLeft') navigateKameraLightbox(-1);
+        if (e.key === 'ArrowRight') navigateKameraLightbox(1);
+    });
+}
+
+function openKameraLightbox() {
+    renderKameraLightbox();
+    document.getElementById('kamera-lightbox')?.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function renderKameraLightbox() {
+    const key = kameraGaleriKeys[currentKameraGaleriIndex];
+    const data = kameraGaleriData[key];
+    if (!data) return;
+
+    // Cari gambar dari galeri
+    const itemEl = document.querySelector(`.kamera-galeri-item[data-kamera="${key}"]`);
+    const imgSrc = itemEl?.querySelector('img')?.src || '';
+
+    const img = document.getElementById('kamera-lightbox-img');
+    if (img) {
+        img.src = imgSrc;
+        img.alt = data.title;
+    }
+
+    document.getElementById('kamera-lightbox-badge').textContent = data.badge;
+    document.getElementById('kamera-lightbox-title').textContent = data.title;
+    document.getElementById('kamera-lightbox-desc').textContent = data.desc;
+    document.getElementById('kamera-lightbox-counter').textContent =
+        `${currentKameraGaleriIndex + 1} / ${kameraGaleriKeys.length}`;
+}
+
+function closeKameraLightbox() {
+    document.getElementById('kamera-lightbox')?.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function navigateKameraLightbox(direction) {
+    currentKameraGaleriIndex += direction;
+    if (currentKameraGaleriIndex < 0) currentKameraGaleriIndex = kameraGaleriKeys.length - 1;
+    if (currentKameraGaleriIndex >= kameraGaleriKeys.length) currentKameraGaleriIndex = 0;
+    renderKameraLightbox();
+}
+
+// Expose ke window
+window.openKameraLightbox = openKameraLightbox;
+window.closeKameraLightbox = closeKameraLightbox;
+window.navigateKameraLightbox = navigateKameraLightbox;
 
 // Expose fungsi ke global (untuk onclick di HTML)
 window.openJenisDetail = openJenisDetail;

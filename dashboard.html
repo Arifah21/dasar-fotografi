@@ -1,45 +1,34 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Guru — Dasar Fotografi</title>
+    <script type="module">
+        import { supabase } from './js/supabase-client.js';
+
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+            // Belum login → redirect ke login.html
+            window.location.href = 'login.html';
+            throw new Error('Redirecting to login...');
+        }
+
+        // Set email guru ke UI
+        window._guruEmail = session.user?.email || 'Guru';
+    </script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dashboard.css">
 </head>
+
 <body class="dashboard-body">
 
-    <!-- ==================== LOGIN SCREEN ==================== -->
-    <div id="login-screen" class="login-screen">
-        <div class="login-card">
-            <div class="login-icon">🔐</div>
-            <h1>Dashboard Guru</h1>
-            <p class="login-subtitle">Media Pembelajaran Dasar Fotografi</p>
-            <p class="login-info">SMKN 1 Purwodadi — Arifatul Ma'rifah</p>
-            
-            <form id="login-form">
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="login-password" placeholder="Masukkan password guru" autocomplete="current-password">
-                </div>
-                <button type="submit" class="btn btn-primary btn-large" style="width:100%;">
-                    🚀 Masuk Dashboard
-                </button>
-                <p class="login-error" id="login-error"></p>
-            </form>
-            
-            <p class="login-hint">
-                💡 Default password: <code>guru2024</code><br>
-                <small>Ubah di <code>js/dashboard.js</code> pada konstanta <code>GURU_PASSWORD</code></small>
-            </p>
-            
-            <a href="index.html" class="login-back">← Kembali ke Media Pembelajaran</a>
-        </div>
-    </div>
+    
 
     <!-- ==================== DASHBOARD ==================== -->
-    <div id="dashboard" class="dashboard-container" style="display:none;">
-        
+    <div id="dashboard" class="dashboard-container;" >
+
         <!-- Header -->
         <header class="dashboard-header">
             <div class="header-left">
@@ -137,7 +126,9 @@
                         </tr>
                     </thead>
                     <tbody id="lkpd-tbody">
-                        <tr><td colspan="6" class="table-loading">Memuat data...</td></tr>
+                        <tr>
+                            <td colspan="6" class="table-loading">Memuat data...</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -161,7 +152,9 @@
                         </tr>
                     </thead>
                     <tbody id="evaluasi-tbody">
-                        <tr><td colspan="9" class="table-loading">Memuat data...</td></tr>
+                        <tr>
+                            <td colspan="9" class="table-loading">Memuat data...</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -170,7 +163,7 @@
         <!-- ==================== TAB: ANALITIK ==================== -->
         <div class="dash-content" id="dash-analitik">
             <div class="analitik-grid">
-                
+
                 <!-- Distribusi Predikat -->
                 <div class="analitik-card">
                     <h3>📊 Distribusi Predikat Nilai</h3>
@@ -211,4 +204,11 @@
 
     <script type="module" src="js/dashboard.js"></script>
 </body>
+<div class="header-right">
+    <a href="index.html" class="btn-header" title="Kembali ke Beranda" style="text-decoration: none;">
+        🏠 Beranda
+    </a>
+    <button id="btn-refresh" class="btn-header">🔄 Refresh</button>
+</div>
+
 </html>

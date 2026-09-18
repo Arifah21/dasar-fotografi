@@ -44,6 +44,22 @@
             <li><button class="tab-btn" data-tab="lkpd">LKPD</button></li>
             <li><button class="tab-btn" data-tab="quiz">Quiz</button></li>
             <li><button class="tab-btn" data-tab="evaluasi">Evaluasi</button></li>
+            <!-- 🔐 Login Guru -->
+            <li style="margin-left: auto;">
+                <a href="login.html" style="display: inline-flex; align-items: center; gap: 0.4rem;
+              padding: 0.5rem 1rem;
+              background: rgba(255,255,255,0.1);
+              border: 1px solid rgba(255,255,255,0.25);
+              border-radius: 25px;
+              color: #ccc; text-decoration: none;
+              font-size: 0.85rem; font-weight: 600;
+              transition: all 0.3s;"
+                    onmouseover="this.style.background='rgba(230,126,34,0.9)';this.style.color='white';"
+                    onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.color='#ccc';"
+                    title="Login Guru">
+                    🔐 Login Guru
+                </a>
+            </li>
         </ul>
     </nav>
 
@@ -2575,7 +2591,8 @@
 
                 <div class="rana-rupa-iframe-container">
                     <iframe src="quiz/rana-rupa.html" class="rana-rupa-iframe"
-                        title="Game Rana & Rupa - Dasar Fotografi" allow="fullscreen" loading="lazy"></iframe>
+                        title="Game Rana & Rupa - Dasar Fotografi" allow="autoplay; fullscreen; microphone"
+                        allowfullscreen loading="lazy"></iframe>
                 </div>
 
                 <!-- Tombol Buka Fullscreen -->
@@ -2797,5 +2814,15 @@
 
     <script type="module" src="js/main.js"></script>
 </body>
+<div class="beranda-footer">
+    <p>© 2025 — SMKN 1 Purwodadi · Dasar Keahlian DKV</p>
+
+    <!-- 🔐 Ikon tersembunyi untuk guru -->
+    <a href="login.html" class="guru-access-btn" id="guru-access-btn" title="Login Guru">
+        ⚙️
+    </a>
+</div>
+
+
 
 </html>

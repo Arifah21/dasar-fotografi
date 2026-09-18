@@ -1,68 +1,57 @@
 // js/dashboard.js
 import { supabase } from './supabase-client.js';
 
-// ====================================================================
-// ==================== KONFIGURASI ==================================
-// ====================================================================
+// ==================== AUTH (Supabase Auth) ====================
 
-// 🔐 PASSWORD GURU — silakan ganti sesuai kebutuhan
-const GURU_PASSWORD = 'guru2024';
-const SESSION_KEY = 'guru_logged_in';
+async function requireAuth() {
+    const { data: { session }, error } = await supabase.auth.getSession();
+    if (error || !session) {
+        window.location.href = 'login.html';
+        return null;
+    }
+    return session.user;
+}
 
-// ====================================================================
-// ==================== STATE ========================================
-// ====================================================================
+async function logout() {
+    if (!confirm('Yakin ingin logout dari dashboard?')) return;
+    try {
+        await supabase.auth.signOut();
+    } catch (err) {
+        console.warn('Logout error:', err);
+    }
+    window.location.href = 'login.html';
+}
+
+// ==================== STATE ====================
 
 let state = {
     lkpdData: [],
     evalData: [],
-    filter: {
-        search: '',
-        kelas: '',
-        tanggal: ''
-    }
+    filter: { search: '', kelas: '', tanggal: '' }
 };
 
-// ====================================================================
-// ==================== LOGIN ========================================
-// ====================================================================
+// ==================== INIT DASHBOARD ====================
 
-function setupLogin() {
-    const form = document.getElementById('login-form');
-    const errorEl = document.getElementById('login-error');
+async function initDashboard() {
+    const user = await requireAuth();
+    if (!user) return;
 
-    // Auto-login jika sudah login sebelumnya
-    if (sessionStorage.getItem(SESSION_KEY) === 'true') {
-        showDashboard();
+    const emailDisplay = document.querySelector('.header-subtitle');
+    if (emailDisplay) {
+        emailDisplay.textContent = `Login sebagai: ${user.email}`;
     }
 
-    form?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const password = document.getElementById('login-password').value;
+    setupTabs();
+    setupFilters();
 
-        if (password === GURU_PASSWORD) {
-            sessionStorage.setItem(SESSION_KEY, 'true');
-            errorEl.textContent = '';
-            showDashboard();
-        } else {
-            errorEl.textContent = '❌ Password salah. Coba lagi.';
-            document.getElementById('login-password').value = '';
-            document.getElementById('login-password').focus();
-        }
-    });
-}
+    document.getElementById('btn-refresh')?.addEventListener('click', loadAllData);
+    document.getElementById('btn-export-csv')?.addEventListener('click', exportCSV);
+    document.getElementById('btn-logout')?.addEventListener('click', logout);
 
-function showDashboard() {
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
     loadAllData();
 }
 
-function logout() {
-    if (!confirm('Yakin ingin logout?')) return;
-    sessionStorage.removeItem(SESSION_KEY);
-    location.reload();
-}
+document.addEventListener('DOMContentLoaded', initDashboard);
 
 // ====================================================================
 // ==================== LOAD DATA DARI SUPABASE ======================
@@ -117,7 +106,6 @@ async function loadEvaluasi() {
 function updateStats() {
     const totalLKPD = state.lkpdData.length;
     const totalEval = state.evalData.length;
-    
     const scores = state.evalData.map(d => d.score || 0);
     const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
     const max = scores.length ? Math.max(...scores) : 0;
@@ -134,14 +122,11 @@ function updateStats() {
 
 function getFilteredData(data) {
     return data.filter(item => {
-        // Search by nama
         if (state.filter.search) {
             const search = state.filter.search.toLowerCase();
             if (!item.student_name.toLowerCase().includes(search)) return false;
         }
-        // Filter kelas
         if (state.filter.kelas && item.student_class !== state.filter.kelas) return false;
-        // Filter tanggal
         if (state.filter.tanggal) {
             const itemDate = new Date(item.created_at).toISOString().split('T')[0];
             if (itemDate !== state.filter.tanggal) return false;
@@ -155,17 +140,14 @@ function setupFilters() {
         state.filter.search = e.target.value;
         applyFilter();
     });
-
     document.getElementById('filter-kelas')?.addEventListener('change', (e) => {
         state.filter.kelas = e.target.value;
         applyFilter();
     });
-
     document.getElementById('filter-tanggal')?.addEventListener('change', (e) => {
         state.filter.tanggal = e.target.value;
         applyFilter();
     });
-
     document.getElementById('btn-reset-filter')?.addEventListener('click', () => {
         state.filter = { search: '', kelas: '', tanggal: '' };
         document.getElementById('filter-search').value = '';
@@ -185,11 +167,10 @@ function updateFilterCount() {
     const lkpdCount = getFilteredData(state.lkpdData).length;
     const evalCount = getFilteredData(state.evalData).length;
     const total = lkpdCount + evalCount;
-    
     const el = document.getElementById('filter-count');
     if (el) {
-        el.textContent = total > 0 
-            ? `Menampilkan ${lkpdCount} LKPD • ${evalCount} Evaluasi` 
+        el.textContent = total > 0
+            ? `Menampilkan ${lkpdCount} LKPD • ${evalCount} Evaluasi`
             : '';
     }
 }
@@ -199,13 +180,9 @@ function populateKelasFilter() {
     [...state.lkpdData, ...state.evalData].forEach(item => {
         if (item.student_class) kelasSet.add(item.student_class);
     });
-
     const select = document.getElementById('filter-kelas');
     if (!select) return;
-    
-    // Hapus option selain "Semua Kelas"
     while (select.options.length > 1) select.remove(1);
-
     [...kelasSet].sort().forEach(kelas => {
         const opt = document.createElement('option');
         opt.value = kelas;
@@ -232,11 +209,9 @@ function renderLKPDTable() {
     }
 
     tbody.innerHTML = data.map((item, idx) => {
-        // Hitung jumlah jawaban yang diisi
         const jawaban = item.activity_data?.jawaban || {};
         const jumlahJawaban = Object.values(jawaban).filter(v => v && v.trim()).length;
         const totalField = Object.keys(jawaban).length || 1;
-        
         return `
             <tr>
                 <td>${idx + 1}</td>
@@ -276,7 +251,6 @@ function renderEvaluasiTable() {
         const skorPG = answers.skorPG ?? '—';
         const skorEssay = answers.skorEssay ?? '—';
         const predikat = answers.predikat || tentukanPredikat(item.score).huruf;
-        
         return `
             <tr>
                 <td>${idx + 1}</td>
@@ -311,12 +285,10 @@ function renderAnalitik() {
 function renderChartPredikat() {
     const container = document.getElementById('chart-predikat');
     const counts = { A: 0, B: 0, C: 0, D: 0, E: 0 };
-    
     state.evalData.forEach(item => {
         const predikat = item.answers?.predikat || tentukanPredikat(item.score).huruf;
         if (counts[predikat] !== undefined) counts[predikat]++;
     });
-
     const total = state.evalData.length || 1;
     const colors = {
         A: 'linear-gradient(90deg, #2ecc71, #27ae60)',
@@ -351,7 +323,6 @@ function renderChartPredikat() {
 function renderChartKelas() {
     const container = document.getElementById('chart-kelas');
     const byKelas = {};
-
     state.evalData.forEach(item => {
         if (!byKelas[item.student_class]) {
             byKelas[item.student_class] = { total: 0, count: 0 };
@@ -359,7 +330,6 @@ function renderChartKelas() {
         byKelas[item.student_class].total += item.score;
         byKelas[item.student_class].count++;
     });
-
     const entries = Object.entries(byKelas).map(([kelas, data]) => ({
         kelas,
         avg: Math.round(data.total / data.count),
@@ -370,9 +340,7 @@ function renderChartKelas() {
         container.innerHTML = '<p style="text-align:center; color:#adb5bd;">Belum ada data</p>';
         return;
     }
-
     const maxAvg = Math.max(...entries.map(e => e.avg), 100);
-
     container.innerHTML = entries.map(e => {
         const pct = (e.avg / maxAvg) * 100;
         const color = e.avg >= 80 ? 'linear-gradient(90deg, #2ecc71, #27ae60)' :
@@ -395,17 +363,12 @@ function renderChartKelas() {
 
 function renderChartTop() {
     const container = document.getElementById('chart-top');
-    const top = [...state.evalData]
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 5);
-
+    const top = [...state.evalData].sort((a, b) => b.score - a.score).slice(0, 5);
     if (top.length === 0) {
         container.innerHTML = '<p style="text-align:center; color:#adb5bd;">Belum ada data</p>';
         return;
     }
-
     const medals = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣'];
-    
     container.innerHTML = top.map((item, i) => `
         <div class="chart-bar-item">
             <span class="chart-bar-label" style="font-size:1.1rem;">${medals[i]}</span>
@@ -421,17 +384,15 @@ function renderChartTop() {
 function renderStatsDetail() {
     const container = document.getElementById('stats-detail');
     const scores = state.evalData.map(d => d.score);
-    
     if (scores.length === 0) {
         container.innerHTML = '<p style="text-align:center; color:#adb5bd;">Belum ada data</p>';
         return;
     }
-
     const total = scores.length;
     const sum = scores.reduce((a, b) => a + b, 0);
     const avg = sum / total;
     const sorted = [...scores].sort((a, b) => a - b);
-    const median = sorted.length % 2 === 0 
+    const median = sorted.length % 2 === 0
         ? (sorted[sorted.length / 2 - 1] + sorted[sorted.length / 2]) / 2
         : sorted[Math.floor(sorted.length / 2)];
     const max = Math.max(...scores);
@@ -459,10 +420,8 @@ window.showLKPDDetail = function(id) {
     if (!item) return;
 
     const jawaban = item.activity_data?.jawaban || {};
-    const tanggal = item.activity_data?.tanggal || '—';
     const waktuKirim = item.activity_data?.waktu_kirim || item.created_at;
 
-    // Kelompokkan jawaban berdasarkan aktivitas
     const aktivitas1Fields = {};
     const aktivitas2Fields = {};
     const aktivitas3Fields = {};
@@ -493,22 +452,18 @@ window.showLKPDDetail = function(id) {
             <p><strong>${escapeHtml(item.student_name)}</strong> • ${escapeHtml(item.student_class)}</p>
             <p style="font-size:0.8rem;">Dikirim: ${formatDate(waktuKirim)}</p>
         </div>
-
         <div class="detail-section">
             <h3>🎯 Aktivitas 1 — Eksplorasi Segitiga Exposure</h3>
             ${renderFields(aktivitas1Fields)}
         </div>
-
         <div class="detail-section">
             <h3>🖼️ Aktivitas 2 — Analisis Jenis Fotografi</h3>
             ${renderFields(aktivitas2Fields)}
         </div>
-
         <div class="detail-section">
             <h3>🎨 Aktivitas 3 — Penerapan Komposisi</h3>
             ${renderFields(aktivitas3Fields)}
         </div>
-
         ${kesimpulan ? `
             <div class="detail-section">
                 <h3>📌 Kesimpulan</h3>
@@ -518,18 +473,14 @@ window.showLKPDDetail = function(id) {
             </div>
         ` : ''}
     `;
-
     document.getElementById('detail-modal').classList.add('active');
 };
 
 function formatFieldLabel(key) {
-    // Convert "akt1-foto1-aperture" menjadi "Aktivitas 1 - Foto 1 - Aperture"
     const parts = key.split('-');
     if (parts.length < 2) return key;
-    
     const aktivitas = parts[0].replace('akt', 'Aktivitas ');
     const rest = parts.slice(1).map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' - ');
-    
     return `${aktivitas} — ${rest}`;
 }
 
@@ -548,7 +499,6 @@ window.showEvaluasiDetail = function(id) {
     const durasi = answers.durasiDetik ? formatDurasi(answers.durasiDetik) : '—';
     const detailEssay = answers.detailEssay || [];
 
-    // Render soal PG (benar/salah)
     const soalPG = window._soalPG || [];
     let pgDetail = '';
     if (soalPG.length && answers.jawabanPG) {
@@ -569,20 +519,19 @@ window.showEvaluasiDetail = function(id) {
         pgDetail = '<p style="color:#adb5bd; font-style:italic;">Data soal tidak tersedia</p>';
     }
 
-    // Render esai
     let essayDetail = '';
     if (detailEssay.length) {
         essayDetail = detailEssay.map(d => `
             <div class="detail-field">
                 <div class="detail-field-label">
-                    Soal ${d.nomor} — ${d.poin}/8 poin
+                    Soal ${d.nomor} — ${d.poin}/4 poin
                     <span style="color:#6c757d; font-weight:400;">
                         (${d.jumlahKata} kata, min. ${d.minKata})
                     </span>
                 </div>
                 <div class="detail-field-value">
-                    ${d.keywordDitemukan?.length 
-                        ? `🔑 Kata kunci ditemukan: <em>${d.keywordDitemukan.join(', ')}</em>` 
+                    ${d.keywordDitemukan?.length
+                        ? `🔑 Kata kunci ditemukan: <em>${d.keywordDitemukan.join(', ')}</em>`
                         : '⚠️ Tidak ada kata kunci yang ditemukan'}
                 </div>
             </div>
@@ -597,7 +546,6 @@ window.showEvaluasiDetail = function(id) {
             <p><strong>${escapeHtml(item.student_name)}</strong> • ${escapeHtml(item.student_class)}</p>
             <p style="font-size:0.8rem;">Dikerjakan: ${formatDate(item.created_at)} • Durasi: ${durasi}</p>
         </div>
-
         <div class="detail-section">
             <h3>📊 Ringkasan Skor</h3>
             <div class="detail-row">
@@ -617,18 +565,15 @@ window.showEvaluasiDetail = function(id) {
                 <span class="value"><span class="badge badge-${predikat}">${predikat}</span></span>
             </div>
         </div>
-
         <div class="detail-section">
             <h3>📝 Jawaban Pilihan Ganda</h3>
             ${pgDetail}
         </div>
-
         <div class="detail-section">
             <h3>✍️ Jawaban Esai (Auto-Scoring)</h3>
             ${essayDetail}
         </div>
     `;
-
     document.getElementById('detail-modal').classList.add('active');
 };
 
@@ -636,7 +581,6 @@ window.closeDetailModal = function() {
     document.getElementById('detail-modal').classList.remove('active');
 };
 
-// Tutup modal dengan klik backdrop
 document.addEventListener('click', (e) => {
     if (e.target.id === 'detail-modal') closeDetailModal();
 });
@@ -651,7 +595,6 @@ function exportCSV() {
         return;
     }
 
-    // CSV 1: Evaluasi
     let csv = '=== DATA EVALUASI ===\n';
     csv += 'No,Nama,Kelas,Skor PG,Skor Esai,Total,Predikat,Tanggal\n';
     state.evalData.forEach((item, i) => {
@@ -668,7 +611,6 @@ function exportCSV() {
         csv += `${i + 1},"${item.student_name}","${item.student_class}","${formatDate(item.created_at)}",${jumlah}\n`;
     });
 
-    // Download
     const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -727,11 +669,11 @@ function tentukanPredikat(skor) {
 
 function showToast(message, type = 'success') {
     const container = document.getElementById('toast-container');
+    if (!container) return;
     const toast = document.createElement('div');
     toast.className = `dash-toast ${type}`;
     toast.textContent = message;
     container.appendChild(toast);
-
     setTimeout(() => {
         toast.style.animation = 'slideInRight 0.3s reverse';
         setTimeout(() => toast.remove(), 300);
@@ -746,26 +688,10 @@ function setupTabs() {
     document.querySelectorAll('.dash-tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const target = btn.dataset.dash;
-
             document.querySelectorAll('.dash-tab-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
             document.querySelectorAll('.dash-content').forEach(c => c.classList.remove('active'));
             document.getElementById(`dash-${target}`).classList.add('active');
         });
     });
 }
-
-// ====================================================================
-// ==================== INIT ==========================================
-// ====================================================================
-
-document.addEventListener('DOMContentLoaded', () => {
-    setupLogin();
-    setupTabs();
-    setupFilters();
-
-    document.getElementById('btn-refresh')?.addEventListener('click', loadAllData);
-    document.getElementById('btn-export-csv')?.addEventListener('click', exportCSV);
-    document.getElementById('btn-logout')?.addEventListener('click', logout);
-});
