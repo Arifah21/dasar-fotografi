@@ -34,7 +34,8 @@
                     </li>
                     <li><a href="#teori-kamera" class="dropdown-item" data-teori="kamera">📷 Kamera & Alat Pendukung</a>
                     </li>
-                    <li><a href="#teori-segitiga" class="dropdown-item" data-teori="segitiga">🔺 Segitiga Exposure</a>
+                     <li><a href="#teori-format" class="dropdown-item" data-teori="format">💾 Format Foto</a></li>                    
+                     <li><a href="#teori-segitiga" class="dropdown-item" data-teori="segitiga">🔺 Segitiga Exposure</a>
                     </li>
                     <li><a href="#teori-komposisi" class="dropdown-item" data-teori="komposisi">🎨 Komposisi Foto</a>
                     </li>
@@ -1763,7 +1764,431 @@
                     </ul>
                 </div>
             </div>
-            <!-- ==================== MATERI 6: SEGITIGA EXPOSURE ==================== -->
+                            <!-- ==================== MATERI 6: FORMAT FOTO ==================== -->
+                <div class="teori-materi" id="teori-format">
+                    <h2>Format Foto: Panduan Memilih Format File yang Tepat</h2>
+                    <p class="intro-text">
+                        Setiap kali Anda memotret atau menyimpan foto, Anda harus memilih <strong>format file</strong>. 
+                        Pemilihan format ini bukan hal sepele — ia menentukan <em>kualitas foto</em>, <em>ukuran file</em>, 
+                        <em>kemudahan editing</em>, dan <em>kesesuaian untuk keperluan tertentu</em>. 
+                        Sebagai calon desainer komunikasi visual, memahami format foto adalah <strong>keahlian wajib</strong>.
+                    </p>
+
+                    <!-- Navigasi Sub-Materi -->
+                    <div class="format-nav">
+                        <button class="format-nav-btn active" data-format="pengantar">📖 Pengantar</button>
+                        <button class="format-nav-btn" data-format="jenis">💾 6 Format Utama</button>
+                        <button class="format-nav-btn" data-format="komparasi">⚖️ Perbandingan</button>
+                        <button class="format-nav-btn" data-format="kapan">🎯 Kapan Pakai Apa?</button>
+                    </div>
+
+                    <!-- ==================== SUB 1: PENGANTAR ==================== -->
+                    <div class="format-sub active" id="format-pengantar">
+                        <h3>Mengapa Format Foto Penting?</h3>
+                        <p>
+                            Bayangkan Anda memotret 500 foto untuk proyek fotografi pernikahan. Jika memilih format yang salah, 
+                            bisa jadi Anda kehilangan <strong>detail penting</strong>, <strong>ruang penyimpanan</strong>, atau 
+                            <strong>kemampuan editing</strong> yang dibutuhkan. Format foto dibagi menjadi <strong>3 kategori besar</strong>:
+                        </p>
+
+                        <div class="format-kategori-grid">
+                            <div class="format-kategori-card">
+                                <div class="kategori-icon">📷</div>
+                                <h4>RAW</h4>
+                                <p class="kategori-tagline">Data mentah dari sensor</p>
+                                <p class="kategori-desc">File mentah, belum diproses. Ukuran besar, fleksibilitas editing maksimal.</p>
+                                <span class="kategori-tag">Profesional</span>
+                            </div>
+                            <div class="format-kategori-card">
+                                <div class="kategori-icon">📦</div>
+                                <h4>TIFF / PNG</h4>
+                                <p class="kategori-tagline">Lossless (tanpa kompresi)</p>
+                                <p class="kategori-desc">Kualitas tetap terjaga setelah berkali-kali edit. Ukuran besar.</p>
+                                <span class="kategori-tag">Cetak & Arsip</span>
+                            </div>
+                            <div class="format-kategori-card">
+                                <div class="kategori-icon">🎒</div>
+                                <h4>JPG / HEIC</h4>
+                                <p class="kategori-tagline">Lossy (dengan kompresi)</p>
+                                <p class="kategori-desc">Ukuran kecil, praktis dibagikan. Detail hilang saat kompresi.</p>
+                                <span class="kategori-tag">Berbagi & Web</span>
+                            </div>
+                        </div>
+
+                        <div class="fact-box">
+                            <h4>💡 Analogi Sederhana</h4>
+                            <ul>
+                                <li><strong>RAW</strong> = bahan mentah di dapur (tepung, telur, gula) → Anda bebas memasak apa saja</li>
+                                <li><strong>TIFF/PNG</strong> = kue jadi (masih bisa dihias ulang)</li>
+                                <li><strong>JPG</strong> = kue yang sudah dipotong & dikemas → praktis dibagikan, tapi tidak bisa diubah lagi</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- ==================== SUB 2: JENIS FORMAT ==================== -->
+                    <div class="format-sub" id="format-jenis">
+                        <h3>6 Format Foto Utama</h3>
+                        <p>Klik setiap kartu untuk melihat detail lengkap.</p>
+
+                        <div class="format-grid">
+                            <!-- JPEG -->
+                            <div class="format-card" onclick="showFormatDetail('jpeg')">
+                                <div class="format-card-header jpeg-header">
+                                    <span class="format-icon">🖼️</span>
+                                    <span class="format-abbr">JPG</span>
+                                </div>
+                                <h4>JPEG / JPG</h4>
+                                <p>Format paling umum di dunia. Kompresi <em>lossy</em>, ukuran kecil, cocok berbagi.</p>
+                                <span class="format-tag">Populer</span>
+                            </div>
+
+                            <!-- PNG -->
+                            <div class="format-card" onclick="showFormatDetail('png')">
+                                <div class="format-card-header png-header">
+                                    <span class="format-icon">🎨</span>
+                                    <span class="format-abbr">PNG</span>
+                                </div>
+                                <h4>PNG</h4>
+                                <p>Kompresi <em>lossless</em>, mendukung transparansi. Ideal untuk desain grafis & web.</p>
+                                <span class="format-tag">Lossless</span>
+                            </div>
+
+                            <!-- TIFF -->
+                            <div class="format-card" onclick="showFormatDetail('tiff')">
+                                <div class="format-card-header tiff-header">
+                                    <span class="format-icon">🖨️</span>
+                                    <span class="format-abbr">TIFF</span>
+                                </div>
+                                <h4>TIFF</h4>
+                                <p>Standar industri cetak. Kualitas tertinggi, ukuran sangat besar. Untuk arsip & percetakan.</p>
+                                <span class="format-tag">Cetak</span>
+                            </div>
+
+                            <!-- RAW -->
+                            <div class="format-card" onclick="showFormatDetail('raw')">
+                                <div class="format-card-header raw-header">
+                                    <span class="format-icon">📷</span>
+                                    <span class="format-abbr">RAW</span>
+                                </div>
+                                <h4>RAW</h4>
+                                <p>Data mentah sensor. Editing maksimal, ukuran raksasa. Wajib untuk pro & arsip.</p>
+                                <span class="format-tag">Pro</span>
+                            </div>
+
+                            <!-- HEIC -->
+                            <div class="format-card" onclick="showFormatDetail('heic')">
+                                <div class="format-card-header heic-header">
+                                    <span class="format-icon">📱</span>
+                                    <span class="format-abbr">HEIC</span>
+                                </div>
+                                <h4>HEIC</h4>
+                                <p>Format modern Apple. Ukuran 50% lebih kecil dari JPG, kualitas setara. Support iPhone.</p>
+                                <span class="format-tag">Modern</span>
+                            </div>
+
+                            <!-- DNG -->
+                            <div class="format-card" onclick="showFormatDetail('dng')">
+                                <div class="format-card-header dng-header">
+                                    <span class="format-icon">🌐</span>
+                                    <span class="format-abbr">DNG</span>
+                                </div>
+                                <h4>DNG</h4>
+                                <p>Digital Negative — format RAW universal buatan Adobe. Kompatibel lintas kamera.</p>
+                                <span class="format-tag">Universal</span>
+                            </div>
+                        </div>
+
+                        <!-- Modal Detail Format -->
+                        <div id="format-modal" class="modal">
+                            <div class="modal-content">
+                                <span class="modal-close" onclick="closeFormatDetail()">&times;</span>
+                                <div id="format-modal-body"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ==================== SUB 3: PERBANDINGAN ==================== -->
+                    <div class="format-sub" id="format-komparasi">
+                        <h3>Perbandingan Lengkap 6 Format</h3>
+                        <p>Lihat perbedaan setiap format dalam berbagai aspek penting.</p>
+
+                        <!-- Simulasi Ukuran File -->
+                        <div class="format-size-simulator">
+                            <h4>🎮 Simulator Ukuran File</h4>
+                            <p>Bayangkan 1 foto 24 MP. Ukuran file berbeda-beda tergantung formatnya:</p>
+
+                            <div class="size-bars">
+                                <div class="size-bar-item">
+                                    <span class="size-label">RAW</span>
+                                    <div class="size-bar-track">
+                                        <div class="size-bar-fill" style="width: 100%; background: linear-gradient(90deg, #e74c3c, #c0392b);">
+                                            <span class="size-value">~30 MB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="size-bar-item">
+                                    <span class="size-label">TIFF</span>
+                                    <div class="size-bar-track">
+                                        <div class="size-bar-fill" style="width: 85%; background: linear-gradient(90deg, #9b59b6, #8e44ad);">
+                                            <span class="size-value">~24 MB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="size-bar-item">
+                                    <span class="size-label">PNG</span>
+                                    <div class="size-bar-track">
+                                        <div class="size-bar-fill" style="width: 50%; background: linear-gradient(90deg, #3498db, #2980b9);">
+                                            <span class="size-value">~15 MB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="size-bar-item">
+                                    <span class="size-label">HEIC</span>
+                                    <div class="size-bar-track">
+                                        <div class="size-bar-fill" style="width: 15%; background: linear-gradient(90deg, #16a085, #1abc9c);">
+                                            <span class="size-value">~4 MB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="size-bar-item">
+                                    <span class="size-label">JPG</span>
+                                    <div class="size-bar-track">
+                                        <div class="size-bar-fill" style="width: 20%; background: linear-gradient(90deg, #f39c12, #e67e22);">
+                                            <span class="size-value">~6 MB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="size-note">💡 RAW 5x lebih besar dari JPG! Pilih bijak sesuai kebutuhan.</p>
+                        </div>
+
+                        <!-- Tabel Perbandingan -->
+                        <div class="table-wrapper">
+                            <table class="lkpd-table format-comparison-table">
+                                <thead>
+                                    <tr>
+                                        <th>Aspek</th>
+                                        <th>JPG</th>
+                                        <th>PNG</th>
+                                        <th>TIFF</th>
+                                        <th>RAW</th>
+                                        <th>HEIC</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Kompresi</strong></td>
+                                        <td>Lossy</td>
+                                        <td>Lossless</td>
+                                        <td>Lossless</td>
+                                        <td>Uncompressed</td>
+                                        <td>Lossy</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Ukuran File</strong></td>
+                                        <td>Kecil</td>
+                                        <td>Sedang</td>
+                                        <td>Besar</td>
+                                        <td>Sangat Besar</td>
+                                        <td>Sangat Kecil</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Kualitas</strong></td>
+                                        <td>Baik</td>
+                                        <td>Sangat Baik</td>
+                                        <td>Terbaik</td>
+                                        <td>Mentah</td>
+                                        <td>Baik</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Fleksibilitas Edit</strong></td>
+                                        <td>Rendah</td>
+                                        <td>Sedang</td>
+                                        <td>Tinggi</td>
+                                        <td>Sangat Tinggi</td>
+                                        <td>Rendah</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Transparansi</strong></td>
+                                        <td>❌</td>
+                                        <td>✅</td>
+                                        <td>✅</td>
+                                        <td>❌</td>
+                                        <td>❌</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Kompatibilitas</strong></td>
+                                        <td>Universal</td>
+                                        <td>Universal</td>
+                                        <td>Terbatas</td>
+                                        <td>Khusus</td>
+                                        <td>iOS/Mac</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Untuk Web</strong></td>
+                                        <td>✅✅✅</td>
+                                        <td>✅✅</td>
+                                        <td>❌</td>
+                                        <td>❌</td>
+                                        <td>⚠️</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Untuk Cetak</strong></td>
+                                        <td>✅</td>
+                                        <td>⚠️</td>
+                                        <td>✅✅✅</td>
+                                        <td>✅✅✅</td>
+                                        <td>⚠️</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Untuk Editing</strong></td>
+                                        <td>⚠️</td>
+                                        <td>✅</td>
+                                        <td>✅✅</td>
+                                        <td>✅✅✅</td>
+                                        <td>⚠️</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- ==================== SUB 4: KAPAN PAKAI APA ==================== -->
+                    <div class="format-sub" id="format-kapan">
+                        <h3>Kapan Menggunakan Format Apa?</h3>
+                        <p>Panduan praktis memilih format sesuai kebutuhan.</p>
+
+                        <div class="kapan-grid">
+                            <!-- Potret & Memotret Sehari-hari -->
+                            <div class="kapan-card">
+                                <div class="kapan-header" style="background: linear-gradient(135deg, #f39c12, #e67e22);">
+                                    <span class="kapan-icon">📸</span>
+                                    <h4>Foto Sehari-hari & Sosmed</h4>
+                                </div>
+                                <div class="kapan-body">
+                                    <span class="rekomendasi-badge" style="background: #f39c12;">JPG / HEIC</span>
+                                    <p>Untuk Instagram, WhatsApp, atau berbagi cepat. Ukuran kecil, kualitas cukup.</p>
+                                    <ul>
+                                        <li>✅ Cepat dibagikan</li>
+                                        <li>✅ Hemat ruang penyimpanan</li>
+                                        <li>✅ Didukung semua perangkat</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Editing Profesional -->
+                            <div class="kapan-card">
+                                <div class="kapan-header" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+                                    <span class="kapan-icon">🎨</span>
+                                    <h4>Editing Profesional</h4>
+                                </div>
+                                <div class="kapan-body">
+                                    <span class="rekomendasi-badge" style="background: #e74c3c;">RAW / DNG</span>
+                                    <p>Untuk post-processing intensif di Lightroom/Photoshop. Data maksimal.</p>
+                                    <ul>
+                                        <li>✅ Perbaiki exposure hingga 3 stop</li>
+                                        <li>✅ Ubah white balance tanpa batas</li>
+                                        <li>✅ Recovery shadow & highlight</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Desain Grafis -->
+                            <div class="kapan-card">
+                                <div class="kapan-header" style="background: linear-gradient(135deg, #3498db, #2980b9);">
+                                    <span class="kapan-icon">🎨</span>
+                                    <h4>Desain Grafis & Logo</h4>
+                                </div>
+                                <div class="kapan-body">
+                                    <span class="rekomendasi-badge" style="background: #3498db;">PNG</span>
+                                    <p>Untuk elemen desain dengan transparansi (logo, ikon, poster digital).</p>
+                                    <ul>
+                                        <li>✅ Background transparan</li>
+                                        <li>✅ Kualitas tidak turun saat diedit</li>
+                                        <li>✅ Ideal untuk web & UI</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Cetak Profesional -->
+                            <div class="kapan-card">
+                                <div class="kapan-header" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);">
+                                    <span class="kapan-icon">🖨️</span>
+                                    <h4>Cetak Besar & Kualitas Tinggi</h4>
+                                </div>
+                                <div class="kapan-body">
+                                    <span class="rekomendasi-badge" style="background: #9b59b6;">TIFF</span>
+                                    <p>Untuk cetak poster, majalah, atau arsip jangka panjang.</p>
+                                    <ul>
+                                        <li>✅ Kualitas tertinggi</li>
+                                        <li>✅ Tidak ada artefak kompresi</li>
+                                        <li>✅ Standar industri percetakan</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Arsip Foto -->
+                            <div class="kapan-card">
+                                <div class="kapan-header" style="background: linear-gradient(135deg, #16a085, #1abc9c);">
+                                    <span class="kapan-icon">🗄️</span>
+                                    <h4>Arsip Jangka Panjang</h4>
+                                </div>
+                                <div class="kapan-body">
+                                    <span class="rekomendasi-badge" style="background: #16a085;">DNG / TIFF</span>
+                                    <p>Untuk menyimpan momen penting yang ingin diolah kapan saja.</p>
+                                    <ul>
+                                        <li>✅ Format universal (DNG)</li>
+                                        <li>✅ Fleksibel di masa depan</li>
+                                        <li>✅ Backward compatible</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Content Creator -->
+                            <div class="kapan-card">
+                                <div class="kapan-header" style="background: linear-gradient(135deg, #2c3e50, #34495e);">
+                                    <span class="kapan-icon">🎬</span>
+                                    <h4>Konten Media Sosial</h4>
+                                </div>
+                                <div class="kapan-body">
+                                    <span class="rekomendasi-badge" style="background: #2c3e50;">JPG (sRGB)</span>
+                                    <p>Untuk YouTube thumbnail, Instagram feed, TikTok cover.</p>
+                                    <ul>
+                                        <li>✅ Ukuran maksimal 1080×1080</li>
+                                        <li>✅ Kompresi 70-85% cukup</li>
+                                        <li>✅ Resolusi 72 dpi (web)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tips Praktis -->
+                        <div class="fact-box">
+                            <h4>💡 Tips Memilih Format</h4>
+                            <ul>
+                                <li><strong>Selalu simpan RAW</strong> jika Anda berencana mengedit lebih dari sekedar brightness/contrast</li>
+                                <li><strong>Export ke JPG</strong> (kualitas 80-90%) untuk klien atau sosial media</li>
+                                <li><strong>Gunakan PNG</strong> saat butuh background transparan (logo, ikon)</li>
+                                <li><strong>Gunakan TIFF</strong> untuk cetak poster ukuran besar (A2 ke atas)</li>
+                                <li><strong>Hindari re-save JPG berulang kali</strong> — setiap save turunkan kualitas!</li>
+                                <li><strong>Untuk arsip jangka panjang</strong>, gunakan DNG (RAW universal) atau TIFF</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Catatan untuk DKV -->
+                    <div class="fact-box">
+                        <h4>🎯 Relevansi untuk Desainer Komunikasi Visual</h4>
+                        <ul>
+                            <li><strong>Kualitas cetak</strong>: klien cetak menuntut TIFF atau PDF/X-1a — bukan JPG!</li>
+                            <li><strong>Ukuran file</strong>: web design harus JPG/PNG, bukan RAW yang bisa 30 MB per file</li>
+                            <li><strong>Workflow editing</strong>: fotografer pro selalu simpan RAW untuk fleksibilitas</li>
+                            <li><strong>Transparansi</strong>: logo & ikon WAJIB PNG, tidak bisa JPG</li>
+                            <li><strong>Format modern</strong>: HEIC muncul di iPhone — perlu konversi ke JPG untuk kompatibilitas</li>
+                        </ul>
+                    </div>
+                </div>
+            <!-- ==================== MATERI 7: SEGITIGA EXPOSURE ==================== -->
             <div class="teori-materi" id="teori-segitiga">
                 <h2>Segitiga Exposure: Pondasi Fotografi</h2>
                 <p class="intro-text">
