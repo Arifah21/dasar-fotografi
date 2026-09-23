@@ -3,7 +3,7 @@
 // ==================== NAVIGASI DROPDOWN TEORI (HASH ROUTING) ====================
 
 // Daftar semua sub-materi teori yang valid
-const TEORI_MATERI = ['sejarah', 'jenis', 'typeofshot', 'cameraangle','kamera', 'segitiga', 'komposisi'];
+const TEORI_MATERI = ['sejarah', 'jenis', 'typeofshot', 'cameraangle','kamera','format', 'segitiga', 'komposisi'];
 const TAB_VALID = ['beranda', 'teori', 'lkpd', 'quiz', 'evaluasi'];
 
 /**
@@ -326,6 +326,7 @@ window.closeShotDetail = closeShotDetail;
         setupShotGallery();
         setupAngleSimulator();
         setupAngleGallery();
+        setupFormatNav();
         setupKameraGaleri();
         setupKameraMateri();
 
@@ -1020,6 +1021,215 @@ sport: {
 `
 }
 };
+
+// ==================== MATERI FORMAT FOTO ====================
+
+const formatData = {
+    jpeg: {
+        icon: '🖼️',
+        abbr: 'JPG',
+        title: 'JPEG / JPG',
+        subtitle: 'Joint Photographic Experts Group',
+        desc: 'Format paling populer di dunia. Menggunakan kompresi lossy — saat menyimpan, sebagian data dibuang secara permanen untuk menghemat ruang.',
+        kelebihan: [
+            'Ukuran file kecil (5-10x lebih kecil dari RAW)',
+            'Didukung SEMUA perangkat & aplikasi',
+            'Ideal untuk berbagi & web',
+            'Kualitas visual masih baik untuk penggunaan umum'
+        ],
+        kekurangan: [
+            'Kualitas menurun setiap kali di-save ulang',
+            'Tidak bisa recovery data yang hilang',
+            'Tidak mendukung transparansi',
+            'Kurang ideal untuk editing intensif'
+        ],
+        penggunaan: 'Foto sehari-hari, sosial media, website, email, cetak ukuran kecil-menengah',
+        tips: 'Selalu simpan di kualitas 80-95%. Jangan pernah edit & save JPG berkali-kali!'
+    },
+    png: {
+        icon: '🎨',
+        abbr: 'PNG',
+        title: 'PNG',
+        subtitle: 'Portable Network Graphics',
+        desc: 'Format lossless dengan dukungan transparansi (alpha channel). Sangat populer di dunia desain web & UI.',
+        kelebihan: [
+            'Kompresi lossless — kualitas tidak turun',
+            'Mendukung background transparan',
+            'Ideal untuk logo, ikon, screenshot',
+            'Kualitas stabil walau di-save berulang'
+        ],
+        kekurangan: [
+            'Ukuran file lebih besar dari JPG',
+            'Tidak mendukung animasi (kecuali APNG)',
+            'Kurang efisien untuk foto kompleks'
+        ],
+        penggunaan: 'Logo, ikon, elemen UI, grafik web, screenshot, aset desain',
+        tips: 'Gunakan PNG-8 (256 warna) untuk file kecil, PNG-24 untuk kualitas penuh, PNG-32 untuk transparansi.'
+    },
+    tiff: {
+        icon: '🖨️',
+        abbr: 'TIFF',
+        title: 'TIFF',
+        subtitle: 'Tagged Image File Format',
+        desc: 'Format lossless standar industri percetakan. Kualitas tertinggi dengan fleksibilitas editing, tapi ukuran file sangat besar.',
+        kelebihan: [
+            'Kualitas tertinggi tanpa kompresi',
+            'Mendukung layer & metadata kaya',
+            'Standar industri percetakan',
+            'Ideal untuk arsip jangka panjang'
+        ],
+        kekurangan: [
+            'Ukuran file sangat besar (bisa 100+ MB)',
+            'Tidak cocok untuk web',
+            'Aplikasi pendukung terbatas',
+            'Transfer lambat'
+        ],
+        penggunaan: 'Cetak profesional, arsip, scanning dokumen, workflow percetakan, majalah',
+        tips: 'Gunakan kompresi LZW (lossless) untuk menghemat ukuran tanpa kehilangan kualitas.'
+    },
+    raw: {
+        icon: '📷',
+        abbr: 'RAW',
+        title: 'RAW',
+        subtitle: 'Format Data Mentah Sensor',
+        desc: 'Bukan format file spesifik — ini kategori. Setiap kamera punya ekstensi sendiri (.CR2, .NEF, .ARW, .RAF). Berisi SEMUA data sensor tanpa diproses.',
+        kelebihan: [
+            'Fleksibilitas editing maksimal',
+            'Recovery highlight & shadow hingga 3 stop',
+            'White balance bisa diubah bebas',
+            'Kualitas tertinggi untuk cetak besar'
+        ],
+        kekurangan: [
+            'Ukuran file raksasa (25-50 MB per foto)',
+            'Butuh software khusus (Lightroom, Capture One)',
+            'Tidak bisa dibuka viewer biasa',
+            'Workflow lebih lambat'
+        ],
+        penggunaan: 'Fotografi profesional, wedding, komersial, landscape, fashion',
+        tips: 'Selalu simpan RAW + JPG bersamaan. RAW untuk arsip & editing, JPG untuk preview cepat.'
+    },
+    heic: {
+        icon: '📱',
+        abbr: 'HEIC',
+        title: 'HEIC / HEIF',
+        subtitle: 'High Efficiency Image Format',
+        desc: 'Format modern Apple (sejak iOS 11). Menggunakan codec HEVC — ukuran 50% lebih kecil dari JPG dengan kualitas setara atau lebih baik.',
+        kelebihan: [
+            'Ukuran file 50% lebih kecil dari JPG',
+            'Kualitas visual sangat baik',
+            'Mendukung 16-bit color (HDR)',
+            'Bisa menyimpan Live Photos'
+        ],
+        kekurangan: [
+            'Kompatibilitas terbatas (non-Apple)',
+            'Butuh konversi untuk Windows/Android lama',
+            'Belum didukung semua website',
+            'Kurang ideal untuk workflow lintas platform'
+        ],
+        penggunaan: 'Foto iPhone sehari-hari, penyimpanan hemat di iCloud, Live Photos',
+        tips: 'Set iPhone ke "Most Compatible" jika ingin otomatis JPG. Atau konversi HEIC ke JPG sebelum upload ke web.'
+    },
+    dng: {
+        icon: '🌐',
+        abbr: 'DNG',
+        title: 'DNG',
+        subtitle: 'Digital Negative',
+        desc: 'Format RAW universal buatan Adobe. Bersifat open source — bisa dibaca oleh banyak software, tidak terikat merek kamera tertentu.',
+        kelebihan: [
+            'Format RAW universal (cross-platform)',
+            'Kompatibel dengan banyak software',
+            'Ukuran lebih kecil dari RAW proprietary',
+            'Ideal untuk arsip jangka panjang'
+        ],
+        kekurangan: [
+            'Tidak semua kamera support langsung',
+            'Butuh konversi dari RAW asli',
+            'Beberapa software Adobe-centric',
+            'Tidak sepopuler RAW proprietary'
+        ],
+        penggunaan: 'Arsip foto jangka panjang, workflow lintas software, fotografer multi-brand',
+        tips: 'Konversi RAW ke DNG untuk arsip. Adobe DNG Converter gratis!'
+    }
+};
+
+/**
+ * Setup navigasi sub-materi format
+ */
+function setupFormatNav() {
+    document.querySelectorAll('.format-nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.dataset.format;
+
+            document.querySelectorAll('.format-nav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.format-sub').forEach(s => s.classList.remove('active'));
+            document.getElementById(`format-${target}`)?.classList.add('active');
+        });
+    });
+}
+
+/**
+ * Tampilkan modal detail format
+ */
+function showFormatDetail(formatKey) {
+    const data = formatData[formatKey];
+    if (!data) return;
+
+    const modal = document.getElementById('format-modal');
+    const body = document.getElementById('format-modal-body');
+    if (!modal || !body) return;
+
+    body.innerHTML = `
+        <div style="text-align:center; margin-bottom:1.5rem;">
+            <div style="display:inline-flex; align-items:center; justify-content:center; width:80px; height:80px; background:linear-gradient(135deg, #3498db, #2980b9); color:white; border-radius:16px; font-size:2rem; margin-bottom:0.75rem;">${data.icon}</div>
+            <h3 style="margin:0 0 0.35rem 0; color:#2C3E50;">${data.title}</h3>
+            <p style="margin:0; color:#6c757d; font-style:italic; font-size:0.85rem;">${data.subtitle}</p>
+        </div>
+
+        <p style="line-height:1.7; color:#495057; font-size:0.92rem;">${data.desc}</p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.25rem;">
+            <div style="padding:0.85rem 1rem; background:#e8f5e9; border-radius:8px; border-left:3px solid #2ecc71;">
+                <div style="font-size:0.75rem; color:#1b5e20; font-weight:700; text-transform:uppercase; margin-bottom:0.5rem;">✅ Kelebihan</div>
+                <ul style="margin:0; padding-left:1rem; font-size:0.82rem; line-height:1.6; color:#343a40;">
+                    ${data.kelebihan.map(k => `<li>${k}</li>`).join('')}
+                </ul>
+            </div>
+            <div style="padding:0.85rem 1rem; background:#ffebee; border-radius:8px; border-left:3px solid #e74c3c;">
+                <div style="font-size:0.75rem; color:#b71c1c; font-weight:700; text-transform:uppercase; margin-bottom:0.5rem;">❌ Kekurangan</div>
+                <ul style="margin:0; padding-left:1rem; font-size:0.82rem; line-height:1.6; color:#343a40;">
+                    ${data.kekurangan.map(k => `<li>${k}</li>`).join('')}
+                </ul>
+            </div>
+        </div>
+
+        <div style="padding:0.85rem 1rem; background:#f8f9fa; border-radius:8px; border-left:3px solid #3498db; margin-top:1rem;">
+            <div style="font-size:0.75rem; color:#6c757d; font-weight:700; text-transform:uppercase; margin-bottom:0.35rem;">🎯 Penggunaan</div>
+            <div style="font-size:0.88rem; color:#2C3E50;">${data.penggunaan}</div>
+        </div>
+
+        <div style="padding:0.85rem 1rem; background:#fff9e6; border-radius:8px; border-left:3px solid #f39c12; margin-top:0.75rem;">
+            <div style="font-size:0.75rem; color:#8a6d3b; font-weight:700; text-transform:uppercase; margin-bottom:0.35rem;">💡 Tips</div>
+            <div style="font-size:0.88rem; color:#2C3E50;">${data.tips}</div>
+        </div>
+    `;
+
+    modal.classList.add('active');
+}
+
+function closeFormatDetail() {
+    document.getElementById('format-modal')?.classList.remove('active');
+}
+
+// Tutup modal format via backdrop
+document.getElementById('format-modal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'format-modal') closeFormatDetail();
+});
+
+// Expose ke global
+window.showFormatDetail = showFormatDetail;
+window.closeFormatDetail = closeFormatDetail;
 
 function openJenisDetail(jenis) {
 const modal = document.getElementById('jenis-modal');
